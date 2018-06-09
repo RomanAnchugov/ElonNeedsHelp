@@ -1,16 +1,30 @@
+local g = 0.4 -- earth acceleration
+local rocket_speed = 0 
+local exact_speed = 4 -- control value of the speed
+local click_coef = 0.1 -- coef for jump/click value
+local exact_click_coef = 0.3 -- 0.4 - enough
+local click_count = 0
+local exact_click_count = 30 -- value for control value of clicks, when coef descrease
+local active = true
 
 local function up(self)
-  local position = go.get_position("#position")
-  position.y = position.y + self.speed
-  go.set_position(position)
+  particlefx.play("/rocket#rocket_egine", emitter_state_changed)
+  click_count = click_count + 1
+  rocket_speed =  exact_speed * click_coef
+  
+  --if click_coef > exact_click_coef and click_count == 2 then
+    --click_coef = click_coef - 0.1
+   -- click_count = 0
+  -- end
+  click_coef = click_coef + 0.025
+end
+
+local function emitter_state_changed(self, id, emitter, state)
+  
 end
 
 function init(self)
   msg.post(".","acquire_input_focus")
-
-
-  self.g = 1
-  self.speed = 1
 end
 
 function final(self)
@@ -18,7 +32,12 @@ function final(self)
 end
 
 function update(self, dt)
-
+  if active then
+    --rocket_speed = rocket_speed - g;
+    local position = go.get_position("#rocket")
+    position.y = position.y + rocket_speed
+    go.set_position(position)
+  end  
 end
 
 function on_message(self, message_id, message, sender)
