@@ -1,7 +1,7 @@
 local g = 0.4 -- earth acceleration
 local rocket_speed = 0 
 local exact_speed = 4 -- control value of the speed
-local click_coef = 0.1 -- coef for jump/click value
+local click_coef = 1 -- coef for jump/click value
 local exact_click_coef = 0.3 -- 0.4 - enough
 local click_count = 0
 local exact_click_count = 30 -- value for control value of clicks, when coef descrease
@@ -12,11 +12,10 @@ local function up(self)
   click_count = click_count + 1
   rocket_speed =  exact_speed * click_coef
   
-  --if click_coef > exact_click_coef and click_count == 2 then
-    --click_coef = click_coef - 0.1
-   -- click_count = 0
-  -- end
-  click_coef = click_coef + 0.025
+  if click_coef > exact_click_coef and click_count == 2 then
+     click_coef = click_coef - 0.1
+     click_count = 0
+  end
 end
 
 local function emitter_state_changed(self, id, emitter, state)
@@ -33,7 +32,7 @@ end
 
 function update(self, dt)
   if active then
-    --rocket_speed = rocket_speed - g;
+    rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
     position.y = position.y + rocket_speed
     go.set_position(position)

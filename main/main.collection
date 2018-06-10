@@ -54,8 +54,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 320.0
-    y: 91.0
+    x: 329.0
+    y: 637.0
     z: 1.0
   }
   rotation {
@@ -113,8 +113,8 @@ embedded_instances {
 embedded_instances {
   id: "gui"
   data: "components {\n"
-  "  id: \"test\"\n"
-  "  component: \"/main/test.gui\"\n"
+  "  id: \"game\"\n"
+  "  component: \"/main/game.gui\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -131,7 +131,7 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
