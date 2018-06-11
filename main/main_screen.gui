@@ -1,7 +1,7 @@
-script: "/main/game.gui_script"
+script: "/main/main_screen.gui_script"
 fonts {
-  name: "system_font"
-  font: "/builtins/fonts/system_font.font"
+  name: "score"
+  font: "/score.font"
 }
 background_color {
   x: 0.0
@@ -13,7 +13,7 @@ nodes {
   position {
     x: 312.0
     y: 931.0
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -23,8 +23,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.5
+    y: 1.5
     z: 1.0
     w: 1.0
   }
@@ -35,16 +35,16 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.7019608
+    y: 0.101960786
+    z: 0.101960786
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0\n"
   ""
-  font: "system_font"
+  font: "score"
   id: "score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -1,0 +1,62 @@
+local score = 0
+local CAMERA_ID = hash("/camera")
+
+local function shake_score(self)
+	local node = gui.get_node("score")
+	local position = gui.get_position(node)
+	local scale = gui.get_scale(node)
+	
+	local new_x = math.random(-5, 5)
+	local new_y = math.random(-5, 5)
+
+	position.x = position.x + new_x
+	position.y = position.y + new_y
+
+	local scale_x = math.random(-50, 50) / 10
+	local scale_y = math.random(-50, 50) / 10
+
+	scale.x = scale.x + scale_x
+	scale.y = scale.y + scale_y
+
+	gui.animate(node, "position", position, gui.EASING_LINEAR, 0.1)
+	gui.animate(node, "scale", scale, gui.EASING_LINEAR, 0.1)
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	math.randomseed(os.clock()*100000000000)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+
+		--updating score text
+		score = score + 1
+		local node = gui.get_node("score")
+		gui.set_text(node, score)
+
+		
+		msg.post(CAMERA_ID, "shake", { intensity = 0.1, duration = 0.5, direction = hash("both") })
+		shake_score(self)
+	end
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
