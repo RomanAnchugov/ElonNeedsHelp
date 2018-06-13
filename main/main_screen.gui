@@ -1,7 +1,7 @@
 script: "/main/main_screen.gui_script"
 fonts {
   name: "score"
-  font: "/score.font"
+  font: "/assets/score.font"
 }
 background_color {
   x: 0.0

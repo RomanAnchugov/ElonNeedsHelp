@@ -1,6 +1,6 @@
 [project]
 title = ElonNeedsYourHelp
-dependencies = https://github.com/britzl/defold-orthographic/archive/1.2.1.zip
+dependencies = https://github.com/britzl/defold-orthographic/archive/1.2.1.zip,https://github.com/britzl/monarch/archive/master.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
