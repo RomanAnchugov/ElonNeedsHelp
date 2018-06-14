@@ -8,7 +8,7 @@ local exact_click_count = 30 -- value for control value of clicks, when coef des
 local active = true
 
 local function up(self)
-  particlefx.play("/rocket#rocket_egine", emitter_state_changed)
+  particlefx.play("/rocket#rocket_egine")
   click_count = click_count + 1
   rocket_speed =  exact_speed * click_coef
   
@@ -16,10 +16,6 @@ local function up(self)
      --click_coef = click_coef - 0.05
      click_count = 0
   end
-end
-
-local function emitter_state_changed(self, id, emitter, state)
-  
 end
 
 function init(self)
