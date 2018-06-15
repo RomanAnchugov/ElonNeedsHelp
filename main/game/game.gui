@@ -1,4 +1,4 @@
-script: "/main/game.gui_script"
+script: "/main/game/game.gui_script"
 fonts {
   name: "score"
   font: "/assets/score.font"

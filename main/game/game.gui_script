@@ -1,6 +1,9 @@
 local score = 0
 local CAMERA_ID = hash("/camera")
 
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+
 local function shake_score(self)
 	local node = gui.get_node("score")
 	local position = gui.get_position(node)
@@ -17,6 +20,12 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.clock()*100000000000)
+
+	self.transition = transitions.create(gui.get_node("score"))
+	.show_in(transitions.slide_in_right, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 end
 
 function final(self)
@@ -30,12 +39,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	self.transition.handle(message_id, message, sender)
+	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
+		print("Show in done!")
+	end
 end
 
 function on_input(self, action_id, action)
-	print("input")
 	if action_id == hash("touch") and action.pressed then
 
 		--updating score text

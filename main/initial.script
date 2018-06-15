@@ -1,0 +1,4 @@
+function init(self)
+	monarch = require "monarch.monarch"
+	monarch.show("menu_screen")
+end
