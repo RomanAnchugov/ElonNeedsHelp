@@ -16,14 +16,14 @@ function init(self)
 	self.transition1 = transitions.create(gui.get_node("start"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
 	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
-	--.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
-	--.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
 	self.transition2 = transitions.create(gui.get_node("menu_header"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
 	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
-	--.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
-	--.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
 
 end
 

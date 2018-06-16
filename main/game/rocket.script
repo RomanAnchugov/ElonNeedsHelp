@@ -7,6 +7,9 @@ local click_count = 0
 local exact_click_count = 30 -- value for control value of clicks, when coef descrease
 local active = true
 
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+
 local function up(self)
   particlefx.play("/rocket#rocket_egine")
   click_count = click_count + 1
@@ -32,7 +35,12 @@ function update(self, dt)
     local position = go.get_position("#rocket")
     position.y = position.y + rocket_speed
     go.set_position(position)
+
+    if position.y < 10 then
+      monarch.back()
+    end
   end  
+  
 end
 
 function on_message(self, message_id, message, sender)
