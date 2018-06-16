@@ -13,11 +13,17 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	
-	self.transition = transitions.create(gui.get_node("start"))
-	.show_in(transitions.slide_in_right, gui.EASING_OUTQUAD, 6, 0)
-	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 6, 0)
-	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 6, 0)
-	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 6, 0)
+	self.transition1 = transitions.create(gui.get_node("start"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	--.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	--.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition2 = transitions.create(gui.get_node("menu_header"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	--.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	--.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
 
 end
 
@@ -32,9 +38,11 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	self.transition.handle(message_id, message, sender)
+	self.transition1.handle(message_id, message, sender)
+	self.transition2.handle(message_id, message, sender)
+	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
-		print("Show in done!")
+		
 	end
 end
 

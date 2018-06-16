@@ -44,7 +44,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "MENU"
   font: "score"
-  id: "text"
+  id: "menu_header"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

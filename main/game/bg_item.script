@@ -1,0 +1,28 @@
+function init(self)
+	self.speed = 10
+end
+
+function final(self)
+	
+end
+
+function update(self, dt)
+	local position = go.get_position()
+	position.y = position.y - self.speed
+	go.set_position(position)
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
