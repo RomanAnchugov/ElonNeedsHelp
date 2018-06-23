@@ -1,7 +1,6 @@
 function init(self)
 	math.randomseed(os.clock()*100000000000)
 	self.speed = math.random(4, 7)
-	msg.post(".", "acquire_input_focus")
 end
 
 function final(self)
@@ -25,9 +24,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.pressed then
-		
-	end
+	
 end
 
 function on_reload(self)
