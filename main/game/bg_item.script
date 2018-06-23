@@ -1,6 +1,7 @@
 function init(self)
 	math.randomseed(os.clock()*100000000000)
 	self.speed = math.random(4, 7)
+	msg.post("#sprite", "play_animation", {id = hash("star_blue_giant01")})
 end
 
 function final(self)
@@ -13,7 +14,7 @@ function update(self, dt)
 	position.y = position.y - self.speed
 	go.set_position(position)
 	
-	if(position.y < -10) then
+	if(position.y < -1280) then
 		go.delete()
 	end
 end

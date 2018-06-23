@@ -4,6 +4,42 @@ images {
 images {
   image: "/assets/background.png"
 }
+images {
+  image: "/assets/planets/star_blue_giant01.png"
+}
+images {
+  image: "/assets/planets/star_blue_giant02.png"
+}
+images {
+  image: "/assets/planets/star_blue_giant03.png"
+}
+images {
+  image: "/assets/planets/star_blue_giant04.png"
+}
+images {
+  image: "/assets/planets/star_red_giant01.png"
+}
+images {
+  image: "/assets/planets/star_red_giant02.png"
+}
+images {
+  image: "/assets/planets/star_red_giant03.png"
+}
+images {
+  image: "/assets/planets/star_red_giant04.png"
+}
+images {
+  image: "/assets/planets/star_white_giant01.png"
+}
+images {
+  image: "/assets/planets/star_white_giant02.png"
+}
+images {
+  image: "/assets/planets/star_white_giant03.png"
+}
+images {
+  image: "/assets/planets/star_white_giant04.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0
