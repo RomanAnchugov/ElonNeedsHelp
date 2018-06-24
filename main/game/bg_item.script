@@ -1,7 +1,7 @@
 function init(self)
 	math.randomseed(os.clock()*100000000000)
 	self.speed = math.random(4, 7)
-	msg.post("#sprite", "play_animation", {id = hash("star_blue_giant01")})
+	msg.post("#sprite", "play_animation", {id = hash("" .. math.random(1, 13))})
 end
 
 function final(self)

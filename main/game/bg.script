@@ -31,7 +31,7 @@ function on_input(self, action_id, action)
 			
 			factory.create("/bg#bg_factory", vmath.vector3(math.random(50, 650), 1280, 0), nil, nil, math.random(100, 400) / 1000)
 			click_count = 0
-			control_count = math.random(4, 10)
+			control_count = math.random(5, 15)
 		end
 	end	
 end
