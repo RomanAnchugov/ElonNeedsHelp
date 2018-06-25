@@ -6,6 +6,7 @@ local control_count = 1 --number of clicks, when planet will create
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.clock()*100000000000)
+	particlefx.play("/bg#stars")
 end
 
 function final(self)
