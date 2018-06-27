@@ -53,9 +53,14 @@ function on_input(self, action_id, action)
 		local node = gui.get_node("score")
 		gui.set_text(node, score)
 
-
 		msg.post(CAMERA_ID, "shake", { intensity = 0.01, duration = 0.5, direction = hash("both") })
 		shake_score(self)
+
+		--TODO: send message to bg_item.script
+		--TODO: change emmiter parameters(speed)
+		if score == 10 then
+			msg.post("/bg#bg_factory", "50bonus")
+		end
 	end
 end
 

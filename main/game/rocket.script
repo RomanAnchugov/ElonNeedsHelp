@@ -16,8 +16,8 @@ local function up(self)
   rocket_speed =  exact_speed * click_coef
   
   if click_coef > exact_click_coef and click_count == 2 then
-     --click_coef = click_coef - 0.05
-     click_count = 0
+     click_coef = click_coef - 0.05
+      click_count = 0
   end
 end
 
