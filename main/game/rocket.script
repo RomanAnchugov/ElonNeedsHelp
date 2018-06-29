@@ -17,7 +17,7 @@ local function up(self)
   
   if click_coef > exact_click_coef and click_count == 2 then
      click_coef = click_coef - 0.05
-      click_count = 0
+     click_count = 0
   end
 end
 
@@ -44,7 +44,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-
+  if message_id == hash("bonus50") then
+    click_coef = 1
+  end
 end
 
 function on_input(self, action_id, action)

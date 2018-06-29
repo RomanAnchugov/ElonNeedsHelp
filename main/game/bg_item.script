@@ -8,6 +8,7 @@ function init(self)
 	self.coef = vmath.length(go.get_scale())
 	--self.speed = math.random(4, 7 ) * self.coef
 	self.speed = 1 / self.coef
+	self.bonus_speed = 0
 end
 
 function final(self)
@@ -17,7 +18,7 @@ end
 function update(self, dt)
 	
 	local position = go.get_position()
-	position.y = position.y - self.speed
+	position.y = position.y - self.speed - self.bonus_speed
 	go.set_position(position)
 	
 	if(position.y < -1280) then
@@ -27,7 +28,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("bonus50") then
-		print("bonus10")
+		self.bonus_speed = 10
 	end
 end
 
