@@ -1,3 +1,5 @@
+local TAG = "game.gui_script: "
+
 local score = 0
 local CAMERA_ID = hash("/camera")
 
@@ -26,6 +28,9 @@ function init(self)
 	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.planets_count = 0
+	self.bonus50 = false
 end
 
 function final(self)
@@ -43,6 +48,10 @@ function on_message(self, message_id, message, sender)
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
 		print("Show in done!")
 	end
+
+	if message_id == hash("increase_planets_count") then
+		self.planets_count = self.planets_count + 1 
+	end
 end
 
 function on_input(self, action_id, action)
@@ -53,15 +62,29 @@ function on_input(self, action_id, action)
 		local node = gui.get_node("score")
 		gui.set_text(node, score)
 
-		msg.post(CAMERA_ID, "shake", { intensity = 0.01, duration = 0.5, direction = hash("both") })
+		if self.bonus then
+			msg.post(CAMERA_ID, "shake", { intensity = 0.1, duration = 0.5, direction = hash("both") })
+		else
+			msg.post(CAMERA_ID, "shake", { intensity = 0.01, duration = 0.5, direction = hash("both") })
+		end
 		shake_score(self)
 
 		--TODO: made with 50
 		if score == 30 then
-			--TODO: made for 0-4 instance
 			--TODO: change emmiter parameters(speed)
-			msg.post("game:/instance0#bg_item", "bonus50")
+
+			for i = 0, (self.planets_count - 1) do
+				msg.post("game:/instance" .. i .. "#bg_item", "bonus50")
+			end
 			msg.post("game:/rocket", "bonus50")
+			msg.post("game:/bg#bg", "bonus50")
+			self.bonus = true
+		end
+
+		if score == 50 then
+			msg.post("game:/rocket", "bonus50end")
+			msg.post("game:/bg#bg", "bonus50end")
+			self.bonus = false
 		end
 	end
 end

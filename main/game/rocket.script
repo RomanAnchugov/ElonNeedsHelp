@@ -47,6 +47,9 @@ function on_message(self, message_id, message, sender)
   if message_id == hash("bonus50") then
     click_coef = 1
   end
+  if message_id == hash("bonus50end") then
+    click_coef = 0.5
+  end
 end
 
 function on_input(self, action_id, action)

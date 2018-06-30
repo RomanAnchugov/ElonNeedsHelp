@@ -41,5 +41,5 @@ images {
   image: "/assets/planets/9.png"
 }
 margin: 0
-extrude_borders: 2
+extrude_borders: 3
 inner_padding: 0
