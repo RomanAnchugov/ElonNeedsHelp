@@ -1,7 +1,6 @@
 
 
 function init(self)
-	print("bg_item: message.url" .. msg.url())
 	math.randomseed(os.clock()*100000000000)
 	msg.post("#sprite", "play_animation", {id = hash("" .. math.random(1, 13))})
 	print(vmath.length(go.get_scale()))

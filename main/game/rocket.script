@@ -23,6 +23,7 @@ end
 
 function init(self)
   msg.post(".","acquire_input_focus")
+  active = true
 end
 
 function final(self)
@@ -36,7 +37,9 @@ function update(self, dt)
     position.y = position.y + rocket_speed
     go.set_position(position)
 
-    if position.y < 10 then
+    if position.y < -50 and active then
+      msg.post("game:/gui#game", "lose")
+      active = false
       monarch.back()
     end
   end  
