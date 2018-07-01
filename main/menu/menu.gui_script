@@ -1,3 +1,5 @@
+local TAG = "menu.gui_script: "
+
 local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
@@ -6,8 +8,16 @@ local function start_pressed(button)
 	monarch.show("game_screen")
 end
 
+local function shop_pressed(button)
+	print(TAG .. "shop pressed")
+end
+
 local function start_update(button)
-	--todo: change the view of hte button
+	--todo: change the view of the button
+end
+
+local function shop_update(button)
+	--todo: change the view of the button
 end
 
 function init(self)
@@ -25,6 +35,27 @@ function init(self)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
 
+	self.transition3 = transitions.create(gui.get_node("shop"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition4 = transitions.create(gui.get_node("money"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition5 = transitions.create(gui.get_node("best_score"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+
+	self.money = gui.get_node("money")
+	gui.set_text(self.money, "money: " .. MONEY)
+
 end
 
 function final(self)
@@ -40,6 +71,9 @@ end
 function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
+	self.transition3.handle(message_id, message, sender)
+	self.transition4.handle(message_id, message, sender)
+	self.transition5.handle(message_id, message, sender)
 	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
 		
@@ -47,8 +81,8 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	gooey.button("start_bg", action_id, action, start_pressed, start_update)
-	
+	gooey.button("start", action_id, action, start_pressed, start_update)
+	gooey.button("shop", action_id, action, shop_pressed, shop_update)
 end
 
 function on_reload(self)

@@ -1,1 +1,2 @@
 MONEY = 0
+BEST_SCORE = 0

@@ -56,7 +56,9 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 		MONEY = MONEY + score
-		print(TAG .. MONEY)
+		if score > BEST_SCORE then
+			BEST_SCORE = score
+		end
 	end
 end
 
