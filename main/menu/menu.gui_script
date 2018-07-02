@@ -10,7 +10,7 @@ local function start_pressed(button)
 end
 
 local function shop_pressed(button)
-	print(TAG .. "shop pressed")
+	monarch.show("shop_screen")
 end
 
 local function start_update(button)

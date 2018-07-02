@@ -2,7 +2,7 @@
 
 function init(self)
 	math.randomseed(os.clock()*100000000000)
-	msg.post("#sprite", "play_animation", {id = hash("" .. math.random(1, 13))})
+	msg.post("#sprite", "play_animation", {id = hash("" .. math.random(1, 12))})
 	print(vmath.length(go.get_scale()))
 	self.coef = vmath.length(go.get_scale())
 	--self.speed = math.random(4, 7 ) * self.coef
