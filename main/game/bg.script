@@ -34,10 +34,17 @@ function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		click_count = click_count + 1
 		if click_count >= control_count then
-			factory.create("/bg#bg_factory", vmath.vector3(math.random(50, 650), 1280, 0), nil, nil, math.random(100, 400) / 1000)
-			click_count = 0
+			local scale = math.random(100, 400) / 1000
+			local piece = factory.create("/bg#bg_factory", vmath.vector3(math.random(50, 650), 1280, 0), nil, nil, scale)
+
+			--opacity depends on scale
+			local url = msg.url(piece)
+			url.fragment = "sprite"
+			sprite.set_constant(url, "tint", vmath.vector4(1, 1, 1, scale + 0.6))
+			--number of clicks for creating new planet
 			control_count = math.random(15, 30)
 			msg.post("game:/gui#game", "increase_planets_count")
+			click_count = 0
 		end
 	end	
 end

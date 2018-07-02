@@ -1,3 +1,4 @@
+require "main/varibles"
 local TAG = "menu.gui_script: "
 
 local gooey = require "gooey.gooey"
@@ -54,7 +55,9 @@ function init(self)
 	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
 
 	self.money = gui.get_node("money")
+	self.best = gui.get_node("best_score")
 	gui.set_text(self.money, "money: " .. MONEY)
+	gui.set_text(self.best, "best: " .. BEST_SCORE)
 
 end
 
