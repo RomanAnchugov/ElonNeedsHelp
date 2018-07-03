@@ -184,7 +184,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"transition_url\"\n"
-  "    value: \"menu:/gui#menu\"\n"
+  "    value: \"shop:/gui#shop\"\n"
   "    type: PROPERTY_TYPE_URL\n"
   "  }\n"
   "}\n"

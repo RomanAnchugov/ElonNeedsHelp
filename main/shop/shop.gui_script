@@ -1,0 +1,46 @@
+require "main/varibles"
+local monarch = require "monarch.monarch"
+local gooey = require "gooey.gooey"
+local transitions = require "monarch.transitions.gui"
+local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
+
+local TAG = "shop.gui_script: "
+
+function init(self)
+	gooey.acquire_input()
+	self.list_ids = {"list_item1/bg", "list_item2/bg", "list_item3/bg", 
+	"list_item4/bg", "list_item5/bg", "list_item6/bg"}
+
+	self.transition1 = transitions.create(gui.get_node("header"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	kenneyblue.static_list("static_list", self.list_ids)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	self.transition1.handle(message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+	kenneyblue.static_list("static_list", self.list_ids, action_id, action, function(list)
+		print("selected list item", list.selected_item)
+	end)
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
