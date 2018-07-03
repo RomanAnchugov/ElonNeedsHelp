@@ -226,8 +226,8 @@ nodes {
 }
 nodes {
   position {
-    x: 877.0
-    y: 642.0
+    x: 1657.0
+    y: 981.0
     z: 0.0
     w: 1.0
   }
@@ -296,7 +296,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "kenneyblue/blue_button04"
+  texture: "kenneyblue/blue_button00"
   id: "list_item1/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -315,6 +315,7 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -383,8 +384,8 @@ nodes {
 }
 nodes {
   position {
-    x: 882.0
-    y: 570.0
+    x: 1672.0
+    y: 919.0
     z: 0.0
     w: 1.0
   }
@@ -540,8 +541,8 @@ nodes {
 }
 nodes {
   position {
-    x: 882.0
-    y: 570.0
+    x: 1687.0
+    y: 837.0
     z: 0.0
     w: 1.0
   }
@@ -697,8 +698,8 @@ nodes {
 }
 nodes {
   position {
-    x: 882.0
-    y: 570.0
+    x: 1677.0
+    y: 677.0
     z: 0.0
     w: 1.0
   }
@@ -854,8 +855,8 @@ nodes {
 }
 nodes {
   position {
-    x: 882.0
-    y: 570.0
+    x: 1679.0
+    y: 615.0
     z: 0.0
     w: 1.0
   }
@@ -1011,8 +1012,8 @@ nodes {
 }
 nodes {
   position {
-    x: 882.0
-    y: 570.0
+    x: 1696.0
+    y: 771.0
     z: 0.0
     w: 1.0
   }
