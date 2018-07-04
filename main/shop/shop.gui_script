@@ -6,6 +6,15 @@ local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
 
 local TAG = "shop.gui_script: "
 
+function back_pressed(self)
+	monarch.back()
+end
+
+function back_update(self)
+	--TODO: updating back button view
+end
+
+
 function init(self)
 	gooey.acquire_input()
 	self.list_ids = {"list_item1/bg", "list_item2/bg", "list_item3/bg", 
@@ -23,6 +32,12 @@ function init(self)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
+	self.transition3 = transitions.create(gui.get_node("back"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	
 	kenneyblue.static_list("static_list", self.list_ids)
 end
 
@@ -39,12 +54,29 @@ end
 function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
+	self.transition3.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	kenneyblue.static_list("static_list", self.list_ids, action_id, action, function(list)
-		print("selected list item", list.selected_item)
-	end)
+	kenneyblue.static_list("static_list", self.list_ids, action_id, action, 
+		function(list)
+			if list.selected_item == 1 then
+				print(TAG, "select 1")
+			elseif list.selected_item == 2 then
+				print(TAG, "select 2")
+			elseif list.selected_item == 3 then
+				print(TAG, "select 3")
+			elseif list.selected_item == 4 then
+				print(TAG, "select 4")
+			elseif list.selected_item == 5 then
+				print(TAG, "select 5")
+			elseif list.selected_item == 6 then
+				print(TAG, "select 6")
+			end
+		end
+	)
+
+	gooey.button("back", action_id, action, back_pressed, back_update)
 end
 
 function on_reload(self)
