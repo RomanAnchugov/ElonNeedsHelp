@@ -1,9 +1,17 @@
+local TAG = "bg_item.script"
 
+local last_sprite = 0
+local current_sprite = 0
 
 function init(self)
 	math.randomseed(os.clock()*100000000000)
-	msg.post("#sprite", "play_animation", {id = hash("" .. math.random(1, 12))})
-	print(vmath.length(go.get_scale()))
+
+	while current_sprite == last_sprite do
+		current_sprite = math.random(1, 12)
+	end
+	print(TAG, "current: ", current_sprite, "last: ", last_sprite)
+	msg.post("#sprite", "play_animation", {id = hash("" .. current_sprite)})
+	last_sprite = current_sprite
 	self.coef = vmath.length(go.get_scale())
 	--self.speed = math.random(4, 7 ) * self.coef
 	self.speed = 1 / self.coef
