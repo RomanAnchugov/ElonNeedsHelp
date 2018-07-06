@@ -4,14 +4,33 @@ local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
 local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
 
+local money_per_click = 0
+local secodn_life = 0
+local rockets = 0
+local engines = 0
+local boost = 0
+local autopilot = 0
+
 local TAG = "shop.gui_script: "
 
-function back_pressed(self)
+function back_pressed(button)
 	monarch.back()
 end
 
-function back_update(self)
-	--TODO: updating back button view
+function back_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("blue_button03"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("blue_button00"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("blue_button00"))
+	end
+end
+
+function update_list(list)
+	print(TAG, "update list")
 end
 
 
@@ -32,13 +51,14 @@ function init(self)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
-	self.transition3 = transitions.create(gui.get_node("back"))
+	self.transition3 = transitions.create(gui.get_node("back/bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
 	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	
 	kenneyblue.static_list("static_list", self.list_ids)
+	kenneyblue.button("back", action_id, action, fn)
 end
 
 function final(self)
@@ -59,24 +79,47 @@ end
 
 function on_input(self, action_id, action)
 	kenneyblue.static_list("static_list", self.list_ids, action_id, action, 
-		function(list)
-			if list.selected_item == 1 then
-				print(TAG, "select 1")
-			elseif list.selected_item == 2 then
-				print(TAG, "select 2")
-			elseif list.selected_item == 3 then
-				print(TAG, "select 3")
-			elseif list.selected_item == 4 then
-				print(TAG, "select 4")
-			elseif list.selected_item == 5 then
-				print(TAG, "select 5")
-			elseif list.selected_item == 6 then
-				print(TAG, "select 6")
-			end
-		end
-	)
+		function(list) --on item of list selected
+			if list.selected_item == 1 then --money per click (list_item1)
+				print(TAG, "money per click")
+				money_per_click = money_per_click + 1
+				
+				local node = gui.get_node("list_item1/text")
+				gui.set_text(node, "MONEY PER CLICK(" .. money_per_click .. ")")
+			elseif list.selected_item == 2 then --second life
+				print(TAG, "second life")
+				secodn_life = secodn_life + 1
 
-	gooey.button("back", action_id, action, back_pressed, back_update)
+				local node = gui.get_node("list_item2/text")
+				gui.set_text(node, "SECOND LIFE(" .. secodn_life .. ")")
+			elseif list.selected_item == 3 then --rockets
+				print(TAG, "rockets")
+				rockets = rockets + 1
+
+				local node = gui.get_node("list_item3/text")
+				gui.set_text(node, "ROCKETS(" .. rockets .. ")")
+			elseif list.selected_item == 4 then --engines
+				print(TAG, "engines")
+				engines = engines + 1
+
+				local node = gui.get_node("list_item4/text")
+				gui.set_text(node, "ENGINES(" .. engines .. ")")
+			elseif list.selected_item == 5 then --boost
+				print(TAG, "boost")
+				boost = boost + 1
+
+				local node = gui.get_node("list_item5/text"
+				gui.set_text(node, "BOOSTS(" .. boost .. ")")
+			elseif list.selected_item == 6 then --autopilot
+				print(TAG, "autopilot")
+				autopilot = autopilot + 1
+
+				local node = gui.get_node("list_item6/text")
+				gui.set_text(node, "AUTOPILOT(" .. autopilot .. ")")
+			end
+		end)
+	
+	gooey.button("back/bg", action_id, action, back_pressed, back_update)
 end
 
 function on_reload(self)
