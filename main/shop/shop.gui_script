@@ -4,12 +4,19 @@ local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
 local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
 
-local money_per_click = 0
-local secodn_life = 0
-local rockets = 0
-local engines = 0
-local boost = 0
-local autopilot = 0
+local money_per_click_count = 0
+local secodn_life_count = 0
+local rockets_count = 0
+local engines_count = 0
+local boost_count = 0
+local autopilot_count = 0
+
+local money_per_click_cost = 100
+local second_life_cost = 100
+local rockets_cost = 100
+local engines_cost = 100
+local boost_cost = 100
+local autopilot_cost = 100
 
 local TAG = "shop.gui_script: "
 
@@ -82,40 +89,66 @@ function on_input(self, action_id, action)
 		function(list) --on item of list selected
 			if list.selected_item == 1 then --money per click (list_item1)
 				print(TAG, "money per click")
-				money_per_click = money_per_click + 1
-				
+				money_per_click_count = money_per_click_count + 1
+				money_per_click_cost = money_per_click_cost * 1.5
+
+				--change count
 				local node = gui.get_node("list_item1/text")
-				gui.set_text(node, "MONEY PER CLICK(" .. money_per_click .. ")")
+				gui.set_text(node, "MONEY PER CLICK(" .. money_per_click_count .. ")")
+
+				--change cost
+				node = gui.get_node("list_item1/cost")
+				gui.set_text(node, money_per_click_cost .. "$")
 			elseif list.selected_item == 2 then --second life
 				print(TAG, "second life")
-				secodn_life = secodn_life + 1
+				secodn_life_count = secodn_life_count + 1
+				second_life_cost = second_life_cost * 1.5
 
 				local node = gui.get_node("list_item2/text")
-				gui.set_text(node, "SECOND LIFE(" .. secodn_life .. ")")
+				gui.set_text(node, "SECOND LIFE(" .. secodn_life_count .. ")")
+
+				node = gui.get_node("list_item2/cost")
+				gui.set_text(node, second_life_cost .. "$")
 			elseif list.selected_item == 3 then --rockets
 				print(TAG, "rockets")
-				rockets = rockets + 1
+				rockets_count = rockets_count + 1
+				rockets_cost = rockets_cost * 1.5
 
 				local node = gui.get_node("list_item3/text")
-				gui.set_text(node, "ROCKETS(" .. rockets .. ")")
+				gui.set_text(node, "ROCKETS(" .. rockets_count .. ")")
+
+				node = gui.get_node("list_item3/cost")
+				gui.set_text(node, rockets_cost .. "$")
 			elseif list.selected_item == 4 then --engines
 				print(TAG, "engines")
-				engines = engines + 1
+				engines_count = engines_count + 1
+				engines_cost = engines_cost * 1.5
 
 				local node = gui.get_node("list_item4/text")
 				gui.set_text(node, "ENGINES(" .. engines .. ")")
+
+				node = gui.get_node("list_item4/cost")
+				gui.set_text(node, engines_cost .. "$")
 			elseif list.selected_item == 5 then --boost
 				print(TAG, "boost")
-				boost = boost + 1
+				boost_count = boost_count + 1
+				boost_cost = boost_cost * 1.5
 
-				local node = gui.get_node("list_item5/text"
-				gui.set_text(node, "BOOSTS(" .. boost .. ")")
+				local node = gui.get_node("list_item5/text")
+				gui.set_text(node, "BOOSTS(" .. boost_count .. ")")
+
+				node = gui.get_node("list_item5/cost")
+				gui.set_text(node, boost_cost .. "$")
 			elseif list.selected_item == 6 then --autopilot
 				print(TAG, "autopilot")
-				autopilot = autopilot + 1
+				autopilot_count = autopilot_count + 1
+				autopilot_cost = autopilot_cost * 1.5
 
 				local node = gui.get_node("list_item6/text")
-				gui.set_text(node, "AUTOPILOT(" .. autopilot .. ")")
+				gui.set_text(node, "AUTOPILOT(" .. autopilot_count .. ")")
+
+				node = gui.get_node("list_item6/cost")
+				gui.set_text(node, autopilot_cost .. "$")
 			end
 		end)
 	
