@@ -386,7 +386,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -417,7 +417,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item1/cost"
   xanchor: XANCHOR_NONE
@@ -436,7 +436,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item1/bg"
   layer: ""
   inherit_alpha: true
@@ -609,7 +609,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -640,7 +640,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item2/cost"
   xanchor: XANCHOR_NONE
@@ -659,7 +659,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item2/bg"
   layer: ""
   inherit_alpha: true
@@ -831,7 +831,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -862,7 +862,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item3/cost"
   xanchor: XANCHOR_NONE
@@ -881,7 +881,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item3/bg"
   layer: ""
   inherit_alpha: true
@@ -1054,7 +1054,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1085,7 +1085,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item4/cost"
   xanchor: XANCHOR_NONE
@@ -1104,7 +1104,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item4/bg"
   layer: ""
   inherit_alpha: true
@@ -1278,7 +1278,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1309,7 +1309,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item5/cost"
   xanchor: XANCHOR_NONE
@@ -1328,7 +1328,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item5/bg"
   layer: ""
   inherit_alpha: true
@@ -1500,7 +1500,7 @@ nodes {
 }
 nodes {
   position {
-    x: 160.0
+    x: 173.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1531,7 +1531,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "100$"
+  text: "0$"
   font: "kenneyblue"
   id: "list_item6/cost"
   xanchor: XANCHOR_NONE
@@ -1550,7 +1550,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: true
+  line_break: false
   parent: "list_item6/bg"
   layer: ""
   inherit_alpha: true

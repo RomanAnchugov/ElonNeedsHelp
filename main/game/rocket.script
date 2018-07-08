@@ -1,3 +1,4 @@
+require "main/varibles"
 local g = 0.4 -- earth acceleration
 local rocket_speed = 0 
 local exact_speed = 4 -- control value of the speed

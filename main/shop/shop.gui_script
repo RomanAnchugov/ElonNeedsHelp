@@ -91,6 +91,8 @@ function on_input(self, action_id, action)
 				print(TAG, "money per click")
 				money_per_click_count = money_per_click_count + 1
 				money_per_click_cost = money_per_click_cost * 1.5
+				MONEY_PER_CLICK_COUNT = money_per_click_count
+				MONEY_PER_CLICK_COST = money_per_click_cost
 
 				--change count
 				local node = gui.get_node("list_item1/text")
