@@ -111,46 +111,46 @@ function on_input(self, action_id, action)
 
 				node = gui.get_node("list_item2/cost")
 				gui.set_text(node, second_life_cost .. "$")
-			elseif list.selected_item == 3 then --rockets
-				print(TAG, "rockets")
-				rockets_count = rockets_count + 1
-				rockets_cost = rockets_cost * 1.5
-
-				local node = gui.get_node("list_item3/text")
-				gui.set_text(node, "ROCKETS(" .. rockets_count .. ")")
-
-				node = gui.get_node("list_item3/cost")
-				gui.set_text(node, rockets_cost .. "$")
-			elseif list.selected_item == 4 then --engines
-				print(TAG, "engines")
-				engines_count = engines_count + 1
-				engines_cost = engines_cost * 1.5
-
-				local node = gui.get_node("list_item4/text")
-				gui.set_text(node, "ENGINES(" .. engines .. ")")
-
-				node = gui.get_node("list_item4/cost")
-				gui.set_text(node, engines_cost .. "$")
-			elseif list.selected_item == 5 then --boost
+			elseif list.selected_item == 3 then --boost
 				print(TAG, "boost")
 				boost_count = boost_count + 1
 				boost_cost = boost_cost * 1.5
 
-				local node = gui.get_node("list_item5/text")
+				local node = gui.get_node("list_item3/text")
 				gui.set_text(node, "BOOSTS(" .. boost_count .. ")")
 
-				node = gui.get_node("list_item5/cost")
+				node = gui.get_node("list_item3/cost")
 				gui.set_text(node, boost_cost .. "$")
-			elseif list.selected_item == 6 then --autopilot
+			elseif list.selected_item == 4 then --autopilot
 				print(TAG, "autopilot")
 				autopilot_count = autopilot_count + 1
 				autopilot_cost = autopilot_cost * 1.5
 
-				local node = gui.get_node("list_item6/text")
+				local node = gui.get_node("list_item4/text")
 				gui.set_text(node, "AUTOPILOT(" .. autopilot_count .. ")")
 
-				node = gui.get_node("list_item6/cost")
+				node = gui.get_node("list_item4/cost")
 				gui.set_text(node, autopilot_cost .. "$")
+			elseif list.selected_item == 5 then --engines
+				print(TAG, "engines")
+				engines_count = engines_count + 1
+				engines_cost = engines_cost * 1.5
+
+				local node = gui.get_node("list_item5/text")
+				gui.set_text(node, "ENGINES(" .. engines_count .. ")")
+
+				node = gui.get_node("list_item5/cost")
+				gui.set_text(node, engines_cost .. "$")
+			elseif list.selected_item == 6 then --rockets
+				print(TAG, "rockets")
+				rockets_count = rockets_count + 1
+				rockets_cost = rockets_cost * 1.5
+
+				local node = gui.get_node("list_item6/text")
+				gui.set_text(node, "ROCKETS(" .. rockets_count .. ")")
+
+				node = gui.get_node("list_item6/cost")
+				gui.set_text(node, rockets_cost .. "$")
 			end
 		end)
 	

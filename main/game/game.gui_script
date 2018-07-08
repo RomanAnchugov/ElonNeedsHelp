@@ -6,6 +6,8 @@ local CAMERA_ID = hash("/camera")
 
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
+local gooey = require "gooey.gooey"
+local transitions = require "monarch.transitions.gui"
 
 local function shake_score(self)
 	local node = gui.get_node("score")
@@ -20,6 +22,15 @@ local function shake_score(self)
 	gui.animate(node, "position", position, gui.EASING_LINEAR, 0.1)
 end
 
+function boost_pressed(button)
+end
+function boost_update(button)
+end
+function autopilot_pressed(button)
+end
+function autopilot_update(button)
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.clock()*100000000000)
@@ -29,6 +40,12 @@ function init(self)
 	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition1 = transitions.create(gui.get_node("boost"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
 
 	self.planets_count = 0
 	self.bonus50 = false
@@ -46,6 +63,9 @@ end
 
 function on_message(self, message_id, message, sender)
 	self.transition.handle(message_id, message, sender)
+	self.transition1.handle(message_id, message, sender)
+
+	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
 		print("Show in done!")
 	end
@@ -63,6 +83,9 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	gooey.button("boost", action_id, action, boost_pressed, boost_update)
+	gooey.button("autopilot", action_id, action, autopilot_pressed, autopilot_update)
+	
 	if action_id == hash("touch") and action.pressed then
 
 		--updating score text

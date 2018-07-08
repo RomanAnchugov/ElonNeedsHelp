@@ -111,8 +111,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
   id: "boost"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_BOTTOM
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -283,8 +283,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
   id: "autopilot"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_BOTTOM
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
