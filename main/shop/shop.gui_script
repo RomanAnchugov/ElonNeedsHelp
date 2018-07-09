@@ -5,7 +5,7 @@ local transitions = require "monarch.transitions.gui"
 local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
 
 local money_per_click_count = 0
-local secodn_life_count = 0
+local second_life_count = 0
 local rockets_count = 0
 local engines_count = 0
 local boost_count = 0
@@ -103,8 +103,10 @@ function on_input(self, action_id, action)
 				gui.set_text(node, money_per_click_cost .. "$")
 			elseif list.selected_item == 2 then --second life
 				print(TAG, "second life")
-				secodn_life_count = secodn_life_count + 1
+				second_life_count = second_life_count + 1
 				second_life_cost = second_life_cost * 1.5
+				SECOND_LIFE_COUNT = second_life_count
+				SECOND_LIFE_COST = second_life_cost
 
 				local node = gui.get_node("list_item2/text")
 				gui.set_text(node, "SECOND LIFE(" .. secodn_life_count .. ")")
@@ -115,6 +117,8 @@ function on_input(self, action_id, action)
 				print(TAG, "boost")
 				boost_count = boost_count + 1
 				boost_cost = boost_cost * 1.5
+				BOOST_COUNT = boost_count
+				BOOST_COST = boost_cost
 
 				local node = gui.get_node("list_item3/text")
 				gui.set_text(node, "BOOSTS(" .. boost_count .. ")")
@@ -125,6 +129,8 @@ function on_input(self, action_id, action)
 				print(TAG, "autopilot")
 				autopilot_count = autopilot_count + 1
 				autopilot_cost = autopilot_cost * 1.5
+				AUTOPILOT_COUNT = autopilot_count
+				AUTOPILOT_COST = autopilot_cost
 
 				local node = gui.get_node("list_item4/text")
 				gui.set_text(node, "AUTOPILOT(" .. autopilot_count .. ")")
@@ -135,6 +141,8 @@ function on_input(self, action_id, action)
 				print(TAG, "engines")
 				engines_count = engines_count + 1
 				engines_cost = engines_cost * 1.5
+				ENGINES_COUNT = engines_count
+				ENGINES_COST = engines_cost
 
 				local node = gui.get_node("list_item5/text")
 				gui.set_text(node, "ENGINES(" .. engines_count .. ")")
@@ -145,6 +153,8 @@ function on_input(self, action_id, action)
 				print(TAG, "rockets")
 				rockets_count = rockets_count + 1
 				rockets_cost = rockets_cost * 1.5
+				ROCKETS_COUNT = rockets_count
+				ROCKETS_COST = rockets_cost
 
 				local node = gui.get_node("list_item6/text")
 				gui.set_text(node, "ROCKETS(" .. rockets_count .. ")")

@@ -30,11 +30,12 @@ function update(self, dt)
 	
 	if(position.y < -1280) then
 		go.delete()
+		msg.post("game:/gui#game", "decrease_planets")
 	end
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("bonus50") then
+	if message_id == hash("boost") then
 		self.bonus_speed = 10
 	end
 end

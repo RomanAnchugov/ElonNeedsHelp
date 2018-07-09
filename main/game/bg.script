@@ -22,12 +22,16 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("bonus50") then
+	if message_id == hash("boost") then
 		particlefx.play("/bg#bonus")
 	end
 
-	if message_id == hash("bonus50end") then
+	if message_id == hash("boost_end") then
 		particlefx.stop("/bg#bonus")
+	end
+
+	if message_id == hash("decrease_planets") then
+		planets_count = planets_count - 1
 	end
 end
 

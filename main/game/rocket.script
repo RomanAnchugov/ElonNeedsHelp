@@ -35,7 +35,7 @@ function update(self, dt)
   if active then
     rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
-    position.y = position.y + rocket_speed
+    --position.y = position.y + rocket_speed
     go.set_position(position)
 
     if position.y < -50 and active then
@@ -48,10 +48,10 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-  if message_id == hash("bonus50") then
+  if message_id == hash("boost") then
     click_coef = 1
   end
-  if message_id == hash("bonus50end") then
+  if message_id == hash("boost_end") then
     click_coef = 0.5
   end
 end
