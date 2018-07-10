@@ -23,6 +23,13 @@ local function shake_score(self)
 	gui.animate(node, "position", position, gui.EASING_LINEAR, 0.1)
 end
 
+function pause_pressed(button)
+	monarch.back()
+end
+
+function pause_update(button)
+end
+
 function boost_pressed(button)
 	if BOOST_COUNT >= 1 then
 		print(TAG, "boost_pressed()")
@@ -129,6 +136,7 @@ end
 function on_input(self, action_id, action)
 	gooey.button("boost/bg", action_id, action, boost_pressed, boost_update)
 	gooey.button("autopilot/bg", action_id, action, autopilot_pressed, autopilot_update)
+	gooey.button("pause", action_id, action, pause_pressed, pause_update)
 	
 	if action_id == hash("touch") and action.pressed then
 
