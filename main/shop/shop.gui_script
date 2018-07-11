@@ -40,6 +40,81 @@ function update_list(list)
 	print(TAG, "update list")
 end
 
+function init_gui()
+
+	--SET VALUES
+	--MONEY PER CLICK
+	local node = gui.get_node("list_item1/text")
+	gui.set_text(node, "MONEY PER CLICK(" .. MONEY_PER_CLICK_COUNT .. ")")
+	node = gui.get_node("list_item1/cost")
+	gui.set_text(node, MONEY_PER_CLICK_COST .. "$")
+
+	--SECOND LIFE
+	node = gui.get_node("list_item2/text")
+	gui.set_text(node, "SECOND LIFE(" .. SECOND_LIFE_COUNT .. ")")
+	node = gui.get_node("list_item2/cost")
+	gui.set_text(node, SECOND_LIFE_COST .. "$")
+
+	--BOOST
+	node = gui.get_node("list_item3/text")
+	gui.set_text(node, "BOOSTS(" .. BOOST_COUNT .. ")")
+	node = gui.get_node("list_item3/cost")
+	gui.set_text(node, BOOST_COST .. "$")
+
+	--AUTOPILOT
+	node = gui.get_node("list_item4/text")
+	gui.set_text(node, "AUTOPILOT(" .. AUTOPILOT_COUNT .. ")")
+	node = gui.get_node("list_item4/cost")
+	gui.set_text(node, AUTOPILOT_COST .. "$")
+
+	--ENGINES
+	node = gui.get_node("list_item5/text")
+	gui.set_text(node, "ENGINES(" .. ENGINES_COUNT .. ")")
+	node = gui.get_node("list_item5/cost")
+	gui.set_text(node, ENGINES_COST .. "$")
+
+	--ROCKETS
+	node = gui.get_node("list_item6/text")
+	gui.set_text(node, "ROCKETS(" .. ROCKETS_COUNT .. ")")
+	node = gui.get_node("list_item6/cost")
+	gui.set_text(node, ROCKETS_COST .. "$")
+
+	--SET AVAILIBILITY	
+	if MONEY < MONEY_PER_CLICK_COST then
+		node = gui.get_node("list_item1/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	if MONEY < SECOND_LIFE_COST then
+		node = gui.get_node("list_item2/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	if MONEY < BOOST_COST then
+		node = gui.get_node("list_item3/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	if MONEY < AUTOPILOT_COST then
+		node = gui.get_node("list_item4/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	if MONEY < ENGINES_COST then
+		node = gui.get_node("list_item5/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	if MONEY < ROCKETS_COST then
+		node = gui.get_node("list_item6/bg")
+		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
+	end
+
+	--MONEY SET
+	node = gui.get_node("money")
+	gui.set_text(node, "money: " .. MONEY)
+end
+
 
 function init(self)
 	gooey.acquire_input()
@@ -66,6 +141,7 @@ function init(self)
 	
 	kenneyblue.static_list("static_list", self.list_ids)
 	kenneyblue.button("back", action_id, action, fn)
+	init_gui()
 end
 
 function final(self)
@@ -82,12 +158,17 @@ function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
 	self.transition3.handle(message_id, message, sender)
+
+	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
+		local node = gui.get_node("money")
+		gui.animate(node, "scale", 1.05, gui.EASING_INSINE, .1)
+	end
 end
 
 function on_input(self, action_id, action)
 	kenneyblue.static_list("static_list", self.list_ids, action_id, action, 
 		function(list) --on item of list selected
-			if list.selected_item == 1 then --money per click (list_item1)
+			if list.selected_item == 1 and MONEY >= MONEY_PER_CLICK_COST then --money per click (list_item1)
 				print(TAG, "money per click")
 				money_per_click_count = money_per_click_count + 1
 				money_per_click_cost = money_per_click_cost * 1.5
@@ -101,7 +182,7 @@ function on_input(self, action_id, action)
 				--change cost
 				node = gui.get_node("list_item1/cost")
 				gui.set_text(node, money_per_click_cost .. "$")
-			elseif list.selected_item == 2 then --second life
+			elseif list.selected_item == 2 and MONEY >= SECOND_LIFE_COST then --second life
 				print(TAG, "second life")
 				second_life_count = second_life_count + 1
 				second_life_cost = second_life_cost * 1.5
@@ -113,7 +194,7 @@ function on_input(self, action_id, action)
 
 				node = gui.get_node("list_item2/cost")
 				gui.set_text(node, second_life_cost .. "$")
-			elseif list.selected_item == 3 then --boost
+			elseif list.selected_item == 3 and MONEY >= BOOST_COST then --boost
 				print(TAG, "boost")
 				boost_count = boost_count + 1
 				boost_cost = boost_cost * 1.5
@@ -125,7 +206,7 @@ function on_input(self, action_id, action)
 
 				node = gui.get_node("list_item3/cost")
 				gui.set_text(node, boost_cost .. "$")
-			elseif list.selected_item == 4 then --autopilot
+			elseif list.selected_item == 4 and MONEY >= AUTOPILOT_COST then --autopilot
 				print(TAG, "autopilot")
 				autopilot_count = autopilot_count + 1
 				autopilot_cost = autopilot_cost * 1.5
@@ -137,7 +218,7 @@ function on_input(self, action_id, action)
 
 				node = gui.get_node("list_item4/cost")
 				gui.set_text(node, autopilot_cost .. "$")
-			elseif list.selected_item == 5 then --engines
+			elseif list.selected_item == 5 and MONEY >= ENGINES_COST then --engines
 				print(TAG, "engines")
 				engines_count = engines_count + 1
 				engines_cost = engines_cost * 1.5
@@ -149,7 +230,7 @@ function on_input(self, action_id, action)
 
 				node = gui.get_node("list_item5/cost")
 				gui.set_text(node, engines_cost .. "$")
-			elseif list.selected_item == 6 then --rockets
+			elseif list.selected_item == 6 and MONEY >= ROCKETS_COST then --rockets
 				print(TAG, "rockets")
 				rockets_count = rockets_count + 1
 				rockets_cost = rockets_cost * 1.5

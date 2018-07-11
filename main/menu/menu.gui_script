@@ -75,7 +75,7 @@ function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
 	self.transition3.handle(message_id, message, sender)
-	self.transition4.handle(message_id, message, sender)
+	 self.transition4.handle(message_id, message, sender)
 	self.transition5.handle(message_id, message, sender)
 	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then

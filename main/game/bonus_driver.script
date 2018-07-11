@@ -1,3 +1,4 @@
+require "main/varibles"
 local TAG = "bonus_driver.script: "
 
 function init(self)
@@ -17,13 +18,16 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("boost") then
-		local planets_count = message[1]
-		for i = 0, (planets_count - 1) do
-			msg.post("game:/instance" .. i .. "#bg_item", "boost")
+		if BOOST_COUNT >= 1 then
+			BOOST_COUNT = BOOST_COUNT - 1
+			local planets_count = message[1]
+			for i = 0, (planets_count - 1) do
+				msg.post("game:/instance" .. i .. "#bg_item", "boost")
+			end
+			msg.post("game:/rocket", "boost")
+			msg.post("game:/bg#bg", "boost")
+			msg.post("game:/gui#game", "set_boost", {true})
 		end
-		msg.post("game:/rocket", "boost")
-		msg.post("game:/bg#bg", "boost")
-		msg.post("game:/gui#game", "set_boost", {true})
 	end
 
 	if message_id == hash("boost_end") then

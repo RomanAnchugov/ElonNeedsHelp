@@ -35,10 +35,10 @@ function update(self, dt)
   if active then
     rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
-    --position.y = position.y + rocket_speed
+    position.y = position.y + rocket_speed
     go.set_position(position)
 
-    if position.y < -50 and active then
+    if position.y < -100 and active then
       msg.post("game:/gui#game", "lose")
       active = false
       monarch.back()
