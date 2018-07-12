@@ -1,19 +1,18 @@
 require "main/varibles"
 local TAG = "bonus_driver.script: "
 
+local autopilot_time = 0
+
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
+	
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
+	
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
+	
 end
 
 function on_message(self, message_id, message, sender)
@@ -34,6 +33,16 @@ function on_message(self, message_id, message, sender)
 		msg.post("game:/rocket", "boost_end")
 		msg.post("game:/bg#bg", "boost_end")
 		msg.post("game:/gui#game", "set_boost", {false})
+	end
+
+	if message_id == hash("autopilot") then
+		msg.post("game:/rocket", "autopilot")
+		msg.post("game:/gui#game", "set_autopilot", {true})
+	end
+
+	if message_id == hash("autopilot_end") then
+		msg.post("game:/rocket", "autopilot_end")
+		msg.post("game:/gui#game", "set_autopilot", {false})
 	end
 end
 

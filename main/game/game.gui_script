@@ -10,6 +10,11 @@ local transitions = require "monarch.transitions.gui"
 local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
 
+
+local autopilot_score = 0 --varible for counting time for increasing score
+local autopilot_time = 0 --varible for counting duration of autopilot 
+local autopilot_duration = 5 --control time varible for autopilot
+
 local function shake_score(self)
 	local node = gui.get_node("score")
 	local position = gui.get_position(node)
@@ -62,7 +67,7 @@ function boost_update(button)
 end
 function autopilot_pressed(button)
 	if AUTOPILOT_COUNT >= 1 then
-		print(TAG, "autopilot_pressed(button)")
+		msg.post("game:/bonus_driver#bonus_driver", "autopilot")
 	end
 end
 function autopilot_update(button)
@@ -110,6 +115,7 @@ function init(self)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
 	self.boost = false
+	self.autopilot = false
 end
 
 function final(self)
@@ -118,8 +124,18 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
+	if self.autopilot and autopilot_time <= autopilot_duration then
+		local node = gui.get_node("score")
+		gui.set_text(node, score)
+		autopilot_time = autopilot_time + dt
+		autopilot_score = autopilot_score + dt
+		if autopilot_score >= 0.2 then
+			score = score + 1
+			autopilot_score = 0
+		end
+	elseif autopilot_time > autopilot_duration then
+		msg.post("game:/bonus_driver#bonus_driver", "autopilot_end")
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -139,6 +155,10 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("set_boost") then
 		self.boost = message[1]
+	end
+
+	if message_id == hash("set_autopilot") then
+		self.autopilot = message[1]
 	end
 
 	if message_id == hash("lose") then
