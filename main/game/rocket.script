@@ -49,6 +49,10 @@ function update(self, dt)
   
 end
 
+function what()
+  print(TAG, "playback")
+end
+
 function on_message(self, message_id, message, sender)
   if message_id == hash("boost") then
     click_coef = 1
@@ -58,7 +62,7 @@ function on_message(self, message_id, message, sender)
   end
   if message_id == hash("autopilot") then
     active = false
-    go.animate("#rocket", "position", playback, to, easing, duration)
+    go.animate("game:/rocket", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(329, 700, 1), go.EASING_INOUTQUAD, 5)
   end
   if message_id == hash("autopilot_end") then
     active = true
