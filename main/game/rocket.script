@@ -43,8 +43,6 @@ function update(self, dt)
       active = false
       monarch.back()
     end
-  else
-    particlefx.play("/rocket#rocket_egine")
   end  
   
 end

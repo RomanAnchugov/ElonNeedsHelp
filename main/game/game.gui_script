@@ -132,9 +132,12 @@ function update(self, dt)
 		if autopilot_score >= 0.2 then
 			score = score + 1
 			autopilot_score = 0
+			particlefx.play("/rocket#rocket_egine")
 		end
 	elseif autopilot_time > autopilot_duration then
 		msg.post("game:/bonus_driver#bonus_driver", "autopilot_end")
+		autopilot_time = 0
+		autopilot_score = 0
 	end
 end
 
@@ -159,6 +162,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("set_autopilot") then
 		self.autopilot = message[1]
+		print(TAG, "set autopilot: ", self.autopilot)
 	end
 
 	if message_id == hash("lose") then

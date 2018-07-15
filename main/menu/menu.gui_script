@@ -84,8 +84,8 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	gooey.button("start/start_bg", action_id, action, start_pressed, start_update)
-	gooey.button("shop/shop_bg", action_id, action, shop_pressed, shop_update)
+	gooey.button("start_bg", action_id, action, start_pressed, start_update)
+	gooey.button("shop_bg", action_id, action, shop_pressed, shop_update)
 end
 
 function on_reload(self)

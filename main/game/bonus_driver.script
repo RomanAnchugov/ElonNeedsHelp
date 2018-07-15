@@ -4,7 +4,7 @@ local TAG = "bonus_driver.script: "
 local autopilot_time = 0
 
 function init(self)
-	
+	print(TAG, "initialized")
 end
 
 function final(self)
