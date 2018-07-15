@@ -1,16 +1,24 @@
 local TAG = "bg_item.script"
-
-local last_sprite = 0
-local current_sprite = 0
+local random = require "main/random"
 
 function init(self)
 	math.randomseed(os.clock()*100000000000)
-	msg.post("#sprite", "play_animation", {id = hash("10")})
+
+	local scale = go.get_scale().x
+	local alpha = 1 / scale + 0.3
+	if alpha < 0.6 then
+		alpha = 0.6
+	end
+	local tint = vmath.vector4(
+	random.random(1, 100) / 100, 
+	random.random(1, 100) / 100, 
+	random.random(1, 100) / 100, 
+	1 / scale + 0.3)	
+	sprite.set_constant("#sprite", "tint", tint)
 	
-	last_sprite = current_sprite
 	self.coef = vmath.length(go.get_scale())
 	--self.speed = math.random(4, 7 ) * self.coef
-	self.speed = 1 / self.coef
+	self.speed = 1 / self.coef * 300
 	self.bonus_speed = 0
 end
 
@@ -21,7 +29,7 @@ end
 function update(self, dt)
 	
 	local position = go.get_position()
-	position.y = position.y - self.speed - self.bonus_speed
+	position.y = position.y - (self.speed + self.bonus_speed) * dt
 	go.set_position(position)
 	
 	if(position.y < -1280) then
@@ -32,7 +40,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("boost") then
-		self.bonus_speed = 10
+		self.bonus_speed = 500
 	end
 end
 

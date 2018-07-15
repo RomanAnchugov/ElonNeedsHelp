@@ -2,40 +2,7 @@ images {
   image: "/assets/app_icons/icon_180.png"
 }
 images {
-  image: "/assets/planets/1.png"
-}
-images {
   image: "/assets/planets/10.png"
-}
-images {
-  image: "/assets/planets/11.png"
-}
-images {
-  image: "/assets/planets/12.png"
-}
-images {
-  image: "/assets/planets/2.png"
-}
-images {
-  image: "/assets/planets/3.png"
-}
-images {
-  image: "/assets/planets/4.png"
-}
-images {
-  image: "/assets/planets/5.png"
-}
-images {
-  image: "/assets/planets/6.png"
-}
-images {
-  image: "/assets/planets/7.png"
-}
-images {
-  image: "/assets/planets/8.png"
-}
-images {
-  image: "/assets/planets/9.png"
 }
 margin: 0
 extrude_borders: 3

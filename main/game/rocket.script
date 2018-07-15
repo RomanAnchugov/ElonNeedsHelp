@@ -36,6 +36,9 @@ function update(self, dt)
     rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
     position.y = position.y + rocket_speed
+    if position.y > 1300 then
+      position.y = 1300
+    end
     go.set_position(position)
 
     if position.y < -100 and active then
@@ -60,7 +63,7 @@ function on_message(self, message_id, message, sender)
   end
   if message_id == hash("autopilot") then
     active = false
-    go.animate("game:/rocket", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(329, 700, 1), go.EASING_INOUTQUAD, 5)
+    go.animate("game:/rocket", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(329, 1000, 1), go.EASING_INOUTQUAD, 5)
   end
   if message_id == hash("autopilot_end") then
     active = true
