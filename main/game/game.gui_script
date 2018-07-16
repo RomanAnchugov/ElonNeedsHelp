@@ -167,11 +167,11 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("lose") then
-		print(TAG, "on_message: lose")
 		MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 		if score > BEST_SCORE then
 			BEST_SCORE = score
 		end
+		monarch.back()
 	end
 end
 
