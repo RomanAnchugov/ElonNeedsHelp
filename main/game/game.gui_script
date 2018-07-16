@@ -8,7 +8,6 @@ local CAMERA_ID = hash("/camera")
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 local gooey = require "gooey.gooey"
-local transitions = require "monarch.transitions.gui"
 
 local boost_clicks = 0
 
@@ -30,8 +29,9 @@ local function shake_score(self)
 end
 
 function pause_pressed(button)
-	--TODO: made pause screen 
-	monarch.back()
+	print(TAG, "pause_pressed")
+	msg.post("game:/rocket#rocket", "pause")
+	monarch.show("pause_screen")
 end
 
 function pause_update(button)
@@ -99,19 +99,19 @@ function init(self)
 
 	self.transition1 = transitions.create(gui.get_node("boost/bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
-	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
 	self.transition2 = transitions.create(gui.get_node("autopilot/bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
-	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
 	self.transition3 = transitions.create(gui.get_node("pause/bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
-	.show_out(transitions.slide_out_left, gui.EASING_INQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
@@ -167,6 +167,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("lose") then
+		print(TAG, "on_message: lose")
 		MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 		if score > BEST_SCORE then
 			BEST_SCORE = score

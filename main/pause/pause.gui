@@ -1,11 +1,11 @@
-script: "/main/menu/menu.gui_script"
-fonts {
-  name: "score"
-  font: "/assets/score.font"
-}
+script: "/main/pause/pause.gui_script"
 fonts {
   name: "menu_stats"
   font: "/assets/menu_stats.font"
+}
+fonts {
+  name: "score"
+  font: "/assets/score.font"
 }
 background_color {
   x: 0.0
@@ -16,7 +16,157 @@ background_color {
 nodes {
   position {
     x: 320.0
-    y: 950.0
+    y: 568.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 640.0
+    y: 400.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: -149.0
+    y: -54.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "home"
+  parent: "bg"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/gametheme/kenneyblue/components/button.gui"
+  template_node_child: false
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button04"
+  id: "home/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "home"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 10.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -46,9 +196,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "MENU"
+  text: "H"
   font: "score"
-  id: "menu_header"
+  id: "home/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -66,19 +216,183 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  layer: ""
+  parent: "home/bg"
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
+  overridden_fields: 10
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 151.0
+    y: -49.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "replay"
+  parent: "bg"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/gametheme/kenneyblue/components/button.gui"
   template_node_child: false
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gooey/blue_button04"
+  id: "replay/bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "replay"
+  layer: "below"
+  inherit_alpha: true
+  slice9 {
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 10.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "R"
+  font: "score"
+  id: "replay/text"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "replay/bg"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  overridden_fields: 10
+  template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
 }
 nodes {
   position {
     x: 320.0
-    y: 590.0
+    y: 715.0
     z: 0.0
     w: 1.0
   }
@@ -89,8 +403,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.011
-    y: 1.0
+    x: 0.6
+    y: 0.6
     z: 1.0
     w: 1.0
   }
@@ -101,145 +415,35 @@ nodes {
     w: 1.0
   }
   color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "PAUSE"
+  font: "score"
+  id: "header"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_CENTER
+  outline {
     x: 1.0
     y: 1.0
     z: 1.0
     w: 1.0
   }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "start"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_ZOOM
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
   layer: ""
   inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 3.182
-    y: 1.525
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "start_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_ZOOM
-  parent: "start"
-  layer: ""
-  inherit_alpha: false
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "start"
-  font: "score"
-  id: "start_text"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "start"
-  layer: ""
-  inherit_alpha: false
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
@@ -249,8 +453,8 @@ nodes {
 }
 nodes {
   position {
-    x: 320.0
-    y: 360.0
+    x: 590.0
+    y: 1085.0
     z: 0.0
     w: 1.0
   }
@@ -261,7 +465,7 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.012
+    x: 1.0
     y: 1.0
     z: 1.0
     w: 1.0
@@ -278,28 +482,13 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "shop"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_ZOOM
+  type: TYPE_TEMPLATE
+  id: "unpause"
   layer: ""
   inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
+  alpha: 1.0
+  template: "/gametheme/kenneyblue/components/button.gui"
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
@@ -315,14 +504,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 3.192
-    y: 1.525
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 80.0
+    y: 80.0
     z: 0.0
     w: 1.0
   }
@@ -334,26 +523,29 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "shop_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  texture: "gooey/blue_button04"
+  id: "unpause/bg"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "shop"
-  layer: ""
-  inherit_alpha: false
+  parent: "unpause"
+  layer: "below"
+  inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 6.0
+    y: 6.0
+    z: 6.0
+    w: 10.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  template_node_child: false
+  overridden_fields: 4
+  overridden_fields: 12
+  overridden_fields: 13
+  template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
 nodes {
@@ -370,8 +562,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.25
+    y: 0.25
     z: 1.0
     w: 1.0
   }
@@ -382,16 +574,16 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "shop"
+  text: "||"
   font: "score"
-  id: "shop_text"
+  id: "unpause/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -409,137 +601,16 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "shop"
-  layer: ""
-  inherit_alpha: false
+  parent: "unpause/bg"
+  layer: "text"
+  inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 330.0
-    y: 841.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-    z: 0.4
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "money: 0"
-  font: "menu_stats"
-  id: "money"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: false
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 330.0
-    y: 771.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-    z: 0.4
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "best: 0"
-  font: "menu_stats"
-  id: "best_score"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: false
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
+  overridden_fields: 3
+  overridden_fields: 8
+  overridden_fields: 10
+  template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
 }

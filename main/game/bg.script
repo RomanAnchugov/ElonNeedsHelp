@@ -45,9 +45,9 @@ function on_input(self, action_id, action)
 			--setup position
 			local position
 			if random.random(1, 2) == 1 then
-				position = vmath.vector3(math.random(5, 100), 1280, 0)
+				position = vmath.vector3(math.random(5, 100), 1350, 0)
 			else
-				position = vmath.vector3(math.random(550, 650), 1280, 0)
+				position = vmath.vector3(math.random(550, 650), 1350, 0)
 			end
 
 			--create new bg planet

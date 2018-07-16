@@ -58,14 +58,25 @@ function on_message(self, message_id, message, sender)
   if message_id == hash("boost") then
     click_coef = 1
   end
+  
   if message_id == hash("boost_end") then
     click_coef = 0.5
   end
+  
   if message_id == hash("autopilot") then
     active = false
     go.animate("game:/rocket", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(329, 1000, 1), go.EASING_INOUTQUAD, 5)
   end
+  
   if message_id == hash("autopilot_end") then
+    active = true
+  end
+
+  if message_id == hash("pause") then
+    active = false
+  end
+
+  if message_id == hash("unpause") then
     active = true
   end
 end

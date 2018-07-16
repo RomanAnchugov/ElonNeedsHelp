@@ -1,0 +1,84 @@
+local TAG = "pause.gui_script"
+local gooey = require "gooey.gooey"
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+local pause = false
+
+function home_pressed(button)
+	monarch.show("menu_screen")
+end
+
+function home_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	end
+end
+
+function replay_pressed(button)
+	msg.post("game:/bonus_driver#bonus_driver", "replay")
+end
+
+function replay_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	end
+end
+
+function unpause_pressed(button)
+	print(TAG, "pause_pressed")
+	msg.post("game:/rocket#rocket", "unpause")
+	monarch.back()
+end
+
+function unpause_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("blue_button02"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("blue_button04"))
+	end
+end
+
+function init(self)
+	gooey.acquire_input()
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	
+end
+
+function on_input(self, action_id, action)
+	gooey.button("home/bg", action_id, action, home_pressed, home_update)
+	gooey.button("replay/bg", action_id, action, replay_pressed, replay_update)
+	gooey.button("unpause/bg", action_id, action, unpause_pressed, unpause_update)
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
