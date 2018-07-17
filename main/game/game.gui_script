@@ -5,12 +5,15 @@ local score = 0
 local planets_count = 0
 local CAMERA_ID = hash("/camera")
 
+local random = require "main/random"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 local gooey = require "gooey.gooey"
 
+local boost = false
 local boost_clicks = 0
 
+local autopilot = false
 local autopilot_score = 0 --varible for counting time for increasing score
 local autopilot_time = 0 --varible for counting duration of autopilot 
 local autopilot_duration = 5 --control time varible for autopilot
@@ -19,8 +22,8 @@ local function shake_score(self)
 	local node = gui.get_node("score")
 	local position = gui.get_position(node)
 
-	local new_x = math.random(-5, 5)
-	local new_y = math.random(-5, 5)
+	local new_x = random.random(-5, 5)
+	local new_y = random.random(-5, 5)
 
 	position.x = position.x + new_x
 	position.y = position.y + new_y
@@ -49,6 +52,7 @@ end
 function boost_pressed(button)
 	if BOOST_COUNT >= 1 then
 		msg.post("game:/bonus_driver#bonus_driver", "boost", {planets_count})
+		boost = true
 	end
 end
 function boost_update(button)
@@ -67,8 +71,9 @@ function boost_update(button)
 	end
 end
 function autopilot_pressed(button)
-	if AUTOPILOT_COUNT >= 1 then
+	if AUTOPILOT_COUNT >= 1 and not autopilot then
 		msg.post("game:/bonus_driver#bonus_driver", "autopilot")
+		autopilot = true
 	end
 end
 function autopilot_update(button)
@@ -114,9 +119,6 @@ function init(self)
 	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
-
-	self.boost = false
-	self.autopilot = false
 end
 
 function final(self)
@@ -125,7 +127,7 @@ function final(self)
 end
 
 function update(self, dt)
-	if self.autopilot and autopilot_time <= autopilot_duration then
+	if autopilot and autopilot_time <= autopilot_duration then
 		local node = gui.get_node("score")
 		gui.set_text(node, score)
 		autopilot_time = autopilot_time + dt
@@ -158,20 +160,24 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("set_boost") then
-		self.boost = message[1]
+		boost = message[1]
 	end
 
 	if message_id == hash("set_autopilot") then
-		self.autopilot = message[1]
-		print(TAG, "set autopilot: ", self.autopilot)
+		autopilot = message[1]
 	end
 
 	if message_id == hash("lose") then
-		MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
-		if score > BEST_SCORE then
-			BEST_SCORE = score
+		if SECOND_LIFE_COUNT == 0 then
+			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
+			if score > BEST_SCORE then
+				BEST_SCORE = score
+			end
+			monarch.back()
+		else
+			print(TAG, "second life")
+			monarch.show("second_life_screen")
 		end
-		monarch.back()
 	end
 end
 
@@ -187,7 +193,7 @@ function on_input(self, action_id, action)
 		local node = gui.get_node("score")
 		gui.set_text(node, score)
 
-		if self.boost and boost_clicks < 10 then
+		if boost and boost_clicks < 10 then
 			msg.post(CAMERA_ID, "shake", { intensity = 0.1, duration = 0.5, direction = hash("both") })
 			boost_clicks = boost_clicks + 1
 		else

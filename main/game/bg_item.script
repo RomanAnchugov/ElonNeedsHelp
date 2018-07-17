@@ -9,11 +9,14 @@ function init(self)
 	if alpha < 0.6 then
 		alpha = 0.6
 	end
+	if alpha > 1 then
+		alpha = 1
+	end
 	local tint = vmath.vector4(
 	random.random(1, 100) / 100, 
 	random.random(1, 100) / 100, 
 	random.random(1, 100) / 100, 
-	1 / scale + 0.3)	
+	alpha)	
 	sprite.set_constant("#sprite", "tint", tint)
 	
 	self.coef = vmath.length(go.get_scale())
@@ -32,9 +35,9 @@ function update(self, dt)
 	position.y = position.y - (self.speed + self.bonus_speed) * dt
 	go.set_position(position)
 	
-	if(position.y < -1280) then
+	if(position.y < -300) then
+		msg.post("game:/bg#bg", "decrease_planets")
 		go.delete()
-		msg.post("game:/gui#game", "decrease_planets")
 	end
 end
 

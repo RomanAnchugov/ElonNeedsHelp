@@ -1,8 +1,4 @@
-script: "/main/pause/pause.gui_script"
-fonts {
-  name: "menu_stats"
-  font: "/assets/menu_stats.font"
-}
+script: "/main/second_life/second_life.gui_script"
 fonts {
   name: "score"
   font: "/assets/score.font"
@@ -81,8 +77,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -100,7 +96,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "PAUSE"
+  text: "SECOND LIFE?"
   font: "score"
   id: "header"
   xanchor: XANCHOR_NONE
@@ -162,7 +158,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "home"
+  id: "no"
   parent: "bg"
   layer: ""
   inherit_alpha: true
@@ -204,12 +200,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "gooey/blue_button04"
-  id: "home/bg"
+  id: "no/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "home"
+  parent: "no"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -259,9 +255,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "H"
+  text: "N"
   font: "score"
-  id: "home/text"
+  id: "no/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -279,7 +275,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "home/bg"
+  parent: "no/bg"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -323,7 +319,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "bonus_add"
+  id: "yes"
   parent: "bg"
   layer: ""
   inherit_alpha: true
@@ -365,12 +361,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "gooey/blue_button04"
-  id: "bonus_add/bg"
+  id: "yes/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "bonus_add"
+  parent: "yes"
   layer: "below"
   inherit_alpha: true
   slice9 {
@@ -420,9 +416,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "A"
+  text: "Y"
   font: "score"
-  id: "bonus_add/text"
+  id: "yes/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -440,175 +436,12 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "bonus_add/bg"
+  parent: "yes/bg"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 8
-  overridden_fields: 10
-  template_node_child: true
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 590.0
-    y: 1085.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEMPLATE
-  id: "unpause"
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  template: "/gametheme/kenneyblue/components/button.gui"
-  template_node_child: false
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 80.0
-    y: 80.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
-  id: "unpause/bg"
-  xanchor: XANCHOR_RIGHT
-  yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "unpause"
-  layer: "below"
-  inherit_alpha: true
-  slice9 {
-    x: 6.0
-    y: 6.0
-    z: 6.0
-    w: 10.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  overridden_fields: 4
-  overridden_fields: 12
-  overridden_fields: 13
-  template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.25
-    y: 0.25
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "||"
-  font: "score"
-  id: "unpause/text"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "unpause/bg"
-  layer: "text"
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   overridden_fields: 10
   template_node_child: true

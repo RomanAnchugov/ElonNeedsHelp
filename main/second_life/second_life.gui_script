@@ -1,14 +1,13 @@
-local TAG = "pause.gui_script"
+local TAG = "second_life.gui_script"
 local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
-local pause = false
 
-function home_pressed(button)
+function no_pressed(button)
 	monarch.show("menu_screen")
 end
 
-function home_update(button)
+function no_update(button)
 	if button.pressed_now then
 		gui.play_flipbook(button.node, hash("blue_button02"))
 	elseif button.released_now then
@@ -20,29 +19,12 @@ function home_update(button)
 	end
 end
 
-function bonus_add_pressed(button)
-
-end
-
-function bonus_add_update(button)
-	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
-	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
-	elseif not button.pressed and button.over_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
-	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
-	end
-end
-
-function unpause_pressed(button)
-	print(TAG, "pause_pressed")
-	msg.post("game:/rocket#rocket", "unpause")
+function yes_pressed(button)
 	monarch.back()
+	msg.post("game:/bonus_driver#bonus_driver", "second_life")
 end
 
-function unpause_update(button)
+function yes_update(button)
 	if button.pressed_now then
 		gui.play_flipbook(button.node, hash("blue_button02"))
 	elseif button.released_now then
@@ -62,12 +44,6 @@ function init(self)
 	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.3, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.3, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.3, 0)
-
-	self.transition2 = transitions.create(gui.get_node("unpause/bg"))
-	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0, 0)
-	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.3, 0)
-	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.3, 0)
-	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0, 0)
 end
 
 function final(self)
@@ -82,13 +58,11 @@ end
 
 function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
-	self.transition2.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	gooey.button("home/bg", action_id, action, home_pressed, home_update)
-	gooey.button("bonus_add/bg", action_id, action, bonus_add_pressed, bonus_add_update)
-	gooey.button("unpause/bg", action_id, action, unpause_pressed, unpause_update)
+	gooey.button("no/bg", action_id, action, no_pressed, no_update)
+	gooey.button("yes/bg", action_id, action, yes_pressed, yes_update)
 end
 
 function on_reload(self)

@@ -1,3 +1,5 @@
+local TAG = "rocket.script"
+
 require "main/varibles"
 local g = 0.4 -- earth acceleration
 local rocket_speed = 0 
@@ -7,6 +9,7 @@ local exact_click_coef = 0.3 -- 0.4 - enough
 local click_count = 0
 local exact_click_count = 30 -- value for control value of clicks, when coef descrease
 local active = true
+local first_click = false
 
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
@@ -24,7 +27,7 @@ end
 
 function init(self)
   msg.post(".","acquire_input_focus")
-  active = true
+  active = false
 end
 
 function final(self)
@@ -32,6 +35,7 @@ function final(self)
 end
 
 function update(self, dt)
+  print(TAG, "active", active, "rocket_speed", rocket_speed )
   if active then
     rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
@@ -44,7 +48,6 @@ function update(self, dt)
     if position.y < -100 and active then
       msg.post("game:/gui#game", "lose")
       active = false
-      monarch.back()
     end
   end  
   
@@ -69,6 +72,7 @@ function on_message(self, message_id, message, sender)
   end
   
   if message_id == hash("autopilot_end") then
+    rocket_speed = 0
     active = true
   end
 
@@ -83,7 +87,13 @@ end
 
 function on_input(self, action_id, action)
   if action_id == hash("touch") and action.pressed then
-    up(self)
+    if active then
+      up(self)
+    end
+    if not first_click then
+      first_click = true
+      active = true
+    end
   end
 end
 
