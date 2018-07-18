@@ -4,7 +4,7 @@ BEST_SCORE = 0
 MONEY_PER_CLICK_COUNT = 0
 SECOND_LIFE_COUNT = 1
 ROCKETS_COUNT = 0
-ENGINES_COUNT = 0
+ENGINES_COUNT = 0x
 BOOST_COUNT = 0
 AUTOPILOT_COUNT = 0
 
@@ -28,3 +28,5 @@ local rockets_cost = 100
 local engines_cost = 100
 local boost_cost = 100
 local autopilot_cost = 100
+
+ENGINES_TINT = {{0,0,1,1}}

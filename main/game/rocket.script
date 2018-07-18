@@ -15,7 +15,19 @@ local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 
 local function up(self)
-  particlefx.play("/rocket#rocket_egine")
+  if ENGINES_COUNT == 1 then
+    particlefx.play("/rocket#rocket_egine1")  
+  elseif ENGINES_COUNT == 2 then
+    particlefx.play("/rocket#rocket_egine2")
+  elseif ENGINES_COUNT == 3 then
+    particlefx.play("/rocket#rocket_egine3")
+  elseif ENGINES_COUNT == 4 then
+    particlefx.play("/rocket#rocket_egine4")
+  elseif ENGINES_COUNT >= 5 then
+    particlefx.play("/rocket#rocket_egine5")
+  else
+    particlefx.play("/rocket#rocket_egine")  
+  end
   click_count = click_count + 1
   rocket_speed =  exact_speed * click_coef
   
@@ -35,7 +47,6 @@ function final(self)
 end
 
 function update(self, dt)
-  print(TAG, "active", active, "rocket_speed", rocket_speed )
   if active then
     rocket_speed = rocket_speed - g;
     local position = go.get_position("#rocket")
@@ -51,10 +62,6 @@ function update(self, dt)
     end
   end  
   
-end
-
-function what()
-  print(TAG, "playback")
 end
 
 function on_message(self, message_id, message, sender)
