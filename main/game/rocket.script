@@ -39,6 +39,9 @@ end
 
 function init(self)
   msg.post(".","acquire_input_focus")
+  if ROCKETS_COUNT >= 1 then
+    sprite.set_constant("#sprite", "tint", vmath.vector4(0, 0, 1, 1))
+  end
   active = false
 end
 

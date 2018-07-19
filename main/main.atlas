@@ -1,8 +1,8 @@
 images {
-  image: "/assets/app_icons/icon_180.png"
+  image: "/assets/10.png"
 }
 images {
-  image: "/assets/planets/10.png"
+  image: "/assets/ship.png"
 }
 margin: 0
 extrude_borders: 3
