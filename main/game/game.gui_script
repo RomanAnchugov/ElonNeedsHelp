@@ -18,6 +18,9 @@ local autopilot_score = 0 --varible for counting time for increasing score
 local autopilot_time = 0 --varible for counting duration of autopilot 
 local autopilot_duration = 5 --control time varible for autopilot
 
+local first_click = false
+local tap_timer = nil
+
 local function shake_score(self)
 	local node = gui.get_node("score")
 	local position = gui.get_position(node)
@@ -119,11 +122,25 @@ function init(self)
 	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
-end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
+	local timer_flag = false
+	tap_timer = timer.delay(.5, true, function(self, handle, time_elapsed)
+		local node = gui.get_node("tap")
+		local color = vmath.vector4(random.random(1, 10) / 10, 
+		random.random(1, 10) / 10, 
+		random.random(1, 10) / 10, 
+		1)
+		gui.animate(node, "color", color, gui.EASING_LINEAR, .5)
+		if not timer_flag then
+			gui.animate(node, "scale", 1.5, gui.EASING_OUTINELASTIC, .5)
+			gui.animate(node, "rotation", vmath.vector3(0, 0, random.random(0, 30)), gui.EASING_LINEAR, .5)
+			timer_flag = true
+		else
+			gui.animate(node, "scale", .5, gui.EASING_OUTINELASTIC, .5)
+			gui.animate(node, "rotation", vmath.vector3(0, 0, -random.random(0, 30)), gui.EASING_LINEAR, .5)
+			timer_flag = false
+		end
+	end)
 end
 
 function update(self, dt)
@@ -187,6 +204,16 @@ function on_input(self, action_id, action)
 	gooey.button("pause/bg", action_id, action, pause_pressed, pause_update)
 	
 	if action_id == hash("touch") and action.pressed then
+
+		if not first_click then
+			first_click = true
+			local node = gui.get_node("tap")
+			gui.animate(node, "position", vmath.vector3(320,-500,0), gui.EASING_INOUTELASTIC, 1, 0,
+			function(self, node)
+				timer.cancel(tap_timer) 
+				gui.set_enabled(node, false)
+			end)
+		end
 
 		--updating score text
 		score = score + 1
