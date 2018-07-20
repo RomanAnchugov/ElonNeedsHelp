@@ -1,5 +1,34 @@
+local TAG = "initial.script"
+
+require "main/varibles"
+local defsave = require("defsave.defsave")
+local filename = "confic"
+
 function init(self)
 	monarch = require "monarch.monarch"
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
+
+
+	defsave.appname = "ElonNeedsHelp"
+	defsave.load(filename)
+
+	local money = defsave.get(filename, "money")
+	
+	if money ~= nil then
+		print(TAG, "file exist")
+		if table.maxn(money) ~= 0 then
+			MONEY = money[1]
+			print(TAG, "data exist")
+		else
+			print(TAG, "data not exist, set new data")
+			defsave.set(filename, "money", {MONEY})
+			defsave.save(filename)
+		end
+	else
+		defsave.set(filename, "money", MONEY)
+		defsave.save(filename)
+		print(TAG, "nothing exist, save")
+	end
+	
 end

@@ -617,7 +617,7 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_ZOOM
   line_break: false
   layer: ""
   inherit_alpha: true

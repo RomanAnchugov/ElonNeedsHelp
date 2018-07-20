@@ -1,6 +1,6 @@
 [project]
 title = ElonNeedsYourHelp
-dependencies = https://github.com/britzl/defold-orthographic/archive/1.2.1.zip,https://github.com/britzl/monarch/archive/master.zip,https://github.com/britzl/gooey/archive/master.zip
+dependencies = https://github.com/britzl/defold-orthographic/archive/1.2.1.zip,https://github.com/britzl/monarch/archive/master.zip,https://github.com/britzl/gooey/archive/master.zip,https://github.com/subsoap/defsave/archive/master.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
@@ -54,8 +54,4 @@ input_method = HiddenInputField
 
 [script]
 shared_state = 1
-
-[graphics]
-default_texture_min_filter = nearest
-default_texture_mag_filter = nearest
 

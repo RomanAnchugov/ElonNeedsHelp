@@ -132,7 +132,7 @@ function init(self)
 		1)
 		gui.animate(node, "color", color, gui.EASING_LINEAR, .5)
 		if not timer_flag then
-			gui.animate(node, "scale", 1.5, gui.EASING_OUTINELASTIC, .5)
+			gui.animate(node, "scale", 1.2, gui.EASING_OUTINELASTIC, .5)
 			gui.animate(node, "rotation", vmath.vector3(0, 0, random.random(0, 30)), gui.EASING_LINEAR, .5)
 			timer_flag = true
 		else
