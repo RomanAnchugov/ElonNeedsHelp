@@ -123,6 +123,12 @@ function init(self)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
+	self.transition4 = transitions.create(gui.get_node("tap"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
 	local timer_flag = false
 	tap_timer = timer.delay(.5, true, function(self, handle, time_elapsed)
 		local node = gui.get_node("tap")
@@ -166,6 +172,7 @@ function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
 	self.transition3.handle(message_id, message, sender)
+	self.transition4.handle(message_id, message, sender)
 
 	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
