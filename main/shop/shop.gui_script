@@ -44,6 +44,7 @@ end
 
 function update_gui()
 
+	msg.post("main:/initial#initial", "save")
 	--SET VALUES
 	--MONEY PER CLICK
 	local node = gui.get_node("list_item1/text")

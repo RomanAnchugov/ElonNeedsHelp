@@ -98,3 +98,10 @@ function final(self)
 	save()
 	defsave.save_all(true)
 end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("save") then
+		print(TAG, "save message")
+		save()
+	end
+end
