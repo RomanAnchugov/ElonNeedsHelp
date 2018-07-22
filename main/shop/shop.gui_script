@@ -28,13 +28,13 @@ end
 
 function back_update(button)
 	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button03"))
+		gui.play_flipbook(button.node, hash("blue_button02"))
 	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button00"))
+		gui.play_flipbook(button.node, hash("blue_button04"))
 	elseif not button.pressed and button.over_now then
 		gui.play_flipbook(button.node, hash("blue_button02"))
 	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button00"))
+		gui.play_flipbook(button.node, hash("blue_button04"))
 	end
 end
 

@@ -3,6 +3,10 @@ fonts {
   name: "example"
   font: "/gooey/themes/kenneyblue/fonts/kenneyblue.font"
 }
+fonts {
+  name: "menu_stats"
+  font: "/assets/menu_stats.font"
+}
 textures {
   name: "gooey"
   texture: "/gooey/themes/kenneyblue/images/kenneyblue.atlas"
@@ -81,8 +85,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.25
+    y: 0.25
     z: 1.0
     w: 1.0
   }
@@ -101,7 +105,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "BUTTON"
-  font: "example"
+  font: "menu_stats"
   id: "text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -144,8 +148,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.25
+    y: 0.25
     z: 1.0
     w: 1.0
   }
@@ -165,7 +169,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "kek\n"
   ""
-  font: "example"
+  font: "menu_stats"
   id: "cost"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
