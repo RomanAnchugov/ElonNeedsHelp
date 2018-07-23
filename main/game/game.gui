@@ -148,7 +148,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
+  texture: "kenneyblue/custom_button_idle"
   id: "boost/bg"
   xanchor: XANCHOR_RIGHT
   yanchor: YANCHOR_BOTTOM
@@ -169,6 +169,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 1
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 12
   overridden_fields: 13
   template_node_child: true
@@ -200,7 +201,7 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
@@ -234,6 +235,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 3
+  overridden_fields: 5
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -366,7 +368,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
+  texture: "kenneyblue/custom_button_idle"
   id: "autopilot/bg"
   xanchor: XANCHOR_RIGHT
   yanchor: YANCHOR_BOTTOM
@@ -387,6 +389,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 1
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 12
   overridden_fields: 13
   template_node_child: true
@@ -418,7 +421,7 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
@@ -452,6 +455,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 3
+  overridden_fields: 5
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -584,7 +588,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
+  texture: "kenneyblue/custom_button_idle"
   id: "pause/bg"
   xanchor: XANCHOR_RIGHT
   yanchor: YANCHOR_TOP
@@ -604,6 +608,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 12
   overridden_fields: 13
   template_node_child: true
@@ -635,7 +640,7 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
@@ -669,6 +674,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 3
+  overridden_fields: 5
   overridden_fields: 8
   overridden_fields: 10
   template_node_child: true

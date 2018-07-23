@@ -42,13 +42,13 @@ end
 
 function pause_update(button)
 	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	elseif not button.pressed and button.over_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	end
 end
 
@@ -61,13 +61,13 @@ end
 function boost_update(button)
 	if BOOST_COUNT >= 1 then
 		if button.pressed_now then
-			gui.play_flipbook(button.node, hash("blue_button02"))
+			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif button.released_now then
-			gui.play_flipbook(button.node, hash("blue_button04"))
+			gui.play_flipbook(button.node, hash("custom_button_idle"))
 		elseif not button.pressed and button.over_now then
-			gui.play_flipbook(button.node, hash("blue_button02"))
+			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif not button.pressed and button.out_now then
-			gui.play_flipbook(button.node, hash("blue_button04"))
+			gui.play_flipbook(button.node, hash("custom_button_idle"))
 		end
 	else
 		gui.set_color(button.node, vmath.vector4(1,1,1,.2))
@@ -82,13 +82,13 @@ end
 function autopilot_update(button)
 	if AUTOPILOT_COUNT >= 1 then
 		if button.pressed_now then
-			gui.play_flipbook(button.node, hash("blue_button02"))
+			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif button.released_now then
-			gui.play_flipbook(button.node, hash("blue_button04"))
+			gui.play_flipbook(button.node, hash("custom_button_idle"))
 		elseif not button.pressed and button.over_now then
-			gui.play_flipbook(button.node, hash("blue_button02"))
+			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif not button.pressed and button.out_now then
-			gui.play_flipbook(button.node, hash("blue_button04"))
+			gui.play_flipbook(button.node, hash("custom_button_idle"))
 		end
 	else
 		gui.set_color(button.node, vmath.vector4(1,1,1,.2))

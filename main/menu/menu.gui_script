@@ -14,11 +14,27 @@ local function shop_pressed(button)
 end
 
 local function start_update(button)
-	--todo: change the view of the button
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	end
 end
 
 local function shop_update(button)
-	--todo: change the view of the button
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	end
 end
 
 function init(self)

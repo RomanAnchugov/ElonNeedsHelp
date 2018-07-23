@@ -10,13 +10,13 @@ end
 
 function home_update(button)
 	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	elseif not button.pressed and button.over_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	end
 end
 
@@ -26,13 +26,13 @@ end
 
 function bonus_add_update(button)
 	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	elseif not button.pressed and button.over_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	end
 end
 
@@ -44,13 +44,13 @@ end
 
 function unpause_update(button)
 	if button.pressed_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif button.released_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	elseif not button.pressed and button.over_now then
-		gui.play_flipbook(button.node, hash("blue_button02"))
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
 	elseif not button.pressed and button.out_now then
-		gui.play_flipbook(button.node, hash("blue_button04"))
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
 	end
 end
 

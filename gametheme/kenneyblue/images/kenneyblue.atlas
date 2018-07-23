@@ -1,14 +1,23 @@
 images {
-  image: "/gametheme/kenneyblue/images/gray_button02.png"
-}
-images {
-  image: "/gametheme/kenneyblue/images/gray_button04.png"
-}
-images {
-  image: "/gametheme/kenneyblue/images/baseline_home_white_18dp.png"
-}
-images {
   image: "/gametheme/kenneyblue/images/baseline_home_white_48dp.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/custom_button_idle.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/custom_button_pressed.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/blue_panel.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/transparent1px.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/blue_button02.png"
+}
+images {
+  image: "/gametheme/kenneyblue/images/blue_button04.png"
 }
 margin: 0
 extrude_borders: 1
