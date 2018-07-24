@@ -2,7 +2,7 @@ require "main/varibles"
 local monarch = require "monarch.monarch"
 local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
-local kenneyblue = require "gooey.themes.kenneyblue.kenneyblue"
+local kenneyblue = require "gametheme/kenneyblue"
 
 local money_per_click_count = 0
 local second_life_count = 0

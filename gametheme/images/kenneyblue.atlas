@@ -1,0 +1,15 @@
+images {
+  image: "/gametheme/images/custom_button_idle.png"
+}
+images {
+  image: "/gametheme/images/custom_button_pressed.png"
+}
+images {
+  image: "/gametheme/images/static_list_bg.png"
+}
+images {
+  image: "/gametheme/images/list_item_bg.png"
+}
+margin: 0
+extrude_borders: 1
+inner_padding: 1

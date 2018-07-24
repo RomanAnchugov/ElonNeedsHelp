@@ -9,7 +9,7 @@ fonts {
 }
 textures {
   name: "kenneyblue"
-  texture: "/gametheme/kenneyblue/images/kenneyblue.atlas"
+  texture: "/gametheme/images/kenneyblue.atlas"
 }
 background_color {
   x: 0.0

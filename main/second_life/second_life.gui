@@ -163,7 +163,7 @@ nodes {
   layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/gametheme/kenneyblue/components/button.gui"
+  template: "/gametheme/components/button.gui"
   template_node_child: false
 }
 nodes {
@@ -186,8 +186,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 200.0
+    x: 192.0
+    y: 51.0
     z: 0.0
     w: 1.0
   }
@@ -199,7 +199,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
+  texture: "kenneyblue/custom_button_idle"
   id: "no/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -218,7 +218,6 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 4
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -255,8 +254,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "N"
-  font: "score"
+  text: "BUTTON"
+  font: "menu_stats"
   id: "no/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -281,8 +280,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 8
-  overridden_fields: 10
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -379,7 +376,7 @@ nodes {
   layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/gametheme/kenneyblue/components/button.gui"
+  template: "/gametheme/components/button.gui"
   template_node_child: false
 }
 nodes {
@@ -402,8 +399,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 200.0
+    x: 192.0
+    y: 51.0
     z: 0.0
     w: 1.0
   }
@@ -415,7 +412,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gooey/blue_button04"
+  texture: "kenneyblue/custom_button_idle"
   id: "yes/bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -434,7 +431,6 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 4
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -471,8 +467,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Y"
-  font: "score"
+  text: "BUTTON"
+  font: "menu_stats"
   id: "yes/text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -497,8 +493,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 8
-  overridden_fields: 10
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0

@@ -7,12 +7,12 @@ local INPUT_FOCUS = hash("blue_button05")
 local INPUT = hash("blue_button03")
 
 
-local BUTTON_PRESSED = hash("blue_button05")
-local BUTTON = hash("blue_button04")
+local BUTTON_PRESSED = hash("custom_button_pressed")
+local BUTTON = hash("custom_button_idle")
 
-local LISTITEM_SELECTED = hash("blue_button03")
-local LISTITEM_PRESSED = hash("blue_button03")
-local LISTITEM = hash("blue_button04")
+local LISTITEM_SELECTED = hash("custom_button_pressed")
+local LISTITEM_PRESSED = hash("custom_button_pressed")
+local LISTITEM = hash("custom_button_idle")
 
 local CHECKBOX_PRESSED = hash("grey_boxCross")
 local CHECKBOX_CHECKED = hash("blue_boxCross")
@@ -111,7 +111,7 @@ local function update_listitem(list, item)
 	local pos = gui.get_position(item.root)
 	if item.index == list.selected_item then
 		pos.x = 4
-		gui.play_flipbook(item.root, LISTITEM_SELECTED)
+		gui.play_flipbook(item.root, LISTITEM_PRESSED)
 	elseif item.index == list.pressed_item then
 		pos.x = 1
 		gui.play_flipbook(item.root, LISTITEM_PRESSED)
