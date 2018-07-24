@@ -82,8 +82,8 @@ nodes {
 }
 nodes {
   position {
-    x: 590.0
-    y: 225.0
+    x: 158.0
+    y: 25.0
     z: 0.0
     w: 1.0
   }
@@ -139,8 +139,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 192.0
-    y: 51.0
+    x: 315.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -154,10 +154,10 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "kenneyblue/custom_button_idle"
   id: "boost/bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "boost"
   layer: "below"
   inherit_alpha: true
@@ -171,6 +171,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 4
+  overridden_fields: 12
+  overridden_fields: 13
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -200,14 +205,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BUTTON"
+  text: "BOOST"
   font: "menu_stats"
   id: "boost/text"
   xanchor: XANCHOR_NONE
@@ -233,6 +238,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -257,8 +263,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -290,12 +296,12 @@ nodes {
   clipping_inverted: false
   alpha: 0.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
-    x: 590.0
-    y: 102.0
+    x: 482.0
+    y: 25.0
     z: 0.0
     w: 1.0
   }
@@ -351,8 +357,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 192.0
-    y: 51.0
+    x: 315.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -366,23 +372,28 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "kenneyblue/custom_button_idle"
   id: "autopilot/bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_BOTTOM
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "autopilot"
   layer: "below"
   inherit_alpha: true
   slice9 {
-    x: 6.0
-    y: 6.0
-    z: 6.0
-    w: 10.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 4
+  overridden_fields: 12
+  overridden_fields: 13
+  overridden_fields: 17
+  overridden_fields: 22
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -412,14 +423,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BUTTON"
+  text: "AUTOPILOT"
   font: "menu_stats"
   id: "autopilot/text"
   xanchor: XANCHOR_NONE
@@ -445,6 +456,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -469,8 +481,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -502,12 +514,12 @@ nodes {
   clipping_inverted: false
   alpha: 0.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
-    x: 590.0
-    y: 1085.0
+    x: 578.0
+    y: 1072.0
     z: 0.0
     w: 1.0
   }
@@ -563,8 +575,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 192.0
-    y: 51.0
+    x: 75.0
+    y: 75.0
     z: 0.0
     w: 1.0
   }
@@ -578,10 +590,10 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "kenneyblue/custom_button_idle"
   id: "pause/bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "pause"
   layer: "below"
   inherit_alpha: true
@@ -594,7 +606,12 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.54
+  overridden_fields: 4
+  overridden_fields: 12
+  overridden_fields: 13
+  overridden_fields: 17
+  overridden_fields: 30
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -618,20 +635,20 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 100.0
     y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.8
     y: 1.0
     z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BUTTON"
+  text: "||"
   font: "menu_stats"
   id: "pause/text"
   xanchor: XANCHOR_NONE
@@ -649,7 +666,7 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   line_break: false
   parent: "pause/bg"
   layer: "text"
@@ -657,6 +674,11 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 3
+  overridden_fields: 4
+  overridden_fields: 8
+  overridden_fields: 17
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -681,8 +703,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -713,8 +735,10 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 0.0
+  overridden_fields: 4
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {

@@ -3,6 +3,10 @@ fonts {
   name: "score"
   font: "/assets/score.font"
 }
+textures {
+  name: "kenneyblue"
+  texture: "/gametheme/images/kenneyblue.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -42,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "kenneyblue/static_list_bg"
   id: "bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -59,7 +63,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.95
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
 }
@@ -89,9 +93,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    x: 0.8
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
@@ -118,7 +122,7 @@ nodes {
   line_break: false
   parent: "bg"
   layer: ""
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
@@ -161,7 +165,7 @@ nodes {
   id: "no"
   parent: "bg"
   layer: ""
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
   template: "/gametheme/components/button.gui"
   template_node_child: false
@@ -186,8 +190,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 192.0
-    y: 51.0
+    x: 200.0
+    y: 200.0
     z: 0.0
     w: 1.0
   }
@@ -207,7 +211,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   parent: "no"
   layer: "below"
-  inherit_alpha: true
+  inherit_alpha: false
   slice9 {
     x: 6.0
     y: 6.0
@@ -218,6 +222,8 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 4
+  overridden_fields: 21
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -235,8 +241,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -247,14 +253,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.4
+    y: 0.6
+    z: 0.6
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BUTTON"
+  text: "NO"
   font: "menu_stats"
   id: "no/text"
   xanchor: XANCHOR_NONE
@@ -276,10 +282,16 @@ nodes {
   line_break: false
   parent: "no/bg"
   layer: "text"
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
+  outline_alpha: 0.0
+  shadow_alpha: 0.0
+  overridden_fields: 3
+  overridden_fields: 5
+  overridden_fields: 8
+  overridden_fields: 21
+  overridden_fields: 31
+  overridden_fields: 32
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -304,8 +316,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -337,7 +349,7 @@ nodes {
   clipping_inverted: false
   alpha: 0.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
@@ -399,8 +411,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 192.0
-    y: 51.0
+    x: 200.0
+    y: 200.0
     z: 0.0
     w: 1.0
   }
@@ -420,7 +432,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   parent: "yes"
   layer: "below"
-  inherit_alpha: true
+  inherit_alpha: false
   slice9 {
     x: 6.0
     y: 6.0
@@ -431,6 +443,8 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 4
+  overridden_fields: 21
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -448,8 +462,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.75
+    y: 0.75
     z: 1.0
     w: 1.0
   }
@@ -461,13 +475,13 @@ nodes {
   }
   color {
     x: 1.0
-    y: 1.0
-    z: 1.0
+    y: 0.4
+    z: 0.4
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BUTTON"
+  text: "YES"
   font: "menu_stats"
   id: "yes/text"
   xanchor: XANCHOR_NONE
@@ -489,10 +503,16 @@ nodes {
   line_break: false
   parent: "yes/bg"
   layer: "text"
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
+  outline_alpha: 0.0
+  shadow_alpha: 0.0
+  overridden_fields: 3
+  overridden_fields: 5
+  overridden_fields: 8
+  overridden_fields: 21
+  overridden_fields: 31
+  overridden_fields: 32
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -517,8 +537,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -550,7 +570,7 @@ nodes {
   clipping_inverted: false
   alpha: 0.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

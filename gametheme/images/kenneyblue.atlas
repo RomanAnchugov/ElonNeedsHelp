@@ -10,6 +10,9 @@ images {
 images {
   image: "/gametheme/images/list_item_bg.png"
 }
+images {
+  image: "/gametheme/images/baseline_home_white_48dp.png"
+}
 margin: 0
 extrude_borders: 1
-inner_padding: 1
+inner_padding: 0
