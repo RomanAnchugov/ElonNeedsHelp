@@ -42,7 +42,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -57,7 +57,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine1.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -72,7 +72,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine2.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -87,7 +87,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine3.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -102,7 +102,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine4.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -117,7 +117,7 @@ embedded_instances {
   "  component: \"/main/game/rocket_egine5.particlefx\"\n"
   "  position {\n"
   "    x: 0.0\n"
-  "    y: 0.0\n"
+  "    y: -19.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -130,7 +130,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/main/main.atlas\\\"\\n"
+  "  data: \"tile_set: \\\"/main/ships.atlas\\\"\\n"
   "default_animation: \\\"ship\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
@@ -304,6 +304,81 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bg_image"
+  data: "components {\n"
+  "  id: \"bg_image\"\n"
+  "  component: \"/main/game/bg_image.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"space\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/main/main.atlas\\\"\\n"
+  "default_animation: \\\"Nebula Aqua-Pink\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: -232.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"space1\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/main/main.atlas\\\"\\n"
+  "default_animation: \\\"Nebula Aqua-Pink\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 792.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 315.0
+    y: 631.0
     z: 0.0
   }
   rotation {

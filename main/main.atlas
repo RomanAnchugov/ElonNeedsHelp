@@ -4,6 +4,15 @@ images {
 images {
   image: "/assets/ship.png"
 }
+images {
+  image: "/assets/Nebula Blue.png"
+}
+images {
+  image: "/assets/Nebula Red.png"
+}
+images {
+  image: "/assets/Nebula Aqua-Pink.png"
+}
 margin: 0
 extrude_borders: 3
 inner_padding: 0

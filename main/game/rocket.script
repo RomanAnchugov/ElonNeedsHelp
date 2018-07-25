@@ -1,6 +1,8 @@
 local TAG = "rocket.script"
 
 require "main/varibles"
+local random = require "main/random"
+
 local g = 0.4 -- earth acceleration
 local rocket_speed = 0 
 local exact_speed = 4 -- control value of the speed
@@ -31,7 +33,7 @@ local function up(self)
   click_count = click_count + 1
   rocket_speed =  exact_speed * click_coef
   
-  if click_coef > exact_click_coef and click_count == 2 then
+  if click_coef >= exact_click_coef and click_count == 2 then
      click_coef = click_coef - 0.05
      click_count = 0
   end
@@ -40,7 +42,8 @@ end
 function init(self)
   msg.post(".","acquire_input_focus")
   if ROCKETS_COUNT >= 1 then
-    sprite.set_constant("#sprite", "tint", vmath.vector4(0, 0, 1, 1))
+    --
+    sprite.play_flipbook("#sprite", random.random(1, 44) .. "")
   end
   active = false
 end

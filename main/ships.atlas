@@ -1,0 +1,138 @@
+images {
+  image: "/assets/ship.png"
+}
+images {
+  image: "/assets/ships/1.png"
+}
+images {
+  image: "/assets/ships/10.png"
+}
+images {
+  image: "/assets/ships/11.png"
+}
+images {
+  image: "/assets/ships/12.png"
+}
+images {
+  image: "/assets/ships/13.png"
+}
+images {
+  image: "/assets/ships/14.png"
+}
+images {
+  image: "/assets/ships/15.png"
+}
+images {
+  image: "/assets/ships/16.png"
+}
+images {
+  image: "/assets/ships/17.png"
+}
+images {
+  image: "/assets/ships/18.png"
+}
+images {
+  image: "/assets/ships/19.png"
+}
+images {
+  image: "/assets/ships/2.png"
+}
+images {
+  image: "/assets/ships/20.png"
+}
+images {
+  image: "/assets/ships/21.png"
+}
+images {
+  image: "/assets/ships/22.png"
+}
+images {
+  image: "/assets/ships/23.png"
+}
+images {
+  image: "/assets/ships/24.png"
+}
+images {
+  image: "/assets/ships/25.png"
+}
+images {
+  image: "/assets/ships/26.png"
+}
+images {
+  image: "/assets/ships/27.png"
+}
+images {
+  image: "/assets/ships/28.png"
+}
+images {
+  image: "/assets/ships/29.png"
+}
+images {
+  image: "/assets/ships/3.png"
+}
+images {
+  image: "/assets/ships/30.png"
+}
+images {
+  image: "/assets/ships/31.png"
+}
+images {
+  image: "/assets/ships/32.png"
+}
+images {
+  image: "/assets/ships/33.png"
+}
+images {
+  image: "/assets/ships/34.png"
+}
+images {
+  image: "/assets/ships/35.png"
+}
+images {
+  image: "/assets/ships/36.png"
+}
+images {
+  image: "/assets/ships/37.png"
+}
+images {
+  image: "/assets/ships/38.png"
+}
+images {
+  image: "/assets/ships/39.png"
+}
+images {
+  image: "/assets/ships/4.png"
+}
+images {
+  image: "/assets/ships/40.png"
+}
+images {
+  image: "/assets/ships/41.png"
+}
+images {
+  image: "/assets/ships/42.png"
+}
+images {
+  image: "/assets/ships/43.png"
+}
+images {
+  image: "/assets/ships/44.png"
+}
+images {
+  image: "/assets/ships/5.png"
+}
+images {
+  image: "/assets/ships/6.png"
+}
+images {
+  image: "/assets/ships/7.png"
+}
+images {
+  image: "/assets/ships/8.png"
+}
+images {
+  image: "/assets/ships/9.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
