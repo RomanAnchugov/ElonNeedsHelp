@@ -30,6 +30,9 @@ function init(self)
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
 
+	local position = vmath.vector3(0, 0, 0)
+	factory.create("/initial#bg_image_factory", position, nil, nil, scale)
+
 
 	defsave.appname = "ElonNeedsHelp"
 	defsave.load(filename)
@@ -104,4 +107,10 @@ function on_message(self, message_id, message, sender)
 		print(TAG, "save message")
 		save()
 	end
+
+	if message_id == hash("create_bg_image") then
+		local position = vmath.vector3(0, 124, 0)
+		factory.create("/initial#bg_image_factory", position, nil, nil, scale)
+	end
+
 end

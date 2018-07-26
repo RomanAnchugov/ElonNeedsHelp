@@ -1,8 +1,8 @@
 local TAG = "bg_image.script"
 
+local speed = 75
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
+	self.created_next = false
 end
 
 function final(self)
@@ -12,13 +12,27 @@ end
 
 function update(self, dt)
 	local position = go.get_position()
-	position.y = position.y - 1
+	position.y = position.y - speed * dt
 	go.set_position(position)
+
+	if go.get_position().y <= -900 and not self.created_next then
+		msg.post("/initial#initial", "create_bg_image")
+		self.created_next = true
+	end
+
+	if go.get_position().y <= -2048 then
+		go.delete()
+	end
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	if message_id == hash("flight") then
+		speed = 150
+	end
+
+	if message_id == hash("unflight") then
+		speed = 75
+	end
 end
 
 function on_input(self, action_id, action)

@@ -19,7 +19,7 @@ function on_message(self, message_id, message, sender)
 		if BOOST_COUNT >= 1 then
 			BOOST_COUNT = BOOST_COUNT - 1
 			local planets_count = message[1]
-			for i = 0, (planets_count - 1) do
+			for i = 0, planets_count do
 				msg.post("game:/instance" .. i .. "#bg_item", "boost")
 			end
 			msg.post("game:/rocket", "boost")
@@ -55,7 +55,8 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("boost50") then
 		local planets_count = message[1]
-		for i = 0, (planets_count - 1) do
+		print(TAG, "planets count: ", planets_count) 
+		for i = 0, planets_count do
 			msg.post("game:/instance" .. i .. "#bg_item", "boost")
 		end
 		msg.post("game:/rocket", "boost")

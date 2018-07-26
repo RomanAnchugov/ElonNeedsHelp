@@ -193,6 +193,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 		msg.post("main:/initial#initial", "save")
+		msg.post("main:/instance0#bg_image", "unflight")
 		if SECOND_LIFE_COUNT == 0 then
 			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 			if score > BEST_SCORE then
@@ -213,7 +214,7 @@ function on_input(self, action_id, action)
 	
 	if action_id == hash("touch") and action.pressed then
 
-		--hide tap words
+		--hide tap words, FIRST CLICK
 		if not first_click then
 			first_click = true
 			local node = gui.get_node("tap")
@@ -222,6 +223,7 @@ function on_input(self, action_id, action)
 				timer.cancel(tap_timer) 
 				gui.set_enabled(node, false)
 			end)
+			msg.post("main:/instance0#bg_image", "flight")
 		end
 
 		--updating score text
@@ -237,7 +239,7 @@ function on_input(self, action_id, action)
 				msg.post("game:/bonus_driver#bonus_driver", "boost_end")
 				boost_clicks = 0
 			end
-			msg.post(CAMERA_ID, "shake", { intensity = 0.01, duration = 0.5, direction = hash("both") })
+			msg.post(CAMERA_ID, "shake", { intensity = 0.012, duration = 0.5, direction = hash("both") })
 		end
 		shake_score(self)
 

@@ -42,7 +42,6 @@ end
 function init(self)
   msg.post(".","acquire_input_focus")
   if ROCKETS_COUNT >= 1 then
-    --
     sprite.play_flipbook("#sprite", random.random(1, 44) .. "")
   end
   active = false
@@ -76,7 +75,7 @@ function on_message(self, message_id, message, sender)
   end
   
   if message_id == hash("boost_end") then
-    click_coef = 0.5
+    click_coef = 0.4
   end
   
   if message_id == hash("autopilot") then
