@@ -31,7 +31,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("unflight") then
-		speed = 75
+		speed = 50
 	end
 end
 

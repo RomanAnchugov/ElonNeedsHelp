@@ -215,6 +215,7 @@ function on_input(self, action_id, action)
 				MONEY = MONEY - ROCKETS_COST
 				ROCKETS_COUNT = rockets_count
 				ROCKETS_COST = rockets_cost
+				monarch.show("rocket_opening_screen")
 			end
 			update_gui()
 		end)
