@@ -7,18 +7,32 @@ local transitions = require "monarch.transitions.gui"
 local flow = require "main/flow"
 local random = require "main/random"
 
+local opened = false
+
+function generate_variant()
+	local node = gui.get_node("variants")
+	local number = random.random(1, 44)
+	gui.play_flipbook(node, number .. "")
+end
+
 function init(self)
 	gooey.acquire_input()
 
+	--OPENING
 	local node = gui.get_node("count_down")
 	flow.start(function()
+		gui.set_text(node, "5")
+		flow.delay(1)
+		gui.set_text(node, "4")
+		flow.delay(1)
+		gui.set_text(node, "3")
 		flow.delay(1)
 		gui.set_text(node, "2")
 		flow.delay(1)
 		gui.set_text(node, "1")
 		flow.delay(1)
 		gui.set_text(node, "0")
-		gui.set_enabled(node, false)
+		gui.animate(node, "color", vmath.vector4(1, 1, 1, 0), gui.EASING_OUTEXPO, 1, 1)
 		node = gui.get_node("rocket")
 
 		--generating new random number for rocket
@@ -35,8 +49,33 @@ function init(self)
 		print(TAG, "new opened rocket: ", number .. "")
 		table.insert(OPENED_ROCKETS, number)
 		gui.play_flipbook(node, "" .. number)
+		opened = true
 		msg.post("main:/initial#initial", "save")
+
+		gui.animate(node, "scale", 1.75, gui.EASING_INOUTELASTIC, 1, .5)
 		
+		flow.delay(.5)
+		node = gui.get_node("particlefx")
+		gui.play_particlefx(node)
+	end)
+
+	--SHOW DEMOS 
+	flow.start(function()
+		for i = 1, 20 do
+			generate_variant()
+			flow.delay(.1)
+		end
+		for i = 1, 5 do
+			generate_variant()
+			flow.delay(.2)
+		end
+		for i = 1, 2 do
+			generate_variant()
+			flow.delay(.5)
+		end
+		flow.delay(1)
+		local node = gui.get_node("variants")
+		gui.set_enabled(node, false)
 	end)
 
 	self.transition1 = transitions.create(gui.get_node("count_down"))
@@ -45,11 +84,11 @@ function init(self)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 
-	self.transition2 = transitions.create(gui.get_node("bg"))
+	self.transition2 = transitions.create(gui.get_node("rocket"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
-	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.6, 0)
+	.show_out(transitions.fade_out, gui.EASING_INQUAD, 0.4, 0)
 	.back_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
-	.back_out(transitions.scale_out, gui.EASING_INQUAD, 0.6, 0)
+	.back_out(transitions.fade_out, gui.EASING_INQUAD, 0.4, 0)
 
 	local node = gui.get_node("bg")
 	local color = vmath.vector4(0, 0, 0, .5)
@@ -64,11 +103,11 @@ end
 function on_message(self, message_id, message, sender)
 	flow.on_message(message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
-	--self.transition2.handle(message_id, message, sender)
+	self.transition2.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.pressed then
+	if action_id == hash("touch") and action.pressed and opened then
 		local node = gui.get_node("bg")
 		local color = vmath.vector4(0, 0, 0, 0)
 		gui.animate(node, "color", color, gui.EASING_INSINE, .5)
