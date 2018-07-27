@@ -4,20 +4,6 @@ local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
 local kenneyblue = require "gametheme/kenneyblue"
 
-local money_per_click_count = 0
-local second_life_count = 0
-local rockets_count = 0
-local engines_count = 0
-local boost_count = 0
-local autopilot_count = 0
-
-local money_per_click_cost = 100
-local second_life_cost = 100
-local rockets_cost = 100
-local engines_cost = 100
-local boost_cost = 100
-local autopilot_cost = 100
-
 local TAG = "shop.gui_script: "
 
 function back_pressed(button)
@@ -118,6 +104,8 @@ function update_gui()
 	gui.set_text(node, "money: " .. MONEY)
 	if gui.get_scale(node) ~= .8 then 
 		gui.animate(node, "scale", .8, gui.EASING_INSINE, .5)
+		local color = vmath.vector4(.8, 1, 1, 1)
+		gui.animate(node, "color", color, gui.EASING_INSINE, .4)
 	end
 end
 
@@ -146,7 +134,6 @@ function init(self)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 	
 	kenneyblue.static_list("static_list", self.list_ids)
-	kenneyblue.button("back", action_id, action, fn)
 	update_gui()
 end
 
@@ -166,7 +153,7 @@ function on_message(self, message_id, message, sender)
 	self.transition3.handle(message_id, message, sender)
 
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
-		
+		print(TAG, "shop shown")
 	end
 end
 
@@ -175,46 +162,37 @@ function on_input(self, action_id, action)
 		function(list) --on item of list selected
 			if list.selected_item == 1 and MONEY >= MONEY_PER_CLICK_COST then --money per click (list_item1)
 				print(TAG, "money per click")
-				money_per_click_count = money_per_click_count + 1
-				money_per_click_cost = money_per_click_cost * 1.5
 				MONEY = MONEY - MONEY_PER_CLICK_COST
-				MONEY_PER_CLICK_COUNT = money_per_click_count
-				MONEY_PER_CLICK_COST = money_per_click_cost
+				MONEY_PER_CLICK_COUNT = MONEY_PER_CLICK_COUNT + 1
+				MONEY_PER_CLICK_COST = MONEY_PER_CLICK_COST * 1.5
 			elseif list.selected_item == 2 and MONEY >= SECOND_LIFE_COST then --second life
 				print(TAG, "second life")
-				second_life_count = second_life_count + 1
-				second_life_cost = second_life_cost * 1.5
 				MONEY = MONEY - SECOND_LIFE_COST
-				SECOND_LIFE_COUNT = second_life_count
-				SECOND_LIFE_COST = second_life_cost
+				SECOND_LIFE_COUNT = SECOND_LIFE_COUNT + 1
+				SECOND_LIFE_COST = SECOND_LIFE_COST * 1.5
 			elseif list.selected_item == 3 and MONEY >= BOOST_COST then --boost
 				print(TAG, "boost")
-				boost_count = boost_count + 1
-				boost_cost = boost_cost * 1.5
 				MONEY = MONEY - BOOST_COST
-				BOOST_COUNT = boost_count
-				BOOST_COST = boost_cost
+				BOOST_COUNT = BOOST_COUNT + 1
+				BOOST_COST = BOOST_COST * 1.5
 			elseif list.selected_item == 4 and MONEY >= AUTOPILOT_COST then --autopilot
 				print(TAG, "autopilot")
-				autopilot_count = autopilot_count + 1
-				autopilot_cost = autopilot_cost * 1.5
 				MONEY = MONEY - AUTOPILOT_COST
-				AUTOPILOT_COUNT = autopilot_count
-				AUTOPILOT_COST = autopilot_cost
+				AUTOPILOT_COUNT = AUTOPILOT_COUNT + 1
+				AUTOPILOT_COST = AUTOPILOT_COST * 1.5
 			elseif list.selected_item == 5 and MONEY >= ENGINES_COST then --engines
-				print(TAG, "engines")
-				engines_count = engines_count + 1
-				engines_cost = engines_cost * 1.5
+				print(TAG, "engines")				
 				MONEY = MONEY - ENGINES_COST
-				ENGINES_COUNT = engines_count
-				ENGINES_COST = engines_cost
+				ENGINES_COUNT = ENGINES_COUNT + 1
+				ENGINES_COST = ENGINES_COST * 1.5
 			elseif list.selected_item == 6 and MONEY >= ROCKETS_COST then --rockets
 				print(TAG, "rockets")
-				rockets_count = rockets_count + 1
-				rockets_cost = rockets_cost * 1.5
-				MONEY = MONEY - ROCKETS_COST
-				ROCKETS_COUNT = rockets_count
-				ROCKETS_COST = rockets_cost
+				--MONEY = MONEY - ROCKETS_COST
+				--ROCKETS_COUNT = ROCKETS_COUNT + 1
+				--ROCKETS_COST = ROCKETS_COST * 1.5
+				local position = vmath.vector3(1000, 840, 0)
+				local node = gui.get_node("money")
+				gui.animate(node, "position", position, gui.EASING_INSINE, .5)
 				monarch.show("rocket_opening_screen")
 			end
 			update_gui()

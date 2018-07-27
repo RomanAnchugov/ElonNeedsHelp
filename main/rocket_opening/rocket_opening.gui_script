@@ -1,30 +1,81 @@
 local TAG = "rocket_opening.gui_script"
 
-function init(self)
-	print(TAG, "shown")
-end
+require "main/varibles"
+local gooey = require "gooey.gooey" 
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+local flow = require "main/flow"
+local random = require "main/random"
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
+function init(self)
+	gooey.acquire_input()
+
+	local node = gui.get_node("count_down")
+	flow.start(function()
+		flow.delay(1)
+		gui.set_text(node, "2")
+		flow.delay(1)
+		gui.set_text(node, "1")
+		flow.delay(1)
+		gui.set_text(node, "0")
+		gui.set_enabled(node, false)
+		node = gui.get_node("rocket")
+
+		--generating new random number for rocket
+		local number = random.random(1, 44)
+		local opened_rockets = ""
+		for i = 1, table.maxn(OPENED_ROCKETS) do
+			opened_rockets = opened_rockets .. OPENED_ROCKETS[i] .. " "
+			if OPENED_ROCKETS[i] == number then
+				i = 1
+				number = random.random(1, 44)
+			end
+		end
+		print(TAG, "already opened rockets: ", opened_rockets)
+		print(TAG, "new opened rocket: ", number .. "")
+		table.insert(OPENED_ROCKETS, number)
+		gui.play_flipbook(node, "" .. number)
+		msg.post("main:/initial#initial", "save")
+		
+	end)
+
+	self.transition1 = transitions.create(gui.get_node("count_down"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition2 = transitions.create(gui.get_node("bg"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.6, 0)
+	.back_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.back_out(transitions.scale_out, gui.EASING_INQUAD, 0.6, 0)
+
+	local node = gui.get_node("bg")
+	local color = vmath.vector4(0, 0, 0, .5)
+	gui.animate(node, "color", color, gui.EASING_INSINE, .5)
+
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
+	flow.update(dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	flow.on_message(message_id, message, sender)
+	self.transition1.handle(message_id, message, sender)
+	--self.transition2.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
+	if action_id == hash("touch") and action.pressed then
+		local node = gui.get_node("bg")
+		local color = vmath.vector4(0, 0, 0, 0)
+		gui.animate(node, "color", color, gui.EASING_INSINE, .5)
+		monarch.back()
+	end
 end
 
-function on_reload(self)
-	-- Add input-handling code here
-	-- Remove this function if not needed
+function final(self)
+	flow.stop()
 end

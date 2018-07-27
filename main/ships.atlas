@@ -133,6 +133,9 @@ images {
 images {
   image: "/assets/ships/9.png"
 }
+images {
+  image: "/assets/transparent1px.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

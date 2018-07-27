@@ -22,6 +22,8 @@ function save()
 	defsave.set(filename, "engines_cost", {ENGINES_COST})
 	defsave.set(filename, "rockets_cost", {ROCKETS_COST})
 
+	defsave.set(filename, "opened_rockets", {OPENED_ROCKETS})
+
 	defsave.save(filename)
 end
 
@@ -54,20 +56,28 @@ function init(self)
 	local autopilot_cost = defsave.get(filename, "autopilot_cost")
 	local engines_cost = defsave.get(filename, "engines_cost")
 	local rockets_cost = defsave.get(filename, "rockets_cost")
+
+	local opened_rockets = defsave.get(filename, "opened_rockets")
 	
 	if money ~= nil and best_score ~= nil and money_per_click_count ~= nil 
 	and second_life_count ~= nil and boost_count ~= nil and autopilot_count ~= nil
 	and engines_count ~= nil and rockets_count ~= nil 
 	and money_per_click_cost ~= nil and second_life_cost ~= nil and boost_cost ~= nil
-	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil then
+	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil
+	and opened_rockets ~= nil then
 		print(TAG, "file exist")
+		
 		if table.maxn(money) ~= 0 and table.maxn(best_score) ~= 0 
 		and table.maxn(money_per_click_count) ~= 0 and table.maxn(second_life_count) ~= 0 
 		and table.maxn(boost_count) ~= 0 and table.maxn(autopilot_count) ~= 0
 		and table.maxn(engines_count) ~= 0 and table.maxn(rockets_count) ~= 0 
 		and table.maxn(money_per_click_cost) ~= 0 and table.maxn(second_life_cost) ~= 0 
 		and table.maxn(boost_cost) ~= 0 and table.maxn(autopilot_cost) ~= 0 
-		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0 then
+		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0
+		and table.maxn(opened_rockets) ~= 0 then
+
+			print(TAG, "data exist")
+			
 			MONEY = money[1]
 			BEST_SCORE = best_score[1]
 
@@ -84,8 +94,8 @@ function init(self)
 			AUTOPILOT_COST = autopilot_cost[1]
 			ENGINES_COST = engines_cost[1]
 			ROCKETS_COST = rockets_cost[1]
-			
-			print(TAG, "data exist")
+
+			OPENED_ROCKETS = opened_rockets[1]
 		else
 			save()
 			print(TAG, "data not exist, set default data")

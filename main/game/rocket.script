@@ -3,11 +3,11 @@ local TAG = "rocket.script"
 require "main/varibles"
 local random = require "main/random"
 
-local g = 0.4 -- earth acceleration
+local g = 25 -- earth acceleration
 local rocket_speed = 0 
 local exact_speed = 4 -- control value of the speed
 local click_coef = 1 -- coef for jump/click value
-local exact_click_coef = 0.3 -- 0.4 - enough
+local exact_click_coef = 0.1 -- 0.4 - enough
 local click_count = 0
 local exact_click_count = 30 -- value for control value of clicks, when coef descrease
 local active = true
@@ -53,11 +53,11 @@ end
 
 function update(self, dt)
   if active then
-    rocket_speed = rocket_speed - g;
+    rocket_speed = rocket_speed - g * dt;
     local position = go.get_position("#rocket")
     position.y = position.y + rocket_speed
-    if position.y > 1300 then
-      position.y = 1300
+    if position.y > 1000 then
+      position.y = 1000
     end
     go.set_position(position)
 
@@ -75,7 +75,7 @@ function on_message(self, message_id, message, sender)
   end
   
   if message_id == hash("boost_end") then
-    click_coef = 0.4
+    click_coef = 0.2
   end
   
   if message_id == hash("autopilot") then
@@ -86,6 +86,7 @@ function on_message(self, message_id, message, sender)
   if message_id == hash("autopilot_end") then
     rocket_speed = 0
     active = true
+    click_coef = 0.4
   end
 
   if message_id == hash("pause") then

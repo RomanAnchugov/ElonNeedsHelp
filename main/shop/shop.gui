@@ -82,7 +82,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 752.0
+    y: 750.0
     z: 0.0
     w: 1.0
   }
@@ -1764,7 +1764,7 @@ nodes {
 nodes {
   position {
     x: 330.0
-    y: 841.0
+    y: 840.0
     z: 0.0
     w: 1.0
   }
@@ -1816,7 +1816,7 @@ nodes {
   line_break: false
   layer: ""
   inherit_alpha: false
-  alpha: 1.0
+  alpha: 0.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
   template_node_child: false
