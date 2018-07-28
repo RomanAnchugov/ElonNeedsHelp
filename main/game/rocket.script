@@ -41,14 +41,17 @@ end
 
 function init(self)
   msg.post(".","acquire_input_focus")
-  if ROCKETS_COUNT >= 1 then
-    sprite.play_flipbook("#sprite", random.random(1, 44) .. "")
+  
+  if ROCKETS_COUNT > 0 then
+    local clamp = math.fmod(ROCKETS_COUNT + 1, 46)-- + 1 because we have default skin
+    local index = math.random(1, clamp)
+    if index > 1 then
+      sprite.play_flipbook("#sprite", OPENED_ROCKETS[index] .. "")
+    else
+      sprite.play_flipbook("#sprite",  "ship")
+    end
   end
   active = false
-end
-
-function final(self)
-
 end
 
 function update(self, dt)

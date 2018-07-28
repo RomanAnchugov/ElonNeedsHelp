@@ -183,6 +183,10 @@ function on_message(self, message_id, message, sender)
 		planets_count = planets_count + 1 
 	end
 
+	if message_id == hash("decrease_planets_count") then
+		planets_count = planets_count - 1
+	end
+
 	if message_id == hash("set_boost") then
 		boost = message[1]
 	end
@@ -193,7 +197,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 		msg.post("main:/initial#initial", "save")
-		msg.post("main:/instance0#bg_image", "unflight")
+		msg.post("main:/instance1#bg_image", "unflight")
 		if SECOND_LIFE_COUNT == 0 then
 			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 			if score > BEST_SCORE then

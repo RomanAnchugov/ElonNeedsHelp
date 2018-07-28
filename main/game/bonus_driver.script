@@ -3,17 +3,6 @@ local TAG = "bonus_driver.script: "
 
 local autopilot_time = 0
 
-function init(self)
-end
-
-function final(self)
-	
-end
-
-function update(self, dt)
-	
-end
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("boost") then
 		if BOOST_COUNT >= 1 then
@@ -63,14 +52,4 @@ function on_message(self, message_id, message, sender)
 		msg.post("game:/bg#bg", "boost")
 		msg.post("game:/gui#game", "set_boost", {true})
 	end
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
 end

@@ -12,15 +12,6 @@ function init(self)
 	particlefx.play("/bg#stars")
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	
-end
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("boost") then
 		particlefx.play("/bg#bonus")
@@ -31,6 +22,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("decrease_planets") then
+		msg.post("game:/gui#game", "decrease_planets_count")
 		planets_count = planets_count - 1
 	end
 end

@@ -18,9 +18,14 @@ end
 function init(self)
 	gooey.acquire_input()
 
+	MONEY = MONEY - ROCKETS_COST
+	ROCKETS_COUNT = ROCKETS_COUNT + 1
+	ROCKETS_COST = ROCKETS_COST * 1.5
+
 	--OPENING
 	local node = gui.get_node("count_down")
 	flow.start(function()
+		flow.delay(.5)
 		gui.set_text(node, "5")
 		flow.delay(1)
 		gui.set_text(node, "4")
@@ -53,14 +58,27 @@ function init(self)
 		msg.post("main:/initial#initial", "save")
 
 		gui.animate(node, "scale", 1.75, gui.EASING_INOUTELASTIC, 1, .5)
-		
-		flow.delay(.5)
-		node = gui.get_node("particlefx")
+
+		--fireworks and other particles
+		flow.delay(.75)
+		node = gui.get_node("particlefx1")
 		gui.play_particlefx(node)
+		flow.delay(.5)
+		gui.play_particlefx(gui.get_node("particlefx2"))
+		flow.delay(.2)
+		gui.play_particlefx(gui.get_node("particlefx3"))
+		flow.delay(.4)
+		gui.play_particlefx(gui.get_node("particlefx4"))
+		flow.delay(.2)
+		gui.play_particlefx(gui.get_node("particlefx5"))
+		gui.play_particlefx(gui.get_node("particlefx6"))
+		flow.delay(.2)
+		gui.play_particlefx(gui.get_node("shine"))
 	end)
 
 	--SHOW DEMOS 
 	flow.start(function()
+		flow.delay(.5)
 		for i = 1, 20 do
 			generate_variant()
 			flow.delay(.1)
