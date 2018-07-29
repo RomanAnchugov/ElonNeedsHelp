@@ -1,6 +1,6 @@
 local TAG = "bg_image.script"
 
-local speed = 75
+local speed = 50
 function init(self)
 	self.created_next = false
 end
@@ -27,7 +27,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("flight") then
-		speed = 500
+		speed = 150
 	end
 
 	if message_id == hash("unflight") then

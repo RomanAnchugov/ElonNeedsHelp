@@ -120,7 +120,9 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("create_bg_image") then
 		local position = vmath.vector3(0, 124, 0)
-		factory.create("/initial#bg_image_factory", position, nil, nil, scale)
+		local id = factory.create("/initial#bg_image_factory", position, nil, nil, scale)
+		local url = msg.url(main, id, "bg_image")
+		BG_IMAGE_ID = url
 	end
 
 end

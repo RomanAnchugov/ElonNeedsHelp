@@ -12,28 +12,33 @@ local click_count = 0
 local exact_click_count = 30 -- value for control value of clicks, when coef descrease
 local active = true
 local first_click = false
+local particles_click = 0
 
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 
 local function up(self)
-  if ENGINES_COUNT == 1 then
-    particlefx.play("/rocket#rocket_egine1")  
-  elseif ENGINES_COUNT == 2 then
-    particlefx.play("/rocket#rocket_egine2")
-  elseif ENGINES_COUNT == 3 then
-    particlefx.play("/rocket#rocket_egine3")
-  elseif ENGINES_COUNT == 4 then
-    particlefx.play("/rocket#rocket_egine4")
-  elseif ENGINES_COUNT >= 5 then
-    particlefx.play("/rocket#rocket_egine5")
-  else
-    particlefx.play("/rocket#rocket_egine")  
-  end
+
   click_count = click_count + 1
   rocket_speed =  exact_speed * click_coef
   
-  if click_coef >= exact_click_coef and click_count == 2 then
+  if click_count >= 2 then
+    if ENGINES_COUNT == 1 then
+      particlefx.play("/rocket#rocket_egine1")  
+    elseif ENGINES_COUNT == 2 then
+      particlefx.play("/rocket#rocket_egine2")
+    elseif ENGINES_COUNT == 3 then
+      particlefx.play("/rocket#rocket_egine3")
+    elseif ENGINES_COUNT == 4 then
+      particlefx.play("/rocket#rocket_egine4")
+    elseif ENGINES_COUNT >= 5 then
+      particlefx.play("/rocket#rocket_egine5")
+    else
+      particlefx.play("/rocket#rocket_egine")  
+    end
+  end
+  
+  if click_coef >= exact_click_coef and click_count >= 2 then
      click_coef = click_coef - 0.05
      click_count = 0
   end
@@ -43,7 +48,7 @@ function init(self)
   msg.post(".","acquire_input_focus")
   
   if ROCKETS_COUNT > 0 then
-    local clamp = math.fmod(ROCKETS_COUNT + 1, 46)-- + 1 because we have default skin
+    local clamp = math.fmod(ROCKETS_COUNT + 1, ROCKETS_SKIN_COUNT + 2)-- + 1 because we have default skin
     local index = math.random(1, clamp)
     if index > 1 then
       sprite.play_flipbook("#sprite", OPENED_ROCKETS[index] .. "")

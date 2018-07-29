@@ -35,7 +35,7 @@ local function shake_score(self)
 end
 
 function pause_pressed(button)
-	print(TAG, "pause_pressed")
+	msg.post(BG_IMAGE_ID, "unflight")
 	msg.post("game:/rocket#rocket", "pause")
 	monarch.show("pause_screen")
 end
@@ -179,14 +179,6 @@ function on_message(self, message_id, message, sender)
 		print("Show in done!")
 	end
 
-	if message_id == hash("increase_planets_count") then
-		planets_count = planets_count + 1 
-	end
-
-	if message_id == hash("decrease_planets_count") then
-		planets_count = planets_count - 1
-	end
-
 	if message_id == hash("set_boost") then
 		boost = message[1]
 	end
@@ -197,7 +189,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 		msg.post("main:/initial#initial", "save")
-		msg.post("main:/instance1#bg_image", "unflight")
+		msg.post(BG_IMAGE_ID, "unflight")
 		if SECOND_LIFE_COUNT == 0 then
 			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 			if score > BEST_SCORE then
@@ -227,7 +219,7 @@ function on_input(self, action_id, action)
 				timer.cancel(tap_timer) 
 				gui.set_enabled(node, false)
 			end)
-			msg.post("main:/instance0#bg_image", "flight")
+			msg.post(BG_IMAGE_ID, "flight")
 		end
 
 		--updating score text

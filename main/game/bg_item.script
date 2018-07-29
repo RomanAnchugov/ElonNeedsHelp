@@ -36,7 +36,8 @@ function update(self, dt)
 	go.set_position(position)
 	
 	if(position.y < -300) then
-		msg.post("game:/bg#bg", "decrease_planets")
+		local url = msg.url()
+		msg.post("game:/bg#bg", "decrease_planets", {url})
 		go.delete()
 	end
 end

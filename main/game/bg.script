@@ -1,6 +1,7 @@
 --bg parralax control
 local TAG = "bg.script: "
 local random = require "main/random"
+require "main/varibles"
 
 local click_count = 0
 local control_count = 1 --number of clicks, when planet will create
@@ -22,7 +23,16 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("decrease_planets") then
-		msg.post("game:/gui#game", "decrease_planets_count")
+		
+		local url = message[1]
+		local flag = false
+		for i = 1, table.maxn(PLANETS_IDS) do
+			if url == PLANETS_IDS[i] and not flag then
+				table.remove(PLANETS_IDS, i)
+				flag = true
+			end
+		end
+		
 		planets_count = planets_count - 1
 	end
 end
@@ -42,10 +52,10 @@ function on_input(self, action_id, action)
 			end
 
 			--create new bg planet
-			local piece
 			if planets_count <= 1 then
-				piece = factory.create("/bg#bg_factory", position, nil, nil, scale)
-				msg.post("game:/gui#game", "increase_planets_count")
+				local id = factory.create("/bg#bg_factory", position, nil, nil, scale)
+				local url = msg.url("game", id, "bg_item")
+				table.insert(PLANETS_IDS, url)
 				planets_count = planets_count + 1
 			end
 

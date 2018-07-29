@@ -20,7 +20,7 @@ function init(self)
 
 	MONEY = MONEY - ROCKETS_COST
 	ROCKETS_COUNT = ROCKETS_COUNT + 1
-	ROCKETS_COST = ROCKETS_COST * 1.5
+	ROCKETS_COST = math.floor(ROCKETS_COST * 1.5)
 
 	--OPENING
 	local node = gui.get_node("count_down")
@@ -41,13 +41,13 @@ function init(self)
 		node = gui.get_node("rocket")
 
 		--generating new random number for rocket
-		local number = random.random(1, 44)
+		local number = random.random(1, ROCKETS_SKIN_COUNT)
 		local opened_rockets = ""
 		for i = 1, table.maxn(OPENED_ROCKETS) do
 			opened_rockets = opened_rockets .. OPENED_ROCKETS[i] .. " "
 			if OPENED_ROCKETS[i] == number then
 				i = 1
-				number = random.random(1, 44)
+				number = random.random(1, ROCKETS_SKIN_COUNT)
 			end
 		end
 		print(TAG, "already opened rockets: ", opened_rockets)
