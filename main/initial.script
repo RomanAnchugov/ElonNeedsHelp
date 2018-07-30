@@ -31,6 +31,7 @@ function init(self)
 	monarch = require "monarch.monarch"
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
+	msg.post("main:/sound#back_sound", "play_sound")
 
 	local position = vmath.vector3(0, 0, 0)
 	factory.create("/initial#bg_image_factory", position, nil, nil, scale)

@@ -7,10 +7,12 @@ local transitions = require "monarch.transitions.gui"
 
 local function start_pressed(button)
 	monarch.show("game_screen")
+	msg.post("main:/sound#click_sound", "play_sound")
 end
 
 local function shop_pressed(button)
 	monarch.show("shop_screen")
+	msg.post("main:/sound#click_sound", "play_sound")
 end
 
 local function start_update(button)
@@ -38,7 +40,7 @@ local function shop_update(button)
 end
 
 function init(self)
-	msg.post(".", "acquire_input_focus")
+	gooey.acquire_input()
 	
 	self.transition1 = transitions.create(gui.get_node("start"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)

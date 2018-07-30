@@ -5,6 +5,7 @@ local transitions = require "monarch.transitions.gui"
 
 function no_pressed(button)
 	monarch.show("menu_screen")
+	msg.post("main:/sound#click_sound", "play_sound")
 end
 
 function no_update(button)
@@ -22,6 +23,9 @@ end
 function yes_pressed(button)
 	monarch.back()
 	msg.post("game:/bonus_driver#bonus_driver", "second_life")
+	msg.post("main:/sound#click_sound", "play_sound")
+	msg.post("main:/sound#back_sound", "stop_sound")
+	msg.post("main:/sound#game_sound", "play_sound")
 end
 
 function yes_update(button)

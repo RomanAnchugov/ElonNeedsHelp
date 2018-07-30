@@ -6,6 +6,7 @@ local pause = false
 
 function home_pressed(button)
 	monarch.show("menu_screen")
+	msg.post("main:/sound#click_sound", "play_sound")
 end
 
 function home_update(button)
@@ -21,7 +22,7 @@ function home_update(button)
 end
 
 function bonus_add_pressed(button)
-
+	msg.post("main:/sound#click_sound", "play_sound")
 end
 
 function bonus_add_update(button)
@@ -40,6 +41,8 @@ function unpause_pressed(button)
 	print(TAG, "pause_pressed")
 	msg.post("game:/rocket#rocket", "unpause")
 	monarch.back()
+	msg.post("main:/sound#back_sound", "stop_sound")
+	msg.post("main:/sound#game_sound", "play_sound")
 end
 
 function unpause_update(button)

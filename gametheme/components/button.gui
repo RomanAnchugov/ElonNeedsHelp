@@ -1,9 +1,5 @@
 script: ""
 fonts {
-  name: "example"
-  font: "/gooey/themes/kenneyblue/fonts/kenneyblue.font"
-}
-fonts {
   name: "menu_stats"
   font: "/assets/menu_stats.font"
 }
