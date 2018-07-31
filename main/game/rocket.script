@@ -56,7 +56,9 @@ function init(self)
       sprite.play_flipbook("#sprite",  "ship")
     end
   end
+  
   active = false
+  
 end
 
 function update(self, dt)
@@ -93,7 +95,9 @@ function on_message(self, message_id, message, sender)
   
   if message_id == hash("autopilot_end") then
     rocket_speed = 0
-    active = true
+    if monarch.is_top("game_screen") then
+      active = true
+    end
     click_coef = 0.4
   end
 

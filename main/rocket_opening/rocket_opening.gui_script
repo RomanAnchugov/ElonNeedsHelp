@@ -19,10 +19,6 @@ function init(self)
 	gooey.acquire_input()
 	msg.post("main:/sound#back_sound", "stop_sound")
 
-	MONEY = MONEY - ROCKETS_COST
-	ROCKETS_COUNT = ROCKETS_COUNT + 1
-	ROCKETS_COST = math.floor(ROCKETS_COST * 1.5)
-
 	--OPENING
 	local node = gui.get_node("count_down")
 	flow.start(function()

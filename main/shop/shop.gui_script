@@ -156,29 +156,34 @@ function on_input(self, action_id, action)
 				print(TAG, "money per click")
 				MONEY = MONEY - MONEY_PER_CLICK_COST
 				MONEY_PER_CLICK_COUNT = MONEY_PER_CLICK_COUNT + 1
-				MONEY_PER_CLICK_COST = math.floor(MONEY_PER_CLICK_COST * 1.5)
+				MONEY_PER_CLICK_COST = math.floor(MONEY_PER_CLICK_COST * MONEY_PER_CLICK_COEF)
 			elseif list.selected_item == 3 and MONEY >= SECOND_LIFE_COST then --second life
 				print(TAG, "second life")
 				MONEY = MONEY - SECOND_LIFE_COST
 				SECOND_LIFE_COUNT = SECOND_LIFE_COUNT + 1
-				SECOND_LIFE_COST = math.floor(SECOND_LIFE_COST * 1.5)
+				SECOND_LIFE_COST = math.floor(SECOND_LIFE_COST * SECOND_LIFE_COEF)
 			elseif list.selected_item == 4 and MONEY >= BOOST_COST then --boost
 				print(TAG, "boost")
 				MONEY = MONEY - BOOST_COST
 				BOOST_COUNT = BOOST_COUNT + 1
-				BOOST_COST = math.floor(BOOST_COST * 1.5)
+				BOOST_COST = math.floor(BOOST_COST * BOOST_COEF)
 			elseif list.selected_item == 5 and MONEY >= AUTOPILOT_COST then --autopilot
 				print(TAG, "autopilot")
 				MONEY = MONEY - AUTOPILOT_COST
 				AUTOPILOT_COUNT = AUTOPILOT_COUNT + 1
-				AUTOPILOT_COST = math.floor(AUTOPILOT_COST * 1.5)
+				AUTOPILOT_COST = math.floor(AUTOPILOT_COST * AUTOPILOT_COEF)
 			elseif list.selected_item == 7 and MONEY >= ENGINES_COST then --engines
 				print(TAG, "engines")				
 				MONEY = MONEY - ENGINES_COST
 				ENGINES_COUNT = ENGINES_COUNT + 1
-				ENGINES_COST = math.floor(ENGINES_COST * 1.5)
+				ENGINES_COST = math.floor(ENGINES_COST * ENGINES_COEF)
 			elseif list.selected_item == 8 and MONEY >= ROCKETS_COST then --rockets
 				print(TAG, "rockets")
+
+				MONEY = MONEY - ROCKETS_COST
+				ROCKETS_COUNT = ROCKETS_COUNT + 1
+				ROCKETS_COST = math.floor(ROCKETS_COST * ROCKETS_COEF)
+				
 				local position = vmath.vector3(1000, 840, 0)
 				local node = gui.get_node("money")
 				gui.animate(node, "position", position, gui.EASING_INSINE, .5)
