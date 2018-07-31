@@ -2,8 +2,10 @@ local TAG = "second_life.gui_script"
 local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
+require "main/varibles"
 
 function no_pressed(button)
+	msg.post("game:/gui#game", "save_result")
 	monarch.show("menu_screen")
 	msg.post("main:/sound#click_sound", "play_sound")
 end
