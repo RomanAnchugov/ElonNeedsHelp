@@ -11,7 +11,7 @@ local opened = false
 
 function generate_variant()
 	local node = gui.get_node("variants")
-	local number = random.random(1, 44)
+	local number = random.random(1, 45)
 	gui.play_flipbook(node, number .. "")
 end
 

@@ -9,6 +9,7 @@ function save()
 	defsave.set(filename, "best_score", {BEST_SCORE})
 
 	defsave.set(filename, "money_per_click_count", {MONEY_PER_CLICK_COUNT})
+	defsave.set(filename, "points_per_click_count", {POINTS_PER_CLICK_COUNT})
 	defsave.set(filename, "second_life_count", {SECOND_LIFE_COUNT})
 	defsave.set(filename, "boost_count", {BOOST_COUNT})
 	defsave.set(filename, "autopilot_count", {AUTOPILOT_COUNT})
@@ -16,6 +17,7 @@ function save()
 	defsave.set(filename, "rockets_count", {ROCKETS_COUNT})
 
 	defsave.set(filename, "money_per_click_cost", {MONEY_PER_CLICK_COST})
+	defsave.set(filename, "points_per_click_cost", {POINTS_PER_CLICK_COST})
 	defsave.set(filename, "second_life_cost", {SECOND_LIFE_COST})
 	defsave.set(filename, "boost_cost", {BOOST_COST})
 	defsave.set(filename, "autopilot_cost", {AUTOPILOT_COST})
@@ -45,6 +47,7 @@ function init(self)
 	local best_score = defsave.get(filename, "best_score")
 
 	local money_per_click_count  = defsave.get(filename, "money_per_click_count")
+	local points_per_click_count = defsave.get(filename, "points_per_click_count")
 	local second_life_count = defsave.get(filename, "second_life_count")
 	local boost_count = defsave.get(filename, "boost_count")
 	local autopilot_count = defsave.get(filename, "autopilot_count")
@@ -52,6 +55,7 @@ function init(self)
 	local rockets_count = defsave.get(filename, "rockets_count")
 
 	local money_per_click_cost = defsave.get(filename, "money_per_click_cost")
+	local points_per_click_cost = defsave.get(filename, "points_per_click_cost")
 	local second_life_cost = defsave.get(filename, "second_life_cost")
 	local boost_cost = defsave.get(filename, "boost_cost")
 	local autopilot_cost = defsave.get(filename, "autopilot_cost")
@@ -61,18 +65,22 @@ function init(self)
 	local opened_rockets = defsave.get(filename, "opened_rockets")
 	
 	if money ~= nil and best_score ~= nil and money_per_click_count ~= nil 
+	and points_per_click_count ~= nil
 	and second_life_count ~= nil and boost_count ~= nil and autopilot_count ~= nil
 	and engines_count ~= nil and rockets_count ~= nil 
-	and money_per_click_cost ~= nil and second_life_cost ~= nil and boost_cost ~= nil
+	and money_per_click_cost ~= nil and points_per_click_cost ~= nil
+	and second_life_cost ~= nil and boost_cost ~= nil
 	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil
 	and opened_rockets ~= nil then
 		print(TAG, "file exist")
 		
 		if table.maxn(money) ~= 0 and table.maxn(best_score) ~= 0 
 		and table.maxn(money_per_click_count) ~= 0 and table.maxn(second_life_count) ~= 0 
+		and table.maxn(points_per_click_count) ~= 0
 		and table.maxn(boost_count) ~= 0 and table.maxn(autopilot_count) ~= 0
 		and table.maxn(engines_count) ~= 0 and table.maxn(rockets_count) ~= 0 
 		and table.maxn(money_per_click_cost) ~= 0 and table.maxn(second_life_cost) ~= 0 
+		and table.maxn(points_per_click_cost) ~= 0
 		and table.maxn(boost_cost) ~= 0 and table.maxn(autopilot_cost) ~= 0 
 		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0
 		and table.maxn(opened_rockets) ~= 0 then
@@ -83,6 +91,7 @@ function init(self)
 			BEST_SCORE = best_score[1]
 
 			MONEY_PER_CLICK_COUNT = money_per_click_count[1]
+			POINTS_PER_CLICK_COUNT = points_per_click_count[1]
 			SECOND_LIFE_COUNT = second_life_count[1]
 			BOOST_COUNT = boost_count[1]
 			AUTOPILOT_COUNT = autopilot_count[1]
@@ -90,6 +99,7 @@ function init(self)
 			ROCKETS_COUNT = rockets_count[1]
 
 			MONEY_PER_CLICK_COST = money_per_click_cost[1]
+			POINTS_PER_CLICK_COST = points_per_click_cost[1]
 			SECOND_LIFE_COST = second_life_cost[1]
 			BOOST_COST = boost_cost[1]
 			AUTOPILOT_COST = autopilot_cost[1]
