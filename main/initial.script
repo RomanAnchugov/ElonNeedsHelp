@@ -29,7 +29,29 @@ function save()
 	defsave.save(filename)
 end
 
+local function admob_listener(event)
+	print(TAG, "admob event type", event.type)
+	print(TAG, "admob event phase", event.phase)
+
+	if event.phase == 'init' then 
+	admob.load{
+		type = 'banner',
+		id = "ca-app-pub-3825550765420734/6655086030",
+		size = 'smart',
+		position = 'bottom',
+		keywords = {'puzzle', 'game'}
+	}
+end
+end
+
 function init(self)
+	admob.init({
+		app_id = "ca-app-pub-3825550765420734~4555019385",
+		test = true,
+		listener = admob_listener
+	})
+
+	
 	monarch = require "monarch.monarch"
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
