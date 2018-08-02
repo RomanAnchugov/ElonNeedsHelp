@@ -17,14 +17,18 @@ end
 
 function init(self)
 	gooey.acquire_input()
-	msg.post("main:/sound#back_sound", "stop_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#back_sound", "stop_sound")
+	end
 
 	--OPENING
 	local node = gui.get_node("count_down")
 	flow.start(function()
 		flow.delay(.5)
 		gui.set_text(node, "5")
-		msg.post("main:/sound#roulete_sound", "play_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#roulete_sound", "play_sound")
+		end
 		flow.delay(1)
 		gui.set_text(node, "4")
 		flow.delay(1)
@@ -60,8 +64,10 @@ function init(self)
 		--fireworks and other particles
 		flow.delay(.75)
 		node = gui.get_node("particlefx1")
-		msg.post("main:/sound#yay_sound", "play_sound")
-		msg.post("main:/sound#fireworks_sound", "play_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#yay_sound", "play_sound")
+			msg.post("main:/sound#fireworks_sound", "play_sound")
+		end
 		gui.play_particlefx(node)
 		flow.delay(.5)
 		gui.play_particlefx(gui.get_node("particlefx2"))
@@ -73,9 +79,11 @@ function init(self)
 		gui.play_particlefx(gui.get_node("particlefx5"))
 		gui.play_particlefx(gui.get_node("particlefx6"))
 		flow.delay(.2)
-		msg.post("main:/sound#bells_sound", "play_sound")
 		gui.play_particlefx(gui.get_node("shine"))
-		msg.post("main:/sound#back_sound", "play_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#bells_sound", "play_sound")
+			msg.post("main:/sound#back_sound", "play_sound")
+		end
 	end)
 
 	--SHOW DEMOS 
@@ -132,7 +140,10 @@ function on_input(self, action_id, action)
 		local color = vmath.vector4(0, 0, 0, 0)
 		gui.animate(node, "color", color, gui.EASING_INSINE, .5)
 		monarch.back()
-		msg.post("main:/sound#bells_sound", "stop_sound")
+
+		if IS_SOUND then
+			msg.post("main:/sound#bells_sound", "stop_sound")
+		end
 	end
 end
 

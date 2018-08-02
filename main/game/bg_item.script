@@ -25,10 +25,6 @@ function init(self)
 	self.bonus_speed = 0
 end
 
-function final(self)
-	
-end
-
 function update(self, dt)
 	
 	local position = go.get_position()
@@ -46,13 +42,4 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("boost") then
 		self.bonus_speed = 500
 	end
-end
-
-function on_input(self, action_id, action)
-	
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
 end

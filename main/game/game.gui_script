@@ -39,9 +39,11 @@ function pause_pressed(button)
 	msg.post(BG_IMAGE_ID, "unflight")
 	msg.post("game:/rocket#rocket", "pause")
 	monarch.show("pause_screen")
-	msg.post("main:/sound#click_sound", "play_sound")
-	msg.post("main:/sound#back_sound", "play_sound")
-	msg.post("main:/sound#game_sound", "stop_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+		msg.post("main:/sound#back_sound", "play_sound")
+		msg.post("main:/sound#game_sound", "stop_sound")
+	end
 end
 
 function pause_update(button)
@@ -60,7 +62,9 @@ function boost_pressed(button)
 	if BOOST_COUNT >= 1 then
 		msg.post("game:/bonus_driver#bonus_driver", "boost", {planets_count})
 		boost = true
-		msg.post("main:/sound#click_sound", "play_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#click_sound", "play_sound")
+		end
 	end
 	
 end
@@ -83,7 +87,9 @@ function autopilot_pressed(button)
 	if AUTOPILOT_COUNT >= 1 and not autopilot then
 		msg.post("game:/bonus_driver#bonus_driver", "autopilot")
 		autopilot = true
-		msg.post("main:/sound#click_sound", "play_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#click_sound", "play_sound")
+		end
 	end
 end
 function autopilot_update(button)
@@ -201,11 +207,13 @@ function on_message(self, message_id, message, sender)
 			vibrate.trigger()
 		end
 		
-		msg.post("main:/sound#lose_sound", "play_sound")
 		msg.post("main:/initial#initial", "save")
 		msg.post(BG_IMAGE_ID, "unflight")
-		msg.post("main:/sound#back_sound", "play_sound")
-		msg.post("main:/sound#game_sound", "stop_sound")
+		if IS_SOUND then
+			msg.post("main:/sound#lose_sound", "play_sound")
+			msg.post("main:/sound#back_sound", "play_sound")
+			msg.post("main:/sound#game_sound", "stop_sound")
+		end
 		if SECOND_LIFE_COUNT == 0 then
 			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 			if display_score > BEST_SCORE then
@@ -243,8 +251,10 @@ function on_input(self, action_id, action)
 				gui.set_enabled(node, false)
 			end)
 			msg.post(BG_IMAGE_ID, "flight")
-			msg.post("main:/sound#back_sound", "stop_sound")
-			msg.post("main:/sound#game_sound", "play_sound")
+			if IS_SOUND then
+				msg.post("main:/sound#back_sound", "stop_sound")
+				msg.post("main:/sound#game_sound", "play_sound")
+			end
 		end
 
 		--updating score text

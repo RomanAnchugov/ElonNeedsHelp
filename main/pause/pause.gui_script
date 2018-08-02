@@ -3,10 +3,13 @@ local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 local pause = false
+require "main/varibles"
 
 function home_pressed(button)
 	monarch.show("menu_screen")
-	msg.post("main:/sound#click_sound", "play_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 function home_update(button)
@@ -22,7 +25,9 @@ function home_update(button)
 end
 
 function bonus_add_pressed(button)
-	msg.post("main:/sound#click_sound", "play_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 function bonus_add_update(button)
@@ -41,8 +46,10 @@ function unpause_pressed(button)
 	print(TAG, "pause_pressed")
 	msg.post("game:/rocket#rocket", "unpause")
 	monarch.back()
-	msg.post("main:/sound#back_sound", "stop_sound")
-	msg.post("main:/sound#game_sound", "play_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#back_sound", "stop_sound")
+		msg.post("main:/sound#game_sound", "play_sound")
+	end
 end
 
 function unpause_update(button)
@@ -73,15 +80,6 @@ function init(self)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0, 0)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
-end
 
 function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
@@ -92,9 +90,4 @@ function on_input(self, action_id, action)
 	gooey.button("home/bg", action_id, action, home_pressed, home_update)
 	gooey.button("bonus_add/bg", action_id, action, bonus_add_pressed, bonus_add_update)
 	gooey.button("unpause/bg", action_id, action, unpause_pressed, unpause_update)
-end
-
-function on_reload(self)
-	-- Add input-handling code here
-	-- Remove this function if not needed
 end

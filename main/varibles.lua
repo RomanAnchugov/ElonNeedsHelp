@@ -30,3 +30,5 @@ ROCKETS_SKIN_COUNT = 45
 
 PLANETS_IDS = {}
 BG_IMAGE_ID = ""
+
+IS_SOUND = false

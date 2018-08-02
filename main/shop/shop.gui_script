@@ -10,7 +10,10 @@ function back_pressed(button)
 	local node = gui.get_node("money")
 	gui.animate(node, "scale", .4, gui.EASING_INSINE, .5)
 	monarch.back()
-	msg.post("main:/sound#click_sound", "play_sound")
+
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 function back_update(button)
@@ -204,7 +207,9 @@ function on_input(self, action_id, action)
 				gui.animate(node, "position", position, gui.EASING_INSINE, .5)
 				monarch.show("rocket_opening_screen")
 			end
-			msg.post("main:/sound#click_sound", "play_sound")
+			if IS_SOUND then
+				msg.post("main:/sound#click_sound", "play_sound")
+			end
 			update_gui()
 		end)
 	

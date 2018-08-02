@@ -7,12 +7,16 @@ local transitions = require "monarch.transitions.gui"
 
 local function start_pressed(button)
 	monarch.show("game_screen")
-	msg.post("main:/sound#click_sound", "play_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 local function shop_pressed(button)
 	monarch.show("shop_screen")
-	msg.post("main:/sound#click_sound", "play_sound")
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 local function start_update(button)
@@ -94,9 +98,4 @@ end
 function on_input(self, action_id, action)
 	gooey.button("start_bg", action_id, action, start_pressed, start_update)
 	gooey.button("shop_bg", action_id, action, shop_pressed, shop_update)
-end
-
-function on_reload(self)
-	-- Add input-handling code here
-	-- Remove this function if not needed
 end
