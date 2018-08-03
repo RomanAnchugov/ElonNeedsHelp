@@ -189,7 +189,7 @@ function on_message(self, message_id, message, sender)
 
 	
 	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
-		print("Show in done!")
+		admob.hide_banner()
 	end
 
 	if message_id == hash("set_boost") then
