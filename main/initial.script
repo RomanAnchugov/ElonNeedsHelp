@@ -33,6 +33,14 @@ local function admob_listener(event)
 	print(TAG, "admob event type", event.type)
 	print(TAG, "admob event phase", event.phase)
 
+	if event.phase == 'loaded' and event.type == 'interstitial' then
+		admob.show('interstitial')
+	end
+
+	if event.phase == 'loaded' and event.type == 'rewarded' then
+		admob.show('rewarded')
+	end
+
 	if event.phase == 'init' then 
 	admob.load{
 		type = 'banner',
@@ -41,7 +49,20 @@ local function admob_listener(event)
 		position = 'bottom',
 		keywords = {'puzzle', 'game'}
 	}
-end
+	admob.load{
+		type = 'interstitial',
+		id = 'ca-app-pub-3825550765420734/6419507656',
+		immersive = true,
+		keywords = {'action', 'game'}
+	}
+
+	admob.load{
+		type = 'rewarded',
+		id = 'ca-app-pub-3825550765420734/7463102373',
+		immersive = true,
+		keywords = {'action', 'game'}
+	}
+	end
 end
 
 function init(self)
@@ -51,7 +72,6 @@ function init(self)
 		listener = admob_listener
 	})
 
-	
 	monarch = require "monarch.monarch"
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
