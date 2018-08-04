@@ -1,0 +1,72 @@
+local gooey = require "gooey.gooey"
+
+local function sound_checked(checkbox)
+end
+
+local function sound_update(checkbox)
+	if checkbox.released_now then
+		if checkbox.checked then
+			gui.play_flipbook(checkbox.node, hash("custom_button_pressed"))
+		else
+			gui.play_flipbook(checkbox.node, hash("custom_button_idle"))
+		end
+	end
+end
+
+local function vibration_checked(checkbox)
+end
+
+local function vibration_update(checkbox)
+	if checkbox.released_now then
+		if checkbox.checked then
+			gui.play_flipbook(checkbox.node, hash("custom_button_pressed"))
+		else
+			gui.play_flipbook(checkbox.node, hash("custom_button_idle"))
+		end
+	end
+end
+
+local function reset_pressed(button)
+end
+
+local function reset_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	end
+end
+
+function init(self)
+	gooey.acquire_input()
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	gooey.checkbox("sound/box", action_id, action, sound_checked, sound_update)
+	gooey.checkbox("vibration/box", action_id, action, vibration_checked, vibration_update)
+	gooey.button("reset/bg", action_id, action, reset_pressed, reset_update)
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end

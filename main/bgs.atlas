@@ -1,0 +1,12 @@
+images {
+  image: "/assets/bgs/1.png"
+}
+images {
+  image: "/assets/bgs/2.png"
+}
+images {
+  image: "/assets/bgs/3.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -24,6 +24,7 @@ function save()
 	defsave.set(filename, "autopilot_cost", {AUTOPILOT_COST})
 	defsave.set(filename, "engines_cost", {ENGINES_COST})
 	defsave.set(filename, "rockets_cost", {ROCKETS_COST})
+	defsave.set(filename, "rockets_best_score", {ROCKETS_BEST_SCORE})
 
 	defsave.set(filename, "opened_rockets", {OPENED_ROCKETS})
 
@@ -100,6 +101,7 @@ function init(self)
 	local autopilot_cost = defsave.get(filename, "autopilot_cost")
 	local engines_cost = defsave.get(filename, "engines_cost")
 	local rockets_cost = defsave.get(filename, "rockets_cost")
+	local rockets_best_score = defsave.get(filename, "rockets_best_score")
 
 	local opened_rockets = defsave.get(filename, "opened_rockets")
 	
@@ -110,7 +112,7 @@ function init(self)
 	and money_per_click_cost ~= nil and points_per_click_cost ~= nil
 	and second_life_cost ~= nil and boost_cost ~= nil
 	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil
-	and opened_rockets ~= nil then
+	and opened_rockets ~= nil and rockets_best_score ~= nil then
 		print(TAG, "file exist")
 		
 		if table.maxn(money) ~= 0 and table.maxn(best_score) ~= 0 
@@ -122,7 +124,7 @@ function init(self)
 		and table.maxn(points_per_click_cost) ~= 0
 		and table.maxn(boost_cost) ~= 0 and table.maxn(autopilot_cost) ~= 0 
 		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0
-		and table.maxn(opened_rockets) ~= 0 then
+		and table.maxn(opened_rockets) ~= 0 and table.maxn(rockets_best_score) ~= 0 then
 
 			print(TAG, "data exist")
 			
@@ -144,6 +146,7 @@ function init(self)
 			AUTOPILOT_COST = autopilot_cost[1]
 			ENGINES_COST = engines_cost[1]
 			ROCKETS_COST = rockets_cost[1]
+			ROCKETS_BEST_SCORE = rockets_best_score[1]
 
 			OPENED_ROCKETS = opened_rockets[1]
 		else

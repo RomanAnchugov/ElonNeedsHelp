@@ -77,7 +77,7 @@ function update_gui()
 	node = gui.get_node("list_item6/text")
 	gui.set_text(node, "ROCKETS(" .. ROCKETS_COUNT .. ")")
 	node = gui.get_node("list_item6/cost")
-	gui.set_text(node, ROCKETS_COST .. "$")
+	gui.set_text(node, ROCKETS_BEST_SCORE .. " BEST\n" .. ROCKETS_COST .. "$")
 
 	--SET AVAILIBILITY	
 	if MONEY < MONEY_PER_CLICK_COST then
@@ -110,7 +110,7 @@ function update_gui()
 		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
 	end
 
-	if MONEY < ROCKETS_COST then
+	if MONEY < ROCKETS_COST or BEST_SCORE < ROCKETS_BEST_SCORE then
 		node = gui.get_node("list_item6/bg")
 		gui.set_color(node, vmath.vector4(1, 1, 1, .5))
 	end
@@ -195,12 +195,13 @@ function on_input(self, action_id, action)
 				MONEY = MONEY - ENGINES_COST
 				ENGINES_COUNT = ENGINES_COUNT + 1
 				ENGINES_COST = math.floor(ENGINES_COST * ENGINES_COEF)
-			elseif list.selected_item == 9 and MONEY >= ROCKETS_COST then --rockets
+			elseif list.selected_item == 9 and MONEY >= ROCKETS_COST and BEST_SCORE >= ROCKETS_BEST_SCORE then --rockets
 				print(TAG, "rockets")
 
 				MONEY = MONEY - ROCKETS_COST
 				ROCKETS_COUNT = ROCKETS_COUNT + 1
 				ROCKETS_COST = math.floor(ROCKETS_COST * ROCKETS_COEF)
+				ROCKETS_BEST_SCORE = ROCKETS_BEST_SCORE + 100
 				
 				local position = vmath.vector3(1000, 840, 0)
 				local node = gui.get_node("money")

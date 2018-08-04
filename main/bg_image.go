@@ -16,8 +16,8 @@ components {
 embedded_components {
   id: "space"
   type: "sprite"
-  data: "tile_set: \"/main/main.atlas\"\n"
-  "default_animation: \"Nebula Aqua-Pink\"\n"
+  data: "tile_set: \"/main/bgs.atlas\"\n"
+  "default_animation: \"3\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -36,8 +36,8 @@ embedded_components {
 embedded_components {
   id: "space1"
   type: "sprite"
-  data: "tile_set: \"/main/main.atlas\"\n"
-  "default_animation: \"Nebula Aqua-Pink\"\n"
+  data: "tile_set: \"/main/bgs.atlas\"\n"
+  "default_animation: \"3\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

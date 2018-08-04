@@ -1,14 +1,19 @@
 local TAG = "bg_image.script"
+local random = require "main/random"
+require "main/varibles"
 
 local speed = 50
 function init(self)
 	self.created_next = false
+	if BG_NUMBER == nil then
+		BG_NUMBER = random.random(1, 3)
+	end
+	local url1 = msg.url("#space")
+	local url2 = msg.url("#space1")
+	sprite.play_flipbook(url1, BG_NUMBER .. "")
+	sprite.play_flipbook(url2, BG_NUMBER .. "")
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
 
 function update(self, dt)
 	local position = go.get_position()

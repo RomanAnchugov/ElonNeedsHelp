@@ -14,9 +14,9 @@ local LISTITEM_SELECTED = hash("custom_button_pressed")
 local LISTITEM_PRESSED = hash("custom_button_pressed")
 local LISTITEM = hash("custom_button_idle")
 
-local CHECKBOX_PRESSED = hash("grey_boxCross")
-local CHECKBOX_CHECKED = hash("blue_boxCross")
-local CHECKBOX = hash("grey_box")
+local CHECKBOX_PRESSED = hash("custom_button_idle")
+local CHECKBOX_CHECKED = hash("cutom_button_pressed")
+local CHECKBOX = hash("custom_button_idle")
 
 local RADIO_PRESSED = hash("grey_boxTick")
 local RADIO_SELECTED = hash("blue_boxTick")
