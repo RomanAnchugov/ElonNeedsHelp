@@ -33,5 +33,6 @@ PLANETS_IDS = {}
 BG_IMAGE_ID = ""
 
 IS_SOUND = false
+IS_VIBRATION = false
 
 BG_NUMBER = nil

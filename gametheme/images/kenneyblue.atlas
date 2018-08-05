@@ -8,10 +8,13 @@ images {
   image: "/gametheme/images/static_list_bg.png"
 }
 images {
-  image: "/gametheme/images/list_item_bg.png"
+  image: "/gametheme/images/baseline_home_white_48dp.png"
 }
 images {
-  image: "/gametheme/images/baseline_home_white_48dp.png"
+  image: "/gametheme/images/custom_button_checked.png"
+}
+images {
+  image: "/gametheme/images/custom_button_unchecked.png"
 }
 margin: 0
 extrude_borders: 1

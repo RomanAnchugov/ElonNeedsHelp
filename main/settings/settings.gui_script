@@ -1,32 +1,41 @@
+local TAG = "settings.gui_script"
+
 local gooey = require "gooey.gooey"
+local monarch = require "monarch.monarch"
+local transitions = require "monarch.transitions.gui"
+require "main/varibles"
 
 local function sound_checked(checkbox)
 end
 
 local function sound_update(checkbox)
 	if checkbox.released_now then
-		if checkbox.checked then
-			gui.play_flipbook(checkbox.node, hash("custom_button_pressed"))
-		else
-			gui.play_flipbook(checkbox.node, hash("custom_button_idle"))
-		end
+		IS_SOUND = checkbox.checked
+	end
+	if IS_SOUND then
+		gui.play_flipbook(checkbox.node, hash("custom_button_checked"))
+	else
+		gui.play_flipbook(checkbox.node, hash("custom_button_unchecked"))
 	end
 end
 
 local function vibration_checked(checkbox)
+	
 end
 
 local function vibration_update(checkbox)
 	if checkbox.released_now then
-		if checkbox.checked then
-			gui.play_flipbook(checkbox.node, hash("custom_button_pressed"))
-		else
-			gui.play_flipbook(checkbox.node, hash("custom_button_idle"))
-		end
+		IS_VIBRATION = checkbox.checked
+	end
+	if IS_VIBRATION then
+		gui.play_flipbook(checkbox.node, hash("custom_button_checked"))
+	else
+		gui.play_flipbook(checkbox.node, hash("custom_button_unchecked"))
 	end
 end
 
 local function reset_pressed(button)
+	--TODO: in init reset all data
 end
 
 local function reset_update(button)
@@ -41,8 +50,72 @@ local function reset_update(button)
 	end
 end
 
+local function back_pressed(button)
+	print(TAG, "music palying: ", sound.is_music_playing())
+	if not IS_SOUND then
+		msg.post("main:/sound#back_sound", "stop_sound")
+	elseif not sound.is_music_playing() then
+		msg.post("main:/sound#back_sound", "play_sound")
+	end
+	monarch.back()
+end
+
+local function back_update(button)
+	if button.pressed_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif button.released_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	elseif not button.pressed and button.over_now then
+		gui.play_flipbook(button.node, hash("custom_button_pressed"))
+	elseif not button.pressed and button.out_now then
+		gui.play_flipbook(button.node, hash("custom_button_idle"))
+	end
+end
+
 function init(self)
 	gooey.acquire_input()
+
+	self.transition1 = transitions.create(gui.get_node("box"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition2 = transitions.create(gui.get_node("back/bg"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition3 = transitions.create(gui.get_node("sound/box"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition4 = transitions.create(gui.get_node("vibration/box"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	
+	self.transition5 = transitions.create(gui.get_node("reset/bg"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition6 = transitions.create(gui.get_node("sound/label"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition7 = transitions.create(gui.get_node("vibration/label"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 end
 
 function final(self)
@@ -56,14 +129,20 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	self.transition1.handle(message_id, message, sender)
+	self.transition2.handle(message_id, message, sender)
+	self.transition3.handle(message_id, message, sender)
+	self.transition4.handle(message_id, message, sender)
+	self.transition5.handle(message_id, message, sender)
+	self.transition6.handle(message_id, message, sender)
+	self.transition7.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
 	gooey.checkbox("sound/box", action_id, action, sound_checked, sound_update)
 	gooey.checkbox("vibration/box", action_id, action, vibration_checked, vibration_update)
 	gooey.button("reset/bg", action_id, action, reset_pressed, reset_update)
+	gooey.button("back/bg", action_id, action, back_pressed, back_update)
 end
 
 function on_reload(self)

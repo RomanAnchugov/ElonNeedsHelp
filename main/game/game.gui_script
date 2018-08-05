@@ -202,7 +202,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 
-		if vibrate then
+		if vibrate and IS_VIBRATION then
 			print(TAG, "vibration")
 			vibrate.trigger()
 		end
