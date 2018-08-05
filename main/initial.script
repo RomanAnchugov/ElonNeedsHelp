@@ -28,6 +28,9 @@ function save()
 
 	defsave.set(filename, "opened_rockets", {OPENED_ROCKETS})
 
+	defsave.set(filename, "is_sound", {IS_SOUND})
+	defsave.set(filename, "is_vibration", {IS_VIBRATION})
+
 	defsave.save(filename)
 end
 
@@ -71,10 +74,6 @@ function init(self)
 	monarch.show("menu_screen")
 	particlefx.play("/initial#stars")
 
-	if IS_SOUND then
-		msg.post("main:/sound#back_sound", "play_sound")
-	end
-
 	local position = vmath.vector3(0, 0, 0)
 	factory.create("/initial#bg_image_factory", position, nil, nil, scale)
 
@@ -104,6 +103,9 @@ function init(self)
 	local rockets_best_score = defsave.get(filename, "rockets_best_score")
 
 	local opened_rockets = defsave.get(filename, "opened_rockets")
+
+	local is_sound = defsave.get(filename, "is_sound")
+	local is_vibration = defsave.get(filename, "is_vibration")
 	
 	if money ~= nil and best_score ~= nil and money_per_click_count ~= nil 
 	and points_per_click_count ~= nil
@@ -112,7 +114,8 @@ function init(self)
 	and money_per_click_cost ~= nil and points_per_click_cost ~= nil
 	and second_life_cost ~= nil and boost_cost ~= nil
 	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil
-	and opened_rockets ~= nil and rockets_best_score ~= nil then
+	and opened_rockets ~= nil and rockets_best_score ~= nil 
+	and is_sound ~= nil and is_vibration ~= nil then
 		print(TAG, "file exist")
 		
 		if table.maxn(money) ~= 0 and table.maxn(best_score) ~= 0 
@@ -124,7 +127,8 @@ function init(self)
 		and table.maxn(points_per_click_cost) ~= 0
 		and table.maxn(boost_cost) ~= 0 and table.maxn(autopilot_cost) ~= 0 
 		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0
-		and table.maxn(opened_rockets) ~= 0 and table.maxn(rockets_best_score) ~= 0 then
+		and table.maxn(opened_rockets) ~= 0 and table.maxn(rockets_best_score) ~= 0
+		and table.maxn(is_sound) ~= 0 and table.maxn(is_vibration) ~= 0 then
 
 			print(TAG, "data exist")
 			
@@ -149,6 +153,9 @@ function init(self)
 			ROCKETS_BEST_SCORE = rockets_best_score[1]
 
 			OPENED_ROCKETS = opened_rockets[1]
+
+			IS_SOUND = is_sound[1]
+			IS_VIBRATION = is_vibration[1]
 		else
 			save()
 			print(TAG, "data not exist, set default data")
@@ -156,6 +163,11 @@ function init(self)
 	else
 		save()
 		print(TAG, "nothing exist, save")
+	end
+
+	if IS_SOUND then
+		msg.post("main:/sound#back_sound", "play_sound")
+		IS_PLAYING = true
 	end
 	
 end

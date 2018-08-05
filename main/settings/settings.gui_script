@@ -54,8 +54,10 @@ local function back_pressed(button)
 	print(TAG, "music palying: ", sound.is_music_playing())
 	if not IS_SOUND then
 		msg.post("main:/sound#back_sound", "stop_sound")
-	elseif not sound.is_music_playing() then
+		IS_PLAYING = false
+	elseif not IS_PLAYING then
 		msg.post("main:/sound#back_sound", "play_sound")
+		IS_PLAYING = true
 	end
 	monarch.back()
 end
@@ -118,16 +120,6 @@ function init(self)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
-end
-
 function on_message(self, message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
@@ -143,9 +135,4 @@ function on_input(self, action_id, action)
 	gooey.checkbox("vibration/box", action_id, action, vibration_checked, vibration_update)
 	gooey.button("reset/bg", action_id, action, reset_pressed, reset_update)
 	gooey.button("back/bg", action_id, action, back_pressed, back_update)
-end
-
-function on_reload(self)
-	-- Add input-handling code here
-	-- Remove this function if not needed
 end

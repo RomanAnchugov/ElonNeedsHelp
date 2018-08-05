@@ -201,6 +201,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("lose") then
+		msg.post("main:/initial#initial", "show_banner")
 
 		if vibrate and IS_VIBRATION then
 			print(TAG, "vibration")
