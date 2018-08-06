@@ -485,8 +485,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Ads \n"
-  "Bonus"
+  text: "BONUS"
   font: "menu_stats"
   id: "bonus_add/text"
   xanchor: XANCHOR_NONE

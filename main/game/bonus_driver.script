@@ -1,4 +1,5 @@
 require "main/varibles"
+local random = require "main/random" 
 local TAG = "bonus_driver.script: "
 
 local autopilot_time = 0
@@ -49,5 +50,14 @@ function on_message(self, message_id, message, sender)
 		msg.post("game:/rocket", "boost")
 		msg.post("game:/bg#bg", "boost")
 		msg.post("game:/gui#game", "set_boost", {true})
+	end
+
+	if message_id == hash("ads_bonus") then
+		local variant = random.random(1, 100)
+		if variant < 50 then
+			AUTOPILOT_COUNT = AUTOPILOT_COUNT + 1
+		else
+			BOOST_COUNT = BOOST_COUNT + 1
+		end
 	end
 end

@@ -40,26 +40,45 @@ local function admob_listener(event)
 
 	if event.phase == 'init' then 
 		admob_init = true
-	admob.load{
-		type = 'banner',
-		id = "ca-app-pub-3825550765420734/6655086030",
-		size = 'smart',
-		position = 'bottom',
-		keywords = {'puzzle', 'game'}
-	}
-	admob.load{
-		type = 'interstitial',
-		id = 'ca-app-pub-3825550765420734/6419507656',
-		immersive = true,
-		keywords = {'action', 'game'}
-	}
+		admob.load{
+			type = 'banner',
+			id = "ca-app-pub-3825550765420734/6655086030",
+			size = 'smart',
+			position = 'bottom',
+			keywords = {'puzzle', 'game'}
+		}
+		admob.load{
+			type = 'interstitial',
+			id = 'ca-app-pub-3825550765420734/6419507656',
+			immersive = true,
+			keywords = {'action', 'game'}
+		}
 
-	admob.load{
-		type = 'rewarded',
-		id = 'ca-app-pub-3825550765420734/7463102373',
-		immersive = true,
-		keywords = {'action', 'game'}
-	}
+		admob.load{
+			type = 'rewarded',
+			id = 'ca-app-pub-3825550765420734/7463102373',
+			immersive = true,
+			keywords = {'action', 'game'}
+		}
+	end
+
+	if event.type == 'rewarded' and event.phase == 'rewarded' then
+		msg.post("game:/bonus_driver#bonus_driver", "ads_bonus")
+		admob.load{
+			type = 'rewarded',
+			id = 'ca-app-pub-3825550765420734/7463102373',
+			immersive = true,
+			keywords = {'space', 'game'}
+		}
+	end
+
+	if event.type == 'interstitial' and event.phase == 'opened' then
+		admob.load{
+			type = 'interstitial',
+			id = 'ca-app-pub-3825550765420734/6419507656',
+			immersive = true,
+			keywords = {'space', 'game'}
+		}
 	end
 end
 

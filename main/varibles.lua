@@ -37,3 +37,5 @@ IS_PLAYING = false
 IS_VIBRATION = false
 
 BG_NUMBER = nil
+
+LOSE_COUNT = 0

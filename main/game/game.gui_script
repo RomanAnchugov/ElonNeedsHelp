@@ -70,6 +70,7 @@ function boost_pressed(button)
 end
 function boost_update(button)
 	if BOOST_COUNT >= 1 then
+		gui.set_color(button.node, vmath.vector4(1,1,1,1))
 		if button.pressed_now then
 			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif button.released_now then
@@ -94,6 +95,7 @@ function autopilot_pressed(button)
 end
 function autopilot_update(button)
 	if AUTOPILOT_COUNT >= 1 then
+		gui.set_color(button.node, vmath.vector4(1,1,1,1))
 		if button.pressed_now then
 			gui.play_flipbook(button.node, hash("custom_button_pressed"))
 		elseif button.released_now then
@@ -165,11 +167,11 @@ end
 function update(self, dt)
 	if autopilot and autopilot_time <= autopilot_duration then
 		local node = gui.get_node("score")
-		gui.set_text(node, score)
+		gui.set_text(node, display_score)
 		autopilot_time = autopilot_time + dt
 		autopilot_score = autopilot_score + dt
 		if autopilot_score >= 0.2 then
-			score = score + 1
+			display_score = display_score + 1
 			autopilot_score = 0
 			particlefx.play("/rocket#rocket_egine")
 		end
@@ -201,6 +203,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("lose") then
+		LOSE_COUNT = LOSE_COUNT + 1
 		msg.post("main:/initial#initial", "show_banner")
 
 		if vibrate and IS_VIBRATION then
@@ -219,6 +222,10 @@ function on_message(self, message_id, message, sender)
 			MONEY = MONEY + score * (1 + MONEY_PER_CLICK_COUNT)
 			if display_score > BEST_SCORE then
 				BEST_SCORE = display_score
+			end
+			if LOSE_COUNT >= 5 then
+				LOSE_COUNT = 0
+				admob.show('interstitial')
 			end
 			monarch.back()
 		else
