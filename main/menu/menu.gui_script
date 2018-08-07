@@ -1,9 +1,12 @@
 require "main/varibles"
 local TAG = "menu.gui_script: "
 
+local random = require "main/random"
 local gooey = require "gooey.gooey"
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
+
+local header_timer = nil
 
 local function start_pressed(button)
 	monarch.show("game_screen")
@@ -44,6 +47,9 @@ local function shop_update(button)
 end
 
 local function settings_pressed(button)
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 	monarch.show("settings_screen")
 end
 
@@ -60,7 +66,9 @@ local function settings_update(button)
 end
 
 local function leader_pressed(button)
-	--TODO: leaders screen
+	if IS_SOUND then
+		msg.post("main:/sound#click_sound", "play_sound")
+	end
 end
 
 local function leader_update(button)
@@ -125,6 +133,25 @@ function init(self)
 	gui.set_text(self.money, "money: " .. MONEY)
 	gui.set_text(self.best, "best: " .. BEST_SCORE)
 
+
+	local timer_flag = true
+	local timer_duration = 1.5
+	header_timer = timer.delay(timer_duration, true, function(self, handle, time_elapsed)
+		local node = gui.get_node("menu_header")
+		local color = vmath.vector4(random.random(1, 10) / 10, 
+		random.random(1, 10) / 10, 
+		random.random(1, 10) / 10, 
+		1)
+		gui.animate(node, "color", color, gui.EASING_LINEAR, timer_duration)
+
+		if timer_flag then
+			gui.animate(node, "scale", 1.1, gui.EASING_INOUTSINE, timer_duration)
+			timer_flag = false
+		else
+			gui.animate(node, "scale", 1, gui.EASING_INOUTSINE, timer_duration)
+			timer_flag = true
+		end
+	end)
 end
 
 function on_message(self, message_id, message, sender)
@@ -146,4 +173,8 @@ function on_input(self, action_id, action)
 	gooey.button("shop_bg", action_id, action, shop_pressed, shop_update)
 	gooey.button("settings/bg", action_id, action, settings_pressed, settings_update)
 	gooey.button("leader/bg", action_id, action, leader_pressed, leader_update)
+end
+
+function final(self)
+	timer.cancel(header_timer)
 end
