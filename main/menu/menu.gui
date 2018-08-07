@@ -54,7 +54,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "MENU"
+  text: "PLoR"
   font: "score"
   id: "menu_header"
   xanchor: XANCHOR_NONE
