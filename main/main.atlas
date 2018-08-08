@@ -10,6 +10,12 @@ images {
 images {
   image: "/assets/leader.png"
 }
+images {
+  image: "/assets/play.png"
+}
+images {
+  image: "/assets/shop.png"
+}
 margin: 0
 extrude_borders: 3
 inner_padding: 0
