@@ -1,4 +1,4 @@
---bg parralax control
+
 local TAG = "bg.script: "
 local random = require "main/random"
 require "main/varibles"
