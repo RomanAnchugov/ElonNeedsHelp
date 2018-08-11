@@ -285,7 +285,9 @@ function on_input(self, action_id, action)
 
 		if math.fmod(score, 50) == 0 then
 			msg.post("game:/bonus_driver#bonus_driver", "boost50", {planets_count})
-			msg.post("main:/sound#wow", "play_sound")
+			if IS_SOUND then
+				msg.post("main:/sound#wow", "play_sound")
+			end
 		end
 	end
 end

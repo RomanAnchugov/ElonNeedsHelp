@@ -72,6 +72,15 @@ local function admob_listener(event)
 		}
 	end
 
+	if event.type == 'rewarded' and event.phase == 'closed' then
+		admob.load{
+			type = 'rewarded',
+			id = 'ca-app-pub-3825550765420734/7463102373',
+			immersive = true,
+			keywords = {'space', 'game'}
+		}
+	end
+
 	if event.type == 'interstitial' and event.phase == 'opened' then
 		admob.load{
 			type = 'interstitial',
@@ -85,7 +94,7 @@ end
 function init(self)
 	admob.init({
 		app_id = "ca-app-pub-3825550765420734~4555019385",
-		test = true,
+		test = false,
 		listener = admob_listener
 	})
 
