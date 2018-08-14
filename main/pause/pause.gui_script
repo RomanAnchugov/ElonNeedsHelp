@@ -32,6 +32,9 @@ function bonus_add_pressed(button)
 
 	if admob.is_loaded('rewarded') then
 		admob.show('rewarded')
+	elseif admob.is_loaded('interstitial') then
+		admob.show('interstitial')
+		msg.post("game:/bonus_driver#bonus_driver", "ads_bonus")
 	end
 end
 
@@ -98,7 +101,7 @@ function on_input(self, action_id, action)
 end
 
 function update(self, dt)
-	if admob.is_loaded('rewarded') then
+	if admob.is_loaded('rewarded') or admob.is_loaded('interstitial') then
 		gui.set_color(gui.get_node("bonus_add/bg"), vmath.vector4(1, 1, 1, 1))
 	else
 		gui.set_color(gui.get_node("bonus_add/bg"), vmath.vector4(1, 1, 1, .5))

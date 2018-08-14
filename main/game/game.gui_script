@@ -204,7 +204,9 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("lose") then
 		LOSE_COUNT = LOSE_COUNT + 1
-		msg.post("main:/initial#initial", "show_banner")
+		if admob.is_loaded('banner') then
+			msg.post("main:/initial#initial", "show_banner")
+		end
 
 		if vibrate and IS_VIBRATION then
 			print(TAG, "vibration")

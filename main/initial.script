@@ -45,7 +45,7 @@ local function admob_listener(event)
 			id = "ca-app-pub-3825550765420734/6655086030",
 			size = 'smart',
 			position = 'bottom',
-			keywords = {'puzzle', 'game'}
+			keywords = {'action', 'game'}
 		}
 		admob.load{
 			type = 'interstitial',
@@ -70,6 +70,10 @@ local function admob_listener(event)
 			immersive = true,
 			keywords = {'space', 'game'}
 		}
+	end
+
+	if event.type == 'rewarded' and event.phase == 'failed_to_load' then
+		msg.post("menu:/gui#menu", "show_error", {event.error_message})	
 	end
 
 	if event.type == 'rewarded' and event.phase == 'closed' then
