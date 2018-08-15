@@ -1,6 +1,7 @@
 [project]
-title = ElonNeedsYourHelp
+title = PLoR
 dependencies = https://github.com/britzl/defold-orthographic/archive/1.2.1.zip,https://github.com/britzl/monarch/archive/master.zip,https://github.com/subsoap/defsave/archive/master.zip,https://github.com/britzl/gooey/archive/master.zip
+write_log = 1
 
 [bootstrap]
 main_collection = /main/main.collectionc
@@ -44,14 +45,15 @@ launch_image_2436x1125 = /assets/launch_images/ios_launch_2436x1125.png
 bundle_identifier = com.example.todo
 
 [android]
-app_icon_36x36 = /assets/app_icons/icon_36.png
-app_icon_48x48 = /assets/app_icons/icon_48.png
-app_icon_72x72 = /assets/app_icons/icon_72.png
-app_icon_96x96 = /assets/app_icons/icon_96.png
-app_icon_144x144 = /assets/app_icons/icon_144.png
-app_icon_192x192 = /assets/app_icons/icon_192.png
+app_icon_36x36 = /assets/app_icons/game_icon_36.png
+app_icon_48x48 = /assets/app_icons/game_icon_48.png
+app_icon_72x72 = /assets/app_icons/game_icon_72.png
+app_icon_96x96 = /assets/app_icons/game_icon_96.png
+app_icon_144x144 = /assets/app_icons/game_icon_144.png
+app_icon_192x192 = /assets/app_icons/game_icon_192.png
 input_method = HiddenInputField
 manifest = /admob/AndroidManifest.xml
+package = ru.romananchugov.plor
 
 [script]
 shared_state = 1
@@ -61,4 +63,7 @@ app_id = C38E162D5F481A8B
 
 [native_extension]
 app_manifest = /admob/game.appmanifest
+
+[particle_fx]
+max_particle_count = 1024
 

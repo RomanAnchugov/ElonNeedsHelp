@@ -57,8 +57,7 @@ local function admob_listener(event)
 		admob.load{
 			type = 'rewarded',
 			id = 'ca-app-pub-3825550765420734/7463102373',
-			immersive = true,
-			keywords = {'action', 'game'}
+			immersive = true
 		}
 	end
 
@@ -67,21 +66,19 @@ local function admob_listener(event)
 		admob.load{
 			type = 'rewarded',
 			id = 'ca-app-pub-3825550765420734/7463102373',
-			immersive = true,
-			keywords = {'space', 'game'}
+			immersive = true
 		}
 	end
 
 	if event.type == 'rewarded' and event.phase == 'failed_to_load' then
-		msg.post("menu:/gui#menu", "show_error", {event.error_message})	
+		
 	end
 
 	if event.type == 'rewarded' and event.phase == 'closed' then
 		admob.load{
 			type = 'rewarded',
 			id = 'ca-app-pub-3825550765420734/7463102373',
-			immersive = true,
-			keywords = {'space', 'game'}
+			immersive = true
 		}
 	end
 
