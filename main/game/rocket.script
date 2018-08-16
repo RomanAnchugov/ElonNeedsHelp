@@ -17,6 +17,8 @@ local particles_click = 0
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 
+local immersive_pause = false
+
 local function up(self)
 
   click_count = click_count + 1
@@ -42,6 +44,16 @@ local function up(self)
      click_coef = click_coef - 0.05
      click_count = 0
   end
+
+  local position = go.get_position()
+  local var = random.random(1, 100)
+  if position.y <= 300 and var <= 50 and not immersive_pause then
+    msg.post(BG_IMAGE_ID, "unflight")
+    msg.post("game:/rocket#rocket", "pause")
+    monarch.show("pause_screen")
+    immersive_pause = true
+  end
+  
 end
 
 function init(self)
