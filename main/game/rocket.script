@@ -47,9 +47,14 @@ local function up(self)
 
   local position = go.get_position()
   local var = random.random(1, 100)
-  if position.y <= 300 and var <= 50 and not immersive_pause then
+  if position.y <= 350 and var <= 50 and not immersive_pause 
+  and (admob.is_loaded('interstitial') or admob.is_loaded('rewarded'))then
     msg.post(BG_IMAGE_ID, "unflight")
     msg.post("game:/rocket#rocket", "pause")
+    if IS_SOUND then
+      msg.post("main:/sound#back_sound", "play_sound")
+      msg.post("main:/sound#game_sound", "stop_sound")
+    end
     monarch.show("pause_screen")
     immersive_pause = true
   end
@@ -84,6 +89,7 @@ function update(self, dt)
     go.set_position(position)
 
     if position.y < -100 and active then
+      BONUS_COUNT = 0
       msg.post("game:/gui#game", "lose")
       active = false
     end

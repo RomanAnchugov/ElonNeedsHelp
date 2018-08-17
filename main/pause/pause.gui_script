@@ -6,6 +6,7 @@ local pause = false
 require "main/varibles"
 
 function home_pressed(button)
+	BONUS_COUNT = 0
 	msg.post("main:/initial#initial", "show_banner")
 	monarch.show("menu_screen")
 	if IS_SOUND then
@@ -30,11 +31,14 @@ function bonus_add_pressed(button)
 		msg.post("main:/sound#click_sound", "play_sound")
 	end
 
-	if admob.is_loaded('rewarded') then
-		admob.show('rewarded')
-	elseif admob.is_loaded('interstitial') then
-		admob.show('interstitial')
-		msg.post("game:/bonus_driver#bonus_driver", "ads_bonus")
+	if BONUS_COUNT <= BONUS_CONTROL_COUNT then
+		if admob.is_loaded('rewarded') then
+			admob.show('rewarded')
+		elseif admob.is_loaded('interstitial') then
+			admob.show('interstitial')
+			msg.post("game:/bonus_driver#bonus_driver", "ads_bonus")
+		end
+		BONUS_COUNT = BONUS_COUNT + 1
 	end
 end
 
@@ -101,7 +105,7 @@ function on_input(self, action_id, action)
 end
 
 function update(self, dt)
-	if admob.is_loaded('rewarded') or admob.is_loaded('interstitial') then
+	if admob.is_loaded('rewarded') or admob.is_loaded('interstitial') and BONUS_COUNT <= BONUS_CONTROL_COUNT then
 		gui.set_color(gui.get_node("bonus_add/bg"), vmath.vector4(1, 1, 1, 1))
 	else
 		gui.set_color(gui.get_node("bonus_add/bg"), vmath.vector4(1, 1, 1, .5))

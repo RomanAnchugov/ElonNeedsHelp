@@ -39,3 +39,6 @@ IS_VIBRATION = true
 BG_NUMBER = nil
 
 LOSE_COUNT = 0
+
+BONUS_COUNT = 0--count of bonuses that were get from pause button
+BONUS_CONTROL_COUNT = 2
