@@ -14,6 +14,8 @@ local active = true
 local first_click = false
 local particles_click = 0
 
+local bonus_chance = 0
+
 local monarch = require "monarch.monarch"
 local transitions = require "monarch.transitions.gui"
 
@@ -46,8 +48,7 @@ local function up(self)
   end
 
   local position = go.get_position()
-  local var = random.random(1, 100)
-  if position.y <= 350 and var <= 50 and not immersive_pause 
+  if position.y <= 350 and bonus_chance <= 50 and not immersive_pause 
   and (admob.is_loaded('interstitial') or admob.is_loaded('rewarded'))then
     msg.post(BG_IMAGE_ID, "unflight")
     msg.post("game:/rocket#rocket", "pause")
@@ -63,6 +64,8 @@ end
 
 function init(self)
   msg.post(".","acquire_input_focus")
+
+  bonus_chance = random.random(1, 100)
   
   if ROCKETS_COUNT > 0 then
     local clamp = math.fmod(ROCKETS_COUNT + 1, ROCKETS_SKIN_COUNT + 2)-- + 1 because we have default skin

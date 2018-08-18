@@ -206,6 +206,14 @@ function on_message(self, message_id, message, sender)
 		LOSE_COUNT = LOSE_COUNT + 1
 		if admob.is_loaded('banner') then
 			msg.post("main:/initial#initial", "show_banner")
+		else
+			admob.load{
+				type = 'banner',
+				id = "ca-app-pub-3825550765420734/6655086030",
+				size = 'smart',
+				position = 'bottom',
+				keywords = {'action', 'game'}
+			}
 		end
 
 		if vibrate and IS_VIBRATION then

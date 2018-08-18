@@ -7,8 +7,14 @@ require "main/varibles"
 
 function home_pressed(button)
 	BONUS_COUNT = 0
-	msg.post("main:/initial#initial", "show_banner")
-	monarch.show("menu_screen")
+	--msg.post("main:/initial#initial", "show_banner")
+	--monarch.show("menu_screen")
+	msg.post("game:/rocket#rocket", "unpause")
+	monarch.back()
+	if IS_SOUND then
+		msg.post("main:/sound#back_sound", "stop_sound")
+		msg.post("main:/sound#game_sound", "play_sound")
+	end
 	if IS_SOUND then
 		msg.post("main:/sound#click_sound", "play_sound")
 	end
