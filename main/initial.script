@@ -226,7 +226,7 @@ function on_message(self, message_id, message, sender)
 				id = "ca-app-pub-3825550765420734/6655086030",
 				size = 'smart',
 				position = 'bottom',
-				keywords = {'puzzle', 'game'}
+				keywords = {'action', 'game'}
 			}
 		end
 	end

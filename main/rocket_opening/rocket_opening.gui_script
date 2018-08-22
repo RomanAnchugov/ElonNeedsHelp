@@ -132,6 +132,10 @@ function on_message(self, message_id, message, sender)
 	flow.on_message(message_id, message, sender)
 	self.transition1.handle(message_id, message, sender)
 	self.transition2.handle(message_id, message, sender)
+
+	if message_id == monarch.TRANSITION.DONE and message.transition == monarch.TRANSITION.SHOW_IN then
+		admob.hide_banner()
+	end
 end
 
 function on_input(self, action_id, action)
@@ -143,6 +147,18 @@ function on_input(self, action_id, action)
 
 		if IS_SOUND then
 			msg.post("main:/sound#bells_sound", "stop_sound")
+		end
+
+		if admob.is_loaded('banner') then
+			msg.post("main:/initial#initial", "show_banner")
+		else
+			admob.load{
+				type = 'banner',
+				id = "ca-app-pub-3825550765420734/6655086030",
+				size = 'smart',
+				position = 'bottom',
+				keywords = {'action', 'game'}
+			}
 		end
 	end
 end
