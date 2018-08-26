@@ -1,4 +1,5 @@
 require "main/varibles"
+require "main/strings"
 local TAG = "game.gui_script: "
 
 local score = 0
@@ -110,9 +111,18 @@ function autopilot_update(button)
 	end
 end
 
+local function init_gui() 
+	local node = gui.get_node("boost/text")
+	gui.set_text(node, bonus_boost[sys.get_sys_info().language])
+
+	node = gui.get_node("autopilot/text")
+	gui.set_text(node, bonus_autopilot[sys.get_sys_info().language])
+end
+
 function init(self)
 	gooey.acquire_input()
 	math.randomseed(os.clock()*100000000000)
+	init_gui()
 
 	self.transition = transitions.create(gui.get_node("score"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)

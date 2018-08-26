@@ -1,4 +1,5 @@
 require "main/varibles"
+require "main/strings"
 local TAG = "menu.gui_script: "
 
 local random = require "main/random"
@@ -83,6 +84,20 @@ local function leader_update(button)
 	end
 end
 
+local function init_gui()
+	local russian_scale = 0.5
+	local node = gui.get_node("start_text")
+	gui.set_text(node, menu_play_btn[sys.get_sys_info().language])
+	if sys.get_sys_info().language == "ru" then
+		gui.set_scale(node, vmath.vector4(russian_scale, russian_scale, russian_scale, 1))
+	end
+	node = gui.get_node("shop_text")
+	gui.set_text(node, menu_shop_btn[sys.get_sys_info().language])
+	if sys.get_sys_info().language == "ru" then
+		gui.set_scale(node, vmath.vector4(russian_scale, russian_scale, russian_scale, 1))
+	end
+end
+
 function init(self)
 	gooey.acquire_input()
 	
@@ -130,8 +145,8 @@ function init(self)
 
 	self.money = gui.get_node("money")
 	self.best = gui.get_node("best_score")
-	gui.set_text(self.money, "money: " .. MONEY)
-	gui.set_text(self.best, "best: " .. BEST_SCORE)
+	gui.set_text(self.money, money_text[sys.get_sys_info().language] .. ": " .. MONEY)
+	gui.set_text(self.best, best_text[sys.get_sys_info().language] .. ": " .. BEST_SCORE)
 
 
 	local timer_flag = true
@@ -152,6 +167,8 @@ function init(self)
 			timer_flag = true
 		end
 	end)
+
+	init_gui()
 end
 
 function on_message(self, message_id, message, sender)

@@ -74,8 +74,21 @@ local function back_update(button)
 	end
 end
 
+local function init_gui()
+	local lang = sys.get_sys_info().language
+	local node = gui.get_node("sound/label")
+	gui.set_text(node, sound_text[lang])
+
+	node = gui.get_node("vibration/label")
+	gui.set_text(node, vibration_text[lang])
+
+	node = gui.get_node("back/text")
+	gui.set_text(node, back_text[lang])
+end
+
 function init(self)
 	gooey.acquire_input()
+	init_gui()
 
 	self.transition1 = transitions.create(gui.get_node("box"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)

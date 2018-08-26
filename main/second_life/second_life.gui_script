@@ -46,8 +46,21 @@ function yes_update(button)
 	end
 end
 
+local function init_gui()
+	local lang = sys.get_sys_info().language
+	local node = gui.get_node("header")
+	gui.set_text(node, second_life_text[lang])
+
+	node = gui.get_node("yes/text")
+	gui.set_text(node, yes_text[lang])
+
+	node = gui.get_node("no/text")
+	gui.set_text(node, no_text[lang])
+end
+
 function init(self)
 	gooey.acquire_input()
+	init_gui()
 
 	self.transition1 = transitions.create(gui.get_node("bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.3, 0)

@@ -1,4 +1,5 @@
 require "main/varibles"
+require "main/strings"
 local monarch = require "monarch.monarch"
 local gooey = require "gooey.gooey"
 local transitions = require "monarch.transitions.gui"
@@ -38,44 +39,45 @@ function update_gui()
 	
 	--SET VALUES
 	--MONEY PER CLICK
+	local lang = sys.get_sys_info().language
 	local node = gui.get_node("list_item1/text")
-	gui.set_text(node, "MONEY PER CLICK(" .. MONEY_PER_CLICK_COUNT .. ")")
+	gui.set_text(node,bonus_money_per_click[lang]  .. "(" .. MONEY_PER_CLICK_COUNT .. ")")
 	node = gui.get_node("list_item1/cost")
 	gui.set_text(node, MONEY_PER_CLICK_COST .. "$")
 
 	--POINTS PER CLICK
 	node = gui.get_node("list_item7/text")
-	gui.set_text(node, "POINTS PER CLICK(" .. POINTS_PER_CLICK_COUNT .. ")")
+	gui.set_text(node, bonus_points_per_click[lang] .. "(" .. POINTS_PER_CLICK_COUNT .. ")")
 	node = gui.get_node("list_item7/cost")
 	gui.set_text(node, POINTS_PER_CLICK_COST .. "$")
 
 	--SECOND LIFE
 	node = gui.get_node("list_item2/text")
-	gui.set_text(node, "SECOND LIFE(" .. SECOND_LIFE_COUNT .. ")")
+	gui.set_text(node, bonus_second_life[lang] .. "(" .. SECOND_LIFE_COUNT .. ")")
 	node = gui.get_node("list_item2/cost")
 	gui.set_text(node, SECOND_LIFE_COST .. "$")
 
 	--BOOST
 	node = gui.get_node("list_item3/text")
-	gui.set_text(node, "BOOSTS(" .. BOOST_COUNT .. ")")
+	gui.set_text(node, bonus_boost[lang] ..  "(" .. BOOST_COUNT .. ")")
 	node = gui.get_node("list_item3/cost")
 	gui.set_text(node, BOOST_COST .. "$")
 
 	--AUTOPILOT
 	node = gui.get_node("list_item4/text")
-	gui.set_text(node, "AUTOPILOT(" .. AUTOPILOT_COUNT .. ")")
+	gui.set_text(node, bonus_autopilot[lang] .. "(" .. AUTOPILOT_COUNT .. ")")
 	node = gui.get_node("list_item4/cost")
 	gui.set_text(node, AUTOPILOT_COST .. "$")
 
 	--ENGINES
 	node = gui.get_node("list_item5/text")
-	gui.set_text(node, "ENGINES(" .. ENGINES_COUNT .. ")")
+	gui.set_text(node, style_engines[lang] .. "(" .. ENGINES_COUNT .. ")")
 	node = gui.get_node("list_item5/cost")
 	gui.set_text(node, ENGINES_COST .. "$")
 
 	--ROCKETS
 	node = gui.get_node("list_item6/text")
-	gui.set_text(node, "ROCKETS(" .. ROCKETS_COUNT .. ")")
+	gui.set_text(node, style_rockets[lang] .. "(" .. ROCKETS_COUNT .. ")")
 	node = gui.get_node("list_item6/cost")
 	gui.set_text(node, ROCKETS_BEST_SCORE .. " BEST\n" .. ROCKETS_COST .. "$")
 
@@ -117,12 +119,25 @@ function update_gui()
 
 	--MONEY SET
 	node = gui.get_node("money")
-	gui.set_text(node, "money: " .. MONEY)
+	gui.set_text(node, money_text[lang] .. ": " .. MONEY)
 	if gui.get_scale(node) ~= .8 then 
 		gui.animate(node, "scale", .8, gui.EASING_INSINE, .5)
 		local color = vmath.vector4(.8, 1, 1, 1)
 		gui.animate(node, "color", color, gui.EASING_INSINE, .4)
 	end
+
+	--LOCALISATION
+	node = gui.get_node("header")
+	gui.set_text(node, menu_shop_btn[lang])
+
+	node = gui.get_node("back/text")
+	gui.set_text(node, back_text[lang])
+
+	node = gui.get_node("list_divider1/text")
+	gui.set_text(node, power_ups_text[lang])
+
+	node = gui.get_node("list_divider2/text")
+	gui.set_text(node, style_text[lang])
 end
 
 

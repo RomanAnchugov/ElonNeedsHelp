@@ -93,6 +93,9 @@ local function admob_listener(event)
 end
 
 function init(self)
+
+	print(TAG, sys.get_sys_info().language)
+	
 	admob.init({
 		app_id = "ca-app-pub-3825550765420734~4555019385",
 		test = false,

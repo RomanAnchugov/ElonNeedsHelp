@@ -82,8 +82,18 @@ function unpause_update(button)
 	end
 end
 
+local function init_gui()
+	local node = gui.get_node("bonus_add/text")
+	local lang = sys.get_sys_info().language
+	gui.set_text(node, bonus_text[lang])
+
+	node = gui.get_node("header")
+	gui.set_text(node, pause_text[lang])
+end
+
 function init(self)
 	gooey.acquire_input()
+	init_gui()
 
 	self.transition1 = transitions.create(gui.get_node("bg"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.3, 0)

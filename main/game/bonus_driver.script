@@ -40,6 +40,7 @@ function on_message(self, message_id, message, sender)
 		SECOND_LIFE_COUNT = SECOND_LIFE_COUNT - 1
 		msg.post("game:/rocket", "autopilot")
 		msg.post("game:/gui#game", "set_autopilot", {true})
+		admob.hide_banner()
 	end 
 
 	if message_id == hash("boost50") then
