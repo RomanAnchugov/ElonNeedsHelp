@@ -48,7 +48,7 @@ local function up(self)
   end
 
   local position = go.get_position()
-  if position.y <= 350 and bonus_chance <= 50 and not immersive_pause 
+  if position.y <= 350 and bonus_chance <= 50 and not immersive_pause and IS_SHOW_PAUSE 
   and (admob.is_loaded('interstitial') or admob.is_loaded('rewarded'))then
     msg.post(BG_IMAGE_ID, "unflight")
     msg.post("game:/rocket#rocket", "pause")

@@ -74,6 +74,21 @@ local function back_update(button)
 	end
 end
 
+local function show_pause_update(checkbox)
+	if checkbox.released_now then
+		IS_SHOW_PAUSE = checkbox.checked
+	end
+	if IS_SHOW_PAUSE then
+		gui.play_flipbook(checkbox.node, hash("custom_button_checked"))
+	else
+		gui.play_flipbook(checkbox.node, hash("custom_button_unchecked"))
+	end
+end
+
+local function show_pause_checked(checkbox)
+	
+end
+
 local function init_gui()
 	local lang = sys.get_sys_info().language
 	local node = gui.get_node("sound/label")
@@ -84,11 +99,19 @@ local function init_gui()
 
 	node = gui.get_node("back/text")
 	gui.set_text(node, back_text[lang])
+
+	node = gui.get_node("show_pause/label")
+	gui.set_text(node, show_pause_text[lang])
+	
 end
 
 function init(self)
 	gooey.acquire_input()
 	init_gui()
+
+	gooey.checkbox("sound/box", action_id, action, sound_checked, sound_update)
+	gooey.checkbox("vibration/box", action_id, action, vibration_checked, vibration_update)
+	gooey.checkbox("show_pause/box", action_id, action, show_pause_checked, show_pause_update)
 
 	self.transition1 = transitions.create(gui.get_node("box"))
 	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
@@ -131,6 +154,18 @@ function init(self)
 	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
 	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
 	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+	
+	self.transition8 = transitions.create(gui.get_node("show_pause/label"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
+
+	self.transition9 = transitions.create(gui.get_node("show_pause/box"))
+	.show_in(transitions.scale_in, gui.EASING_OUTQUAD, 0.6, 0)
+	.show_out(transitions.scale_out, gui.EASING_INQUAD, 0.66, 0)
+	.back_in(transitions.slide_in_left, gui.EASING_OUTQUAD, 0.66, 0)
+	.back_out(transitions.slide_out_right, gui.EASING_INQUAD, 0.6, 0)
 end
 
 function on_message(self, message_id, message, sender)
@@ -141,11 +176,14 @@ function on_message(self, message_id, message, sender)
 	self.transition5.handle(message_id, message, sender)
 	self.transition6.handle(message_id, message, sender)
 	self.transition7.handle(message_id, message, sender)
+	self.transition8.handle(message_id, message, sender)
+	self.transition9.handle(message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
 	gooey.checkbox("sound/box", action_id, action, sound_checked, sound_update)
 	gooey.checkbox("vibration/box", action_id, action, vibration_checked, vibration_update)
+	gooey.checkbox("show_pause/box", action_id, action, show_pause_checked, show_pause_update)
 	gooey.button("reset/bg", action_id, action, reset_pressed, reset_update)
 	gooey.button("back/bg", action_id, action, back_pressed, back_update)
 end

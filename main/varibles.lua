@@ -35,6 +35,7 @@ BG_IMAGE_ID = ""
 IS_SOUND = true
 IS_PLAYING = false
 IS_VIBRATION = true
+IS_SHOW_PAUSE = true
 
 BG_NUMBER = nil
 

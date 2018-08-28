@@ -101,3 +101,8 @@ vibration_text = {
 	["ru"] = "ВИБАРАЦИЯ",
 	["en"] = "VIBRATION"
 }
+
+show_pause_text = {
+	["ru"] = "ПОКАЗЫВАТЬ ПАУЗУ",
+	["en"] = "SHOW PAUSE"
+}

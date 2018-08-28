@@ -1,5 +1,5 @@
 INFO:DLIB: Writing log to: ./log.txt
-INFO:ENGINE: Loading data from: http://127.0.0.1:49691/build
+INFO:ENGINE: Loading data from: http://127.0.0.1:51140/build
 INFO:ENGINE: Initialised sound device 'default'
 
 DEBUG:SCRIPT: initial.script	ru
@@ -19,47 +19,20 @@ ERROR:GAMESYS: The layer 'below' could not be set for the 'vibration/box', resul
 ERROR:GAMESYS: The layer 'text' could not be set for the 'vibration/label', result: -5.
 ERROR:GAMESYS: The layer 'below' could not be set for the 'reset/bg', result: -5.
 ERROR:GAMESYS: The layer 'text' could not be set for the 'reset/text', result: -5.
+ERROR:GAMESYS: The layer 'below' could not be set for the 'show_pause/box', result: -5.
+ERROR:GAMESYS: The layer 'text' could not be set for the 'show_pause/label', result: -5.
 DEBUG:SCRIPT: settings.gui_script	music palying: 	false
 ERROR:GAMESYS: The layer 'below' could not be set for the 'settings/bg', result: -5.
 ERROR:GAMESYS: The layer 'text' could not be set for the 'settings/text', result: -5.
 ERROR:GAMESYS: The layer 'below' could not be set for the 'leader/bg', result: -5.
 ERROR:GAMESYS: The layer 'text' could not be set for the 'leader/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'static_list/stencil', result: -5.
 ERROR:GAMESYS: The layer 'below' could not be set for the 'back/bg', result: -5.
 ERROR:GAMESYS: The layer 'text' could not be set for the 'back/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item1/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item1/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item2/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item2/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item3/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item3/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item4/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item4/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item5/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item5/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item6/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item6/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider1/bg', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider1/bg_inner', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_divider1/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider2/bg', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider2/bg_inner', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_divider2/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider3/bg', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_divider3/bg_inner', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_divider3/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'list_item7/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'list_item7/text', result: -5.
-DEBUG:SCRIPT: initial.script	save message
-DEBUG:SCRIPT: DefSave: File 'config' has been saved to the path '/Users/romananchugov/Library/Application Support/ElonNeedsHelp/config'
-DEBUG:SCRIPT: shop.gui_script: 	shop shown
-DEBUG:SCRIPT: shop.gui_script: 	shop shown
-DEBUG:SCRIPT: shop.gui_script: 	shop shown
-ERROR:GAMESYS: The layer 'below' could not be set for the 'settings/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'settings/text', result: -5.
-ERROR:GAMESYS: The layer 'below' could not be set for the 'leader/bg', result: -5.
-ERROR:GAMESYS: The layer 'text' could not be set for the 'leader/text', result: -5.
-DEBUG:SCRIPT: DefSave: File 'config' has been saved to the path '/Users/romananchugov/Library/Application Support/ElonNeedsHelp/config'
-DEBUG:SCRIPT: DefSave: File 'config' has been saved to the path '/Users/romananchugov/Library/Application Support/ElonNeedsHelp/config'
-INFO:DLIB: Flushing http cache to disk
-INFO:DLIB: SSDP: Done on address 192.168.1.128
+ERROR:GAMESYS: The layer 'below' could not be set for the 'sound/box', result: -5.
+ERROR:GAMESYS: The layer 'text' could not be set for the 'sound/label', result: -5.
+ERROR:GAMESYS: The layer 'below' could not be set for the 'vibration/box', result: -5.
+ERROR:GAMESYS: The layer 'text' could not be set for the 'vibration/label', result: -5.
+ERROR:GAMESYS: The layer 'below' could not be set for the 'reset/bg', result: -5.
+ERROR:GAMESYS: The layer 'text' could not be set for the 'reset/text', result: -5.
+ERROR:GAMESYS: The layer 'below' could not be set for the 'show_pause/box', result: -5.
+ERROR:GAMESYS: The layer 'text' could not be set for the 'show_pause/label', result: -5.

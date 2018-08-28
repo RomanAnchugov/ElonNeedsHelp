@@ -30,6 +30,7 @@ function save()
 
 	defsave.set(filename, "is_sound", {IS_SOUND})
 	defsave.set(filename, "is_vibration", {IS_VIBRATION})
+	defsave.set(filename, "is_show_pause", {IS_SHOW_PAUSE})
 
 	defsave.save(filename)
 end
@@ -138,6 +139,7 @@ function init(self)
 
 	local is_sound = defsave.get(filename, "is_sound")
 	local is_vibration = defsave.get(filename, "is_vibration")
+	local is_show_pause = defsave.get(filename, "is_show_pause")
 	
 	if money ~= nil and best_score ~= nil and money_per_click_count ~= nil 
 	and points_per_click_count ~= nil
@@ -147,7 +149,7 @@ function init(self)
 	and second_life_cost ~= nil and boost_cost ~= nil
 	and autopilot_cost ~= nil and engines_cost ~= nil and rockets_cost ~= nil
 	and opened_rockets ~= nil and rockets_best_score ~= nil 
-	and is_sound ~= nil and is_vibration ~= nil then
+	and is_sound ~= nil and is_vibration ~= nil and is_show_pause ~= nil then
 		print(TAG, "file exist")
 		
 		if table.maxn(money) ~= 0 and table.maxn(best_score) ~= 0 
@@ -160,7 +162,8 @@ function init(self)
 		and table.maxn(boost_cost) ~= 0 and table.maxn(autopilot_cost) ~= 0 
 		and table.maxn(engines_cost) ~= 0 and table.maxn(rockets_cost) ~= 0
 		and table.maxn(opened_rockets) ~= 0 and table.maxn(rockets_best_score) ~= 0
-		and table.maxn(is_sound) ~= 0 and table.maxn(is_vibration) ~= 0 then
+		and table.maxn(is_sound) ~= 0 and table.maxn(is_vibration) ~= 0
+		and table.maxn(is_show_pause) ~= 0 then
 
 			print(TAG, "data exist")
 			
@@ -188,6 +191,7 @@ function init(self)
 
 			IS_SOUND = is_sound[1]
 			IS_VIBRATION = is_vibration[1]
+			IS_SHOW_PAUSE = is_show_pause[1]
 		else
 			save()
 			print(TAG, "data not exist, set default data")
